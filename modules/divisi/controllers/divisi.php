@@ -14,6 +14,7 @@ class divisi extends MY_Controller
     {
         parent::__construct();
         $this->load->model('divisiModel');
+        $this->load->library('form_validation');
     }
 
     function index()
@@ -30,13 +31,21 @@ class divisi extends MY_Controller
 
     function editDivisi($kode_divisi)
     {
-        $this->divisiModel->editDivisi($kode_divisi);
-        redirect('divisi');
+        $this->form_validation->set_rules('nama_divisi', 'Nama Divisi', 'required');
+        if ($this->form_validation->run() == TRUE) {
+            $this->divisiModel->editDivisi($kode_divisi);
+        }
+        redirect("divisi");
     }
 
-    function addDivisi(){
-        $this->divisiModel->addDivisi();
-        redirect('divisi');
+    function addDivisi()
+    {
+        $this->form_validation->set_rules('nama_divisi', 'Nama Divisi', 'required');
+        $this->form_validation->set_rules('kode_divisi', 'Kode Divisi', 'required');
+        if ($this->form_validation->run() == TRUE) {
+            $this->divisiModel->addDivisi();
+        }
+        redirect("divisi");
     }
 }
 
