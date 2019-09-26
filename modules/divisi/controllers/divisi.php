@@ -11,10 +11,11 @@ class divisi extends MY_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('divisiModel');
     }
 
     function index() {
-        $data['divisi'] = $this->db->get('divisi')->result_array();
+        $data['divisi'] = $this->divisiModel->getDivisi();
         $this->load->template('divisi', $data);
     }
 
