@@ -28,55 +28,35 @@
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> Dashboard</a></li>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> User</a></li>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> Pegawai</a></li>
+								<li><a><i class="fa fa-home"></i> Absensi <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="index.html">Dashboard</a></li>
-										<li><a href="index2.html">Dashboard2</a></li>
-										<li><a href="index3.html">Dashboard3</a></li>
+										<li><a href="index.html">Import Data Absen</a></li>
+										<li><a href="index2.html">Cek Absen</a></li>
+										<li><a href="index3.html">Lihat Absen</a></li>
 									</ul>
 								</li>
-								<li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> SPL</a></li>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> Hitung Gaji</a></li>
+								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> Konfirmasi Absen</a></li>
+								<li><a><i class="fa fa-edit"></i> Laporan <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="form.html">General Form</a></li>
-										<li><a href="form_advanced.html">Advanced Components</a></li>
-										<li><a href="form_validation.html">Form Validation</a></li>
-										<li><a href="form_wizards.html">Form Wizard</a></li>
-										<li><a href="form_upload.html">Form Upload</a></li>
-										<li><a href="form_buttons.html">Form Buttons</a></li>
+										<li><a href="form.html">Gaji Harian</a></li>
+										<li><a href="form_advanced.html">Gaji Bulanan</a></li>
+										<li><a href="form_validation.html">Gaji Staff</a></li>
+										<li><a href="form_wizards.html">Report Absen</a></li>
 									</ul>
 								</li>
-								<li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+								<li><a><i class="fa fa-desktop"></i> Setting <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="general_elements.html">General Elements</a></li>
-										<li><a href="media_gallery.html">Media Gallery</a></li>
-										<li><a href="typography.html">Typography</a></li>
-										<li><a href="icons.html">Icons</a></li>
-										<li><a href="glyphicons.html">Glyphicons</a></li>
-										<li><a href="widgets.html">Widgets</a></li>
-										<li><a href="invoice.html">Invoice</a></li>
-										<li><a href="inbox.html">Inbox</a></li>
-										<li><a href="calendar.html">Calendar</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="tables.html">Tables</a></li>
-										<li><a href="tables_dynamic.html">Table Dynamic</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="chartjs.html">Chart JS</a></li>
-										<li><a href="chartjs2.html">Chart JS2</a></li>
-										<li><a href="morisjs.html">Moris JS</a></li>
-										<li><a href="echarts.html">ECharts</a></li>
-										<li><a href="other_charts.html">Other Charts</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-										<li><a href="fixed_footer.html">Fixed Footer</a></li>
+										<li><a href="general_elements.html">Kalender</a></li>
+										<li><a href="media_gallery.html">Honor Lembur</a></li>
+										<li><a href="typography.html">Divisi</a></li>
+										<li><a href="icons.html">Jabatan</a></li>
+										<li><a href="glyphicons.html">Status</a></li>
+										<li><a href="widgets.html">Bagian</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -146,37 +126,4 @@
 				</div>
 			</div>
 
-			<!-- jQuery -->
-			<script src="<?= base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-			<!-- Bootstrap -->
-			<script src="<?= base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-			<!-- FastClick -->
-			<script src="<?= base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
-			<!-- NProgress -->
-			<script src="<?= base_url(); ?>assets/vendors/nprogress/nprogress.js"></script>
-			<!-- DateJS -->
-			<script src="<?= base_url(); ?>assets/vendors/DateJS/build/date.js"></script>
-			<!-- bootstrap-daterangepicker -->
-			<script src="<?= base_url(); ?>assets/vendors/moment/min/moment.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-			<!-- iCheck -->
-			<script src="<?= base_url(); ?>assets/vendors/iCheck/icheck.min.js"></script>
-			<!-- Datatables -->
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/jszip/dist/jszip.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/pdfmake/build/pdfmake.min.js"></script>
-			<script src="<?= base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
-
-			<!-- Custom Theme Scripts -->
-			<script src="<?= base_url(); ?>assets/build/js/custom.min.js"></script>
+		
