@@ -60,10 +60,10 @@
 <!-- starrr -->
 <script src="<?= base_url(); ?>assets/vendors/starrr/dist/starrr.js"></script>
 
-			<!-- Custom Theme Scripts -->
-            <script src="<?= base_url(); ?>assets/build/js/custom.min.js"></script>
-             <!-- jQuery custom content scroller -->
-            <script src="<?= base_url(); ?>assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="<?= base_url(); ?>assets/build/js/custom.min.js"></script>
+<!-- jQuery custom content scroller -->
+<script src="<?= base_url(); ?>assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
 </body>
 
