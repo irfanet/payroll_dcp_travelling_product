@@ -29,7 +29,7 @@
 							<h3>General</h3>
 							<ul class="nav side-menu">
 								<li><a href="javascript:void(0)"><i class="fa fa-home"></i> Dashboard</a></li>
-								<li><a href="javascript:void(0)"><i class="fa fa-user"></i> User</a></li>
+								<li><a href="<?= base_url()?>user"><i class="fa fa-user"></i> User</a></li>
 								<li><a href="javascript:void(0)"><i class="fa fa-users"></i> Pegawai</a></li>
 								<li><a><i class="fa fa-fax"></i> Absensi <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
@@ -53,7 +53,7 @@
 									<ul class="nav child_menu">
 										<li><a href="general_elements.html">Kalender</a></li>
 										<li><a href="media_gallery.html">Honor Lembur</a></li>
-										<li><a href="typography.html">Divisi</a></li>
+										<li><a href="<?= base_url()?>divisi">Divisi</a></li>
 										<li><a href="icons.html">Jabatan</a></li>
 										<li><a href="glyphicons.html">Status</a></li>
 										<li><a href="widgets.html">Bagian</a></li>
