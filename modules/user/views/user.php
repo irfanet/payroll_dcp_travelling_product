@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>user</h3>
+        <h3>User</h3>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -20,7 +20,7 @@
           </div>
           <div class="x_content">
             <center>
-              <a class="btn btn-app btn-lg" data-toggle="modal" data-target="#modal_add">
+              <a class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_modal" data-target="#modal_add">
                 <i class="fa fa-plus"></i> Tambah
               </a>
             </center>
@@ -76,6 +76,7 @@
 <!-- /page content -->
 
 <!-- TAMBAH MODAL -->
+<?php ?>
 <div class="modal fade bs-example-modal-lg" id="modal_add" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -83,13 +84,15 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Tambah User</h4>
+        <h4 class="modal-title" name="show_in_add">Tambah User</h4>
+        <h4 class="modal-title" name="show_in_edit">Edit User</h4>
       </div>
       <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
         <div class="modal-body">
+          <input type="hidden" id="id_user" name="id_user">
           <div class="row">
             <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12">
               </label>
               <label class="control-label col-md-2 col-sm-2 col-xs-12" for="email">Email <span class="required">*</span>
               </label>
@@ -101,7 +104,7 @@
           <br>
           <div class="row">
             <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12">
               </label>
               <label class="control-label col-md-2 col-sm-2 col-xs-12" for="username">Username <span class="required">*</span>
               </label>
@@ -110,38 +113,39 @@
               </div>
             </div>
           </div>
-          <br>
-          <div class="row">
+          <br name="show_in_add">
+          <div class="row" name="show_in_add">
             <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12">
               </label>
-              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password1">Password <span class="required">*</span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password1" name="password1">Password <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="password" id="password1" name="password1" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
-          <br>
-          <div class="row">
+          <br name="show_in_add">
+          <div class="row" name="show_in_add">
             <div class="form-group">
-              <label class="control-label col-md-1 col-sm-1 col-xs-12"></span>
+              <label class="control-label col-md-1 col-sm-1 col-xs-12">
               </label>
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password2">Konfirmasi Password <span class="required">*</span>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password2" name="password2">Konfirmasi Password <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="password" id="password2" name="password2" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
+          </div>
             <br>
             <div class="row">
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
+                <label class="control-label col-md-2 col-sm-2 col-xs-12">
                 </label>
                 <label class="control-label col-md-2 col-sm-2 col-xs-12" for="level">Level <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <select class="form-control" name="level" id="level" class="form-control col-md-6 col-xs-12">
+                  <select class="form-control" name="level" id="level">
                     <optgroup label="Admin">
                       <option value="1">Super Admin</option>
                       <option value="2">Manager</option>
@@ -155,86 +159,15 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-            <input type="submit" name="submit" id="btn_simpan" value="Simpan" class="btn btn-primary">
-          </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-<!-- END TAMBAH MODAL -->
-
-<!-- EDIT MODAL -->
-<div class="modal fade bs-example-modal-lg" id="modal_edit" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Edit User</h4>
-      </div>
-      <form id="form_edit" data-parsley-validate class="form-horizontal form-label-left">
-      <input type="hidden" id="id_user" name="id_user" required class="form-control col-md-7 col-xs-12">
-        <div class="modal-body">
-          <div class="row">
-            <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
-              </label>
-              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="email">Email <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="email2" name="email2" required class="form-control col-md-7 col-xs-12" readonly>
-              </div>
-            </div>
-          </div>
           <br>
-          <div class="row">
+          <div class="row" name="show_in_edit">
             <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12">
               </label>
-              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="username2">Username <span class="required">*</span>
+              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="is_active">Status <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="username2" name="username2" required class="form-control col-md-7 col-xs-12" readonly>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
-              </label>
-              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="level2">Level <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <select class="form-control" name="level2" id="level2" class="form-control col-md-7 col-xs-12">
-                  <optgroup label="Admin">
-                    <option value="1">Super Admin</option>
-                    <option value="2">Manager</option>
-                    <option value="3">HRD</option>
-                  </optgroup>
-                  <optgroup label="Operator">
-                    <option value="4">Operator Absen & SPL</option>
-                    <option value="5">Operator Payroll</option>
-                  </optgroup>
-                </select>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="form-group">
-              <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
-              </label>
-              <label class="control-label col-md-2 col-sm-2 col-xs-12" for="is_active2">Status <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <select class="form-control" name="is_active2" id="is_active2" class="form-control col-md-7 col-xs-12">
+                <select class="form-control" name="is_active" id="is_active">
                   <option value="1">Aktif</option>
                   <option value="0">Tidak Aktif</option>
                 </select>
@@ -242,17 +175,20 @@
             </div>
           </div>
 
-        </div>
+          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel_update">Batal</button>
-          <input type="submit" name="submit" id="btn_update" value="Simpan" class="btn btn-primary">
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel">Batal</button>
+            <input type="submit" name="show_in_add" id="btn_simpan" value="Simpan" class="btn btn-primary">
+            <input type="submit" name="show_in_edit" id="btn_update" value="Perbaharui" class="btn btn-primary">
+          </div>
       </form>
     </div>
   </div>
 </div>
-<!-- END EDIT MODAL -->
+<!-- END TAMBAH MODAL -->
+
+
 
 <!-- DELETE MODAL -->
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="modal_delete">
@@ -279,7 +215,6 @@
   </div>
 </div>
 <!-- END DELETE MODAL -->
-</div>
 
 <!-- ASYNCRONUS NGERI TOK -->
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
@@ -318,7 +253,16 @@
       });
     }
 
-    //TOMBOL EDIT -> GET KODE 
+    //ATUR HIDE AND SHOW
+    $('#btn_add_modal').on('click', function() {
+      $('#form_add')[0].reset();
+      $('[name="show_in_add"]').show();
+      $('[name="show_in_edit"]').hide();
+      $('#email').attr('readonly', false);
+      $('#username').attr('readonly', false);
+    });
+
+    //TOMBOL EDIT -> GET KODE & ATUR HIDE AND SHOW
     $('#show_data').on('click', '.item_edit', function() {
       var id = $(this).attr('data');
       $.ajax({
@@ -330,12 +274,14 @@
         },
         success: function(data) {
           $.each(data, function(id_user, email, username, level, is_active) {
-            $('#modal_edit').modal('show');
-            $('[name="id_user"]').val(data.id_user);
-            $('[name="email2"]').val(data.email);
-            $('[name="username2"]').val(data.username);
-            $('[name="level2"]').val(data.level);
-            $('[name="is_active2"]').val(data.is_active);
+            $('#modal_add').modal('show');
+            $('[name="show_in_add"]').hide();
+            $('[name="show_in_edit"]').show();
+            $('#id_user').val(data.id_user);
+            $('#email').val(data.email).attr('readonly', true);
+            $('#username').val(data.username).attr('readonly', true);
+            $('#level').val(data.level);
+            $('#is_active').val(data.is_active);
           });
         }
       });
@@ -401,8 +347,8 @@
         dataType: "JSON",
         data: {
           id_user: $('#id_user').val(),
-          level: $('#level2').val(),
-          is_active: $('#is_active2').val()
+          level: $('#level').val(),
+          is_active: $('#is_active').val()
         },
         success: function(data) {
           if (data.success == true) {
@@ -416,8 +362,8 @@
                 $(this).remove();
               });
             })
-            $('#form_edit')[0].reset();
-            $('#modal_edit').modal('hide');
+            $('#form_add')[0].reset();
+            $('#modal_add').modal('hide');
             tampil_data();
           } else {
             $.each(data.messages, function(key, value) {
