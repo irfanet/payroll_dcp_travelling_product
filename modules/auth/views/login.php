@@ -30,16 +30,17 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form method="post" action="<?= base_url()?>auth/">
               <h1>Login Form</h1>
+              <?= $this->session->flashdata('message');?>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" name="email" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                <button type="submit" class="btn btn-default submit" href="index.html">Log in</button>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 

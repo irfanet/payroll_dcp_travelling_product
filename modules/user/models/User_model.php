@@ -3,6 +3,7 @@
 	class User_model extends CI_Model{
 
 		private $_table = "user";
+		
 		function __construct(){
 			parent::__construct();
         }
