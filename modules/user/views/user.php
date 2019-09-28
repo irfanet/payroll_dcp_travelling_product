@@ -75,8 +75,7 @@
 </div>
 <!-- /page content -->
 
-<!-- TAMBAH MODAL -->
-<?php ?>
+<!-- TAMBAH & EDIT MODAL -->
 <div class="modal fade bs-example-modal-lg" id="modal_add" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -186,9 +185,7 @@
     </div>
   </div>
 </div>
-<!-- END TAMBAH MODAL -->
-
-
+<!-- END TAMBAH & EDIT MODAL -->
 
 <!-- DELETE MODAL -->
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="modal_delete">
@@ -249,7 +246,6 @@
           }
           $('#show_data').html(html);
         }
-
       });
     }
 
