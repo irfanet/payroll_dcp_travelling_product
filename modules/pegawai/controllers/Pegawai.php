@@ -69,9 +69,9 @@ class Pegawai extends MY_Controller{
 		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('kode_jabatan','Kode Jabatan', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_masuk','Tanggal Masuk', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('norek','Norek', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'trim|strip_tags');
+		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'trim|strip_tags');
+		$this->form_validation->set_rules('norek','Norek', 'trim|strip_tags');
 		$this->form_validation->set_rules('gapok','Gapok', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tetap','Tunjangan Tetap', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tidak_tetap','Tunjangan Tidak Tetap', 'numeric|required|trim|strip_tags');
@@ -104,9 +104,9 @@ class Pegawai extends MY_Controller{
 		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('kode_jabatan','Kode Jabatan', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_masuk','Tanggal Masuk', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('norek','Norek', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'trim|strip_tags');
+		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'trim|strip_tags');
+		$this->form_validation->set_rules('norek','Norek', 'trim|strip_tags');
 		$this->form_validation->set_rules('gapok','Gapok', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tetap','Tunjangan Tetap', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tidak_tetap','Tunjangan Tidak Tetap', 'numeric|required|trim|strip_tags');
