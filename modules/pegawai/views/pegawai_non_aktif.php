@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Pegawai</h3>
+        <h3>Pegawai Non Aktif</h3>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -12,43 +12,28 @@
       <div class="col-md-12" id="info"></div>
     </div>
     <div class="row">
-      <div class="col-lg-3 col-md-3">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Tambah Pegawai</h2>
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
-            <center>
-              <a class="btn btn-app btn-lg" data-toggle="modal" data-target="#modal_add" id="btn_add_modal">
-                <i class="fa fa-plus"></i> Tambah
-              </a>
-            </center>
-          </div>
-        </div>
-      </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="tile-stats">
           <div class="icon"><i class="fa fa-group"></i></div>
           <div class="count" id="jumlahPegawai"></div>
           <h3>Jumlah</h3>
-          <p>Jumlah seluruh pegawai aktif.</p>
+          <p>Jumlah seluruh pegawai non aktif.</p>
         </div>
       </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="tile-stats">
           <div class="icon"><i class="fa fa-male"></i></div>
           <div class="count" id="jumlahLaki"></div>
           <h3>Laki-laki</h3>
-          <p>Jumlah pegawai laki-laki aktif.</p>
+          <p>Jumlah pegawai laki-laki non aktif.</p>
         </div>
       </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="tile-stats">
           <div class="icon"><i class="fa fa-female"></i></div>
           <div class="count" id="jumlahPerempuan"></div>
           <h3>Perempuan</h3>
-          <p>Jumlah pegawai perempuan aktif.</p>
+          <p>Jumlah pegawai perempuan non aktif.</p>
         </div>
       </div>
     </div>
@@ -422,7 +407,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel">Batal</button>
-          <input type="submit" name="show_in_add" id="btn_simpan" value="Simpan" class="btn btn-primary">
           <input type="submit" name="show_in_edit" id="btn_update" value="Perbaharui" class="btn btn-primary">
         </div>
       </form>
@@ -439,7 +423,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel2">Non Aktifkan Pegawai</h4>
+        <h4 class="modal-title" id="myModalLabel2">Hapus Pegawai</h4>
       </div>
       <form>
         <div class="modal-body">
@@ -457,6 +441,32 @@
 </div>
 <!-- END DELETE MODAL -->
 
+<!-- AKTIFKAN MODAL -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="modal_aktifkan">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Aktifkan Pegawai</h4>
+      </div>
+      <form>
+        <div class="modal-body">
+          <input type="hidden" name="id_data" id="id_data">
+          <h5>Apakah anda yakin ?</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+          <button type="button" id="btn_aktifkan" class="btn_aktifkan btn btn-success">Ya</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- END AKTIFKAN MODAL -->
+
 <!-- ASYNCRONUS NGERI TOK -->
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 <script type="text/javascript">
@@ -473,7 +483,7 @@
     function tampil_data() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_data',
+        url: '<?= base_url() ?>pegawai/get_data_non_aktif',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -493,7 +503,8 @@
               '<td>' + data[i].nama_status + '</td>' +
               '<td style="text-align:right;">' +
               '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].NPP + '">Edit</a>' + ' ' +
-              '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].NPP + '">Non Aktifkan</a>' +
+              '<a href="javascript:;" class="btn btn-success btn-xs item_aktifkan" data="' + data[i].NPP + '">Aktifkan</a>' +
+              '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].NPP + '">Hapus</a>' +
               '</td>' +
               '</tr>';
           }
@@ -507,7 +518,7 @@
     function tampil_jumlah() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_jumlah',
+        url: '<?= base_url() ?>pegawai/get_jumlah_non_aktif',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -657,69 +668,11 @@
       $('[name="id_data"]').val(id);
     });
 
-    //SIMPAN DATA
-    $('#btn_simpan').on('click', function() {
-      $.ajax({
-        type: "POST",
-        url: "<?= base_url() ?>pegawai/simpan_data",
-        dataType: "JSON",
-        data: {
-          NPP: $('#NPP').val(),
-          nama: $('#nama').val(),
-          sex: $('#sex').val(),
-          id_status: $('#id_status').val(),
-          kode_bagian: $('#kode_bagian').val(),
-          kode_divisi: $('#kode_divisi').val(),
-          kode_jabatan: $('#kode_jabatan').val(),
-          tgl_masuk: $('#tgl_masuk').val(),
-          tgl_keluar: $('#tgl_keluar').val(),
-          tgl_kontrak: $('#tgl_kontrak').val(),
-          norek: $('#norek').val(),
-          gapok: $('#gapok').val(),
-          tunjangan_tetap: $('#tunjangan_tetap').val(),
-          tunjangan_tidak_tetap: $('#tunjangan_tidak_tetap').val(),
-          tunjangan_pss: $('#tunjangan_pss').val(),
-          potongan_lain: $('#potongan_lain').val(),
-          bpjs: $('#bpjs').val(),
-          bonus: $('#bonus').val(),
-          target: $('#target').val(),
-          potongan_target: $('#potongan_target').val(),
-          dapat_lain: $('#dapat_lain').val()
-        },
-        success: function(data) {
-          if (data.success == true) {
-            $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
-              ' <b>Berhasil</b> ! Data telah disimpan ' + '</div>');
-            $('.form-group').removeClass('has-error')
-              .removeClass('has-success');
-            $('.text-danger').remove();
-            $('.alert-success').delay(500).show(1000, function() {
-              $(this).delay(2000).slideUp(500, function() {
-                $(this).remove();
-              });
-            })
-            $('#form_add')[0].reset();
-            $('#modal_add').modal('hide');
-            tampil_data();
-            tampil_status();
-            tampil_bagian();
-            tampil_divisi();
-            tampil_jabatan();
-            tampil_jumlah();
-          } else {
-            $.each(data.messages, function(key, value) {
-              var element = $('#' + key);
-              element.closest('div.form-group')
-                .removeClass('has-error')
-                .addClass(value.length > 0 ? 'has-error' : 'has-success')
-                .find('.text-danger')
-                .remove();
-              element.after(value);
-            });
-          }
-        }
-      });
-      return false;
+    //TOMBOL AKTIFKAN -> GET KODE
+    $('#show_data').on('click', '.item_aktifkan', function() {
+      var id = $(this).attr('data');
+      $('#modal_aktifkan').modal('show');
+      $('[name="id_data"]').val(id);
     });
 
     //UPDATE DATA
@@ -793,7 +746,7 @@
       var kode = $('#id_data').val();
       $.ajax({
         type: "POST",
-        url: "<?= base_url() ?>pegawai/non_aktifkan_pegawai",
+        url: "<?= base_url() ?>pegawai/hapus_data",
         dataType: "JSON",
         data: {
           kode: kode
@@ -807,7 +760,37 @@
           tampil_jabatan();
           tampil_jumlah();
           $('#info').append('<div class="alert alert-danger"><i class="fa fa-trash-o"></i>' +
-            ' Pegawai telah dinon-aktifkan !' + '</div>');
+            ' Data telah dihapus !' + '</div>');
+          $('.alert-danger').delay(500).show(1000, function() {
+            $(this).delay(2000).slideUp(500, function() {
+              $(this).remove();
+            });
+          })
+        }
+      });
+      return false;
+    });
+
+    //AKTIFKAN DATA
+    $('#btn_aktifkan').on('click', function() {
+      var kode = $('#id_data').val();
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url() ?>pegawai/aktifkan_pegawai",
+        dataType: "JSON",
+        data: {
+          kode: kode
+        },
+        success: function(data) {
+          $('#modal_aktifkan').modal('hide');
+          tampil_data();
+          tampil_status();
+          tampil_bagian();
+          tampil_divisi();
+          tampil_jabatan();
+          tampil_jumlah();
+          $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+            ' Pegawai telah diaktifkan !' + '</div>');
           $('.alert-danger').delay(500).show(1000, function() {
             $(this).delay(2000).slideUp(500, function() {
               $(this).remove();

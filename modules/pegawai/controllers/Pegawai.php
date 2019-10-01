@@ -225,5 +225,32 @@ class Pegawai extends MY_Controller{
         redirect("pegawai");
     }
 
+	//pegawai non aktif
+	function index_non_aktif()
+    {
+        $this->load->template('pegawai_non_aktif');
+    }
+
+    function get_data_non_aktif(){
+		$data=$this->pegawai_model->data_list_non_aktif();
+		echo json_encode($data);
+	}
+
+	function aktifkan_pegawai(){
+		$kode=$this->input->post('kode');
+		$data=$this->pegawai_model->aktifkan_pegawai($kode);
+		echo json_encode($data);
+	}
+
+	function non_aktifkan_pegawai(){
+		$kode=$this->input->post('kode');
+		$data=$this->pegawai_model->non_aktifkan_pegawai($kode);
+		echo json_encode($data);
+	}
+
+    function get_jumlah_non_aktif(){
+		$data=$this->pegawai_model->jumlah_non_aktif();
+		echo json_encode($data);
+	}
 }
 

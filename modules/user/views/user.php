@@ -15,7 +15,7 @@
       <div class="col-md-2">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Tambah user</h2>
+            <h2>Tambah User</h2>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
@@ -32,7 +32,7 @@
       <div class="col-md-10 col-sm-10 col-xs-10">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Daftar user</h2>
+            <h2>Daftar User</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
