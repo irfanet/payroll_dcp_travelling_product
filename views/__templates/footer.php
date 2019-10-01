@@ -22,6 +22,9 @@
 <!-- bootstrap-daterangepicker -->
 <script src="<?= base_url(); ?>assets/vendors/moment/min/moment.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- bootstrap-datetimepicker -->
+<script src="<?= base_url(); ?>assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <!-- iCheck -->
 <script src="<?= base_url(); ?>assets/vendors/iCheck/icheck.min.js"></script>
 <!-- Datatables -->
@@ -48,7 +51,24 @@
 <script src="<?= base_url(); ?>assets/build/js/custom.min.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="<?= base_url(); ?>assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-
+<!-- Initialize datetimepicker -->
+<script>    
+    $('#tgl_masuk_date').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true,
+        format: 'DD-MM-YYYY'
+    });
+    $('#tgl_keluar_date').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true,
+        format: 'DD-MM-YYYY'
+    });
+    $('#tgl_kontrak_date').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true,
+        format: 'DD-MM-YYYY'
+    });
+</script>
 </body>
 
 </html>

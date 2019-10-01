@@ -175,11 +175,11 @@
           </div>
 
           </div>
-
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel">Batal</button>
-            <input type="submit" name="show_in_add" id="btn_simpan" value="Simpan" class="btn btn-primary">
-            <input type="submit" name="show_in_edit" id="btn_update" value="Perbaharui" class="btn btn-primary">
+
+            <input type="submit" name="show_in_edit2" id="asu" value="Perbaharui" class="btn btn-primary">
+            <input type="submit" name="btn_update" id="btn_simpan" value="Simpan" class="btn btn-primary">
           </div>
       </form>
     </div>
@@ -215,10 +215,14 @@
 
 <!-- ASYNCRONUS NGERI TOK -->
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
 <script type="text/javascript">
   $(document).ready(function() {
     tampil_data();
+    
     // $('#datatable-responsive').dataTable();
+    var btn_simpan = "<input type='submit' name='btn_simpan' id='btn_simpan' value='Simpan' class='btn btn-primary'>";
+
 
     //fungsi tampil data
     function tampil_data() {
@@ -254,6 +258,9 @@
       $('#form_add')[0].reset();
       $('[name="show_in_add"]').show();
       $('[name="show_in_edit"]').hide();
+      $('#asu').attr('type','checkbox');
+      $('#asu').attr('value','text');
+      // $('#asu').replaceWith(btn_simpan);
       $('#email').attr('readonly', false);
       $('#username').attr('readonly', false);
     });
@@ -275,7 +282,7 @@
             $('[name="show_in_edit"]').show();
             $('#id_user').val(data.id_user);
             $('#email').val(data.email).attr('readonly', true);
-            $('#username').val(data.username).attr('readonly', true);
+            $('#username').val(data.username).attr('readonly', false);
             $('#level').val(data.level);
             $('#is_active').val(data.is_active);
           });
@@ -336,7 +343,7 @@
     });
 
     //UPDATE DATA
-    $('#btn_update').on('click', function() {
+    $('[name="btn_update"]').on('click', function() {
       $.ajax({
         type: "POST",
         url: "<?= base_url() ?>user/update_data",

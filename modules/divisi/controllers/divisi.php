@@ -4,6 +4,7 @@
 
 class Divisi extends MY_Controller{
 
+	private $filename = "Data_divisi";
     function __construct()
     {
         parent::__construct();
@@ -71,5 +72,45 @@ class Divisi extends MY_Controller{
 		$data=$this->divisi_model->hapus_data($kode);
 		echo json_encode($data);
 	}
+	function form_upload(){
+		$this->load->view('import');
+	}
+	function import_excel(){
+		error_reporting(E_ALL ^ E_NOTICE);
+        include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+        $upload = $this->divisi_model->upload_file($this->filename);
+        if ($upload['result'] == 'failed') {
+          $data['upload_error'] = $upload['error'];
+        }
+        $excelreader =  new PHPExcel_Reader_Excel5();
+        $loadexcel = $excelreader->load('upload/excel/'.$this->filename.'.xls'); 
+        $sheet = $loadexcel->getActiveSheet()->getRowIterator();
+
+	
+        $data = array();
+        
+        $numrow = 0;
+        foreach($sheet as $row){
+        //    if ($numrow>0){
+            $cellIterator = $row->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(false); 
+            
+            $get = array(); 
+            foreach ($cellIterator as $cell) {
+            	array_push($get, $cell->getValue()); 
+            }           
+            array_push($data, array(
+                'kode_divisi'=>$get[0], 
+                'nama_divisi'=>$get[1],
+            	));
+            }        
+          $numrow++; 
+        // }
+      
+        $this->divisi_model->insert_multiple($data);
+        $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
+        redirect("divisi");
+    }
+	
 }
 
