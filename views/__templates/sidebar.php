@@ -42,7 +42,7 @@
 								<li><a><i class="fa fa-cog"></i> Setting <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="general_elements.html">Kalender</a></li>
-										<li><a href="media_gallery.html">Honor Lembur</a></li>
+										<li><a href="<?= base_url()?>honor_lembur">Honor Lembur</a></li>
 										<li><a href="<?= base_url()?>divisi">Divisi</a></li>
 										<li><a href="<?= base_url()?>jabatan">Jabatan</a></li>
 										<li><a href="<?= base_url()?>status">Status</a></li>

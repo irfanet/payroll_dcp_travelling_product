@@ -395,8 +395,8 @@
               </div>
             </div>
           </div>
-          <br>
-          <div class="row">
+          <br name="show_in_edit">
+          <div class="row" name="show_in_edit">
             <div class="form-group">
               <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
               </label>
@@ -407,8 +407,8 @@
               </div>
             </div>
           </div>
-          <br>
-          <div class="row">
+          <br name="show_in_edit">
+          <div class="row" name="show_in_edit">
             <div class="form-group">
               <label class="control-label col-md-2 col-sm-2 col-xs-12"></span>
               </label>
@@ -422,8 +422,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel">Batal</button>
-          <input type="submit" name="show_in_add" id="btn_simpan" value="Simpan" class="btn btn-primary">
-          <input type="submit" name="show_in_edit" id="btn_update" value="Perbaharui" class="btn btn-primary">
+          <input type="submit" id="btn_update" value="Simpan" class="btn btn-primary">
         </div>
       </form>
     </div>
@@ -468,6 +467,7 @@
     tampil_jabatan();
     tampil_jumlah();
     // $('#datatable-responsive').dataTable();
+    var kondisi;
 
     //fungsi tampil data
     function tampil_data() {
@@ -604,10 +604,12 @@
       $('[name="show_in_add"]').show();
       $('[name="show_in_edit"]').hide();
       $('#NPP').attr('readonly', false);
+      kondisi = "tambah";
     });
 
     //TOMBOL EDIT -> GET KODE & ATUR HIDE AND SHOW
     $('#show_data').on('click', '.item_edit', function() {
+      kondisi = "edit";
       var id = $(this).attr('data');
       $.ajax({
         type: "GET",
@@ -658,134 +660,138 @@
     });
 
     //SIMPAN DATA
-    $('#btn_simpan').on('click', function() {
-      $.ajax({
-        type: "POST",
-        url: "<?= base_url() ?>pegawai/simpan_data",
-        dataType: "JSON",
-        data: {
-          NPP: $('#NPP').val(),
-          nama: $('#nama').val(),
-          sex: $('#sex').val(),
-          id_status: $('#id_status').val(),
-          kode_bagian: $('#kode_bagian').val(),
-          kode_divisi: $('#kode_divisi').val(),
-          kode_jabatan: $('#kode_jabatan').val(),
-          tgl_masuk: $('#tgl_masuk').val(),
-          tgl_keluar: $('#tgl_keluar').val(),
-          tgl_kontrak: $('#tgl_kontrak').val(),
-          norek: $('#norek').val(),
-          gapok: $('#gapok').val(),
-          tunjangan_tetap: $('#tunjangan_tetap').val(),
-          tunjangan_tidak_tetap: $('#tunjangan_tidak_tetap').val(),
-          tunjangan_pss: $('#tunjangan_pss').val(),
-          potongan_lain: $('#potongan_lain').val(),
-          bpjs: $('#bpjs').val(),
-          bonus: $('#bonus').val(),
-          target: $('#target').val(),
-          potongan_target: $('#potongan_target').val(),
-          dapat_lain: $('#dapat_lain').val()
-        },
-        success: function(data) {
-          if (data.success == true) {
-            $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
-              ' <b>Berhasil</b> ! Data telah disimpan ' + '</div>');
-            $('.form-group').removeClass('has-error')
-              .removeClass('has-success');
-            $('.text-danger').remove();
-            $('.alert-success').delay(500).show(1000, function() {
-              $(this).delay(2000).slideUp(500, function() {
-                $(this).remove();
+    $('#btn_update').on('click', function() {
+      if (kondisi == "tambah") {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url() ?>pegawai/simpan_data",
+          dataType: "JSON",
+          data: {
+            NPP: $('#NPP').val(),
+            nama: $('#nama').val(),
+            sex: $('#sex').val(),
+            id_status: $('#id_status').val(),
+            kode_bagian: $('#kode_bagian').val(),
+            kode_divisi: $('#kode_divisi').val(),
+            kode_jabatan: $('#kode_jabatan').val(),
+            tgl_masuk: $('#tgl_masuk').val(),
+            tgl_keluar: $('#tgl_keluar').val(),
+            tgl_kontrak: $('#tgl_kontrak').val(),
+            norek: $('#norek').val(),
+            gapok: $('#gapok').val(),
+            tunjangan_tetap: $('#tunjangan_tetap').val(),
+            tunjangan_tidak_tetap: $('#tunjangan_tidak_tetap').val(),
+            tunjangan_pss: $('#tunjangan_pss').val(),
+            potongan_lain: $('#potongan_lain').val(),
+            bpjs: $('#bpjs').val(),
+            bonus: $('#bonus').val(),
+            target: $('#target').val(),
+            potongan_target: $('#potongan_target').val(),
+            dapat_lain: $('#dapat_lain').val()
+          },
+          success: function(data) {
+            if (data.success == true) {
+              $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+                ' <b>Berhasil</b> ! Data telah disimpan ' + '</div>');
+              $('.form-group').removeClass('has-error')
+                .removeClass('has-success');
+              $('.text-danger').remove();
+              $('.alert-success').delay(500).show(1000, function() {
+                $(this).delay(2000).slideUp(500, function() {
+                  $(this).remove();
+                });
+              })
+              $('#form_add')[0].reset();
+              $('#modal_add').modal('hide');
+              tampil_data();
+              tampil_status();
+              tampil_bagian();
+              tampil_divisi();
+              tampil_jabatan();
+              tampil_jumlah();
+            } else {
+              $.each(data.messages, function(key, value) {
+                var element = $('#' + key);
+                element.closest('div.form-group')
+                  .removeClass('has-error')
+                  .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                  .find('.text-danger')
+                  .remove();
+                element.after(value);
               });
-            })
-            $('#form_add')[0].reset();
-            $('#modal_add').modal('hide');
-            tampil_data();
-            tampil_status();
-            tampil_bagian();
-            tampil_divisi();
-            tampil_jabatan();
-            tampil_jumlah();
-          } else {
-            $.each(data.messages, function(key, value) {
-              var element = $('#' + key);
-              element.closest('div.form-group')
-                .removeClass('has-error')
-                .addClass(value.length > 0 ? 'has-error' : 'has-success')
-                .find('.text-danger')
-                .remove();
-              element.after(value);
-            });
+            }
           }
-        }
-      });
-      return false;
+        });
+        return false;
+      }
     });
 
     //UPDATE DATA
     $('#btn_update').on('click', function() {
-      $.ajax({
-        type: "POST",
-        url: "<?= base_url() ?>pegawai/update_data",
-        dataType: "JSON",
-        data: {
-          NPP: $('#NPP').val(),
-          nama: $('#nama').val(),
-          sex: $('#sex').val(),
-          id_status: $('#id_status').val(),
-          kode_bagian: $('#kode_bagian').val(),
-          kode_divisi: $('#kode_divisi').val(),
-          kode_jabatan: $('#kode_jabatan').val(),
-          tgl_masuk: $('#tgl_masuk').val(),
-          tgl_keluar: $('#tgl_keluar').val(),
-          tgl_kontrak: $('#tgl_kontrak').val(),
-          norek: $('#norek').val(),
-          gapok: $('#gapok').val(),
-          tunjangan_tetap: $('#tunjangan_tetap').val(),
-          tunjangan_tidak_tetap: $('#tunjangan_tidak_tetap').val(),
-          tunjangan_pss: $('#tunjangan_pss').val(),
-          potongan_lain: $('#potongan_lain').val(),
-          bpjs: $('#bpjs').val(),
-          bonus: $('#bonus').val(),
-          target: $('#target').val(),
-          potongan_target: $('#potongan_target').val(),
-          dapat_lain: $('#dapat_lain').val()
-        },
-        success: function(data) {
-          if (data.success == true) {
-            $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
-              ' Berhasil ! Data telah diperbaharui ' + '</div>');
-            $('.form-group').removeClass('has-error')
-              .removeClass('has-success');
-            $('.text-danger').remove();
-            $('.alert-success').delay(500).show(1000, function() {
-              $(this).delay(2000).slideUp(500, function() {
-                $(this).remove();
+      if (kondisi == "edit") {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url() ?>pegawai/update_data",
+          dataType: "JSON",
+          data: {
+            NPP: $('#NPP').val(),
+            nama: $('#nama').val(),
+            sex: $('#sex').val(),
+            id_status: $('#id_status').val(),
+            kode_bagian: $('#kode_bagian').val(),
+            kode_divisi: $('#kode_divisi').val(),
+            kode_jabatan: $('#kode_jabatan').val(),
+            tgl_masuk: $('#tgl_masuk').val(),
+            tgl_keluar: $('#tgl_keluar').val(),
+            tgl_kontrak: $('#tgl_kontrak').val(),
+            norek: $('#norek').val(),
+            gapok: $('#gapok').val(),
+            tunjangan_tetap: $('#tunjangan_tetap').val(),
+            tunjangan_tidak_tetap: $('#tunjangan_tidak_tetap').val(),
+            tunjangan_pss: $('#tunjangan_pss').val(),
+            potongan_lain: $('#potongan_lain').val(),
+            bpjs: $('#bpjs').val(),
+            bonus: $('#bonus').val(),
+            target: $('#target').val(),
+            potongan_target: $('#potongan_target').val(),
+            dapat_lain: $('#dapat_lain').val()
+          },
+          success: function(data) {
+            if (data.success == true) {
+              $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+                ' Berhasil ! Data telah diperbaharui ' + '</div>');
+              $('.form-group').removeClass('has-error')
+                .removeClass('has-success');
+              $('.text-danger').remove();
+              $('.alert-success').delay(500).show(1000, function() {
+                $(this).delay(2000).slideUp(500, function() {
+                  $(this).remove();
+                });
+              })
+              $('#form_add')[0].reset();
+              $('#modal_add').modal('hide');
+              tampil_data();
+              tampil_status();
+              tampil_bagian();
+              tampil_divisi();
+              tampil_jabatan();
+              tampil_jumlah();
+            } else {
+              $.each(data.messages, function(key, value) {
+                var element = $('#' + key);
+                element.closest('div.form-group')
+                  .removeClass('has-error')
+                  .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                  .find('.text-danger')
+                  .remove();
+                element.after(value);
               });
-            })
-            $('#form_add')[0].reset();
-            $('#modal_add').modal('hide');
-            tampil_data();
-            tampil_status();
-            tampil_bagian();
-            tampil_divisi();
-            tampil_jabatan();
-            tampil_jumlah();
-          } else {
-            $.each(data.messages, function(key, value) {
-              var element = $('#' + key);
-              element.closest('div.form-group')
-                .removeClass('has-error')
-                .addClass(value.length > 0 ? 'has-error' : 'has-success')
-                .find('.text-danger')
-                .remove();
-              element.after(value);
-            });
+            }
           }
-        }
 
-      });
-      return false;
+        });
+        return false;
+      }
     });
 
     //HAPUS DATA
