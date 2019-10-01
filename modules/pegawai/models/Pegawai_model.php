@@ -137,4 +137,27 @@ class Pegawai_model extends CI_Model
 		$hasil = $this->db->delete($this->_table);
 		return $hasil;
 	}
+
+	public function upload_file($filename){
+		$this->load->library('upload'); 
+		
+		$config['upload_path'] = './upload/excel/';
+		$config['allowed_types'] = 'xls|xlsx';
+		$config['max_size']  = '2048';
+		$config['overwrite'] = true;
+		$config['file_name'] = $filename;
+	
+		$this->upload->initialize($config); 
+		if($this->upload->do_upload('file')){ 
+		$return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+		return $return;
+		}else{
+		$return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+		return $return;
+		}
+	}
+  
+	public function insert_multiple($data){
+	   $this->db->insert_batch($this->_table, $data);
+	}
 }
