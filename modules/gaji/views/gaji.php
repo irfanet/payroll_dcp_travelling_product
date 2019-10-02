@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Pegawai</h3>
+        <h3>Hitung</h3>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -15,49 +15,25 @@
       <div class="col-lg-3 col-md-3">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Tambah Pegawai</h2>
+            <h2>Hitung Gaji</h2>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
             <center>
-              <a class="btn btn-app btn-lg" data-toggle="modal" data-target="#modal_add" id="btn_add_modal">
-                <i class="fa fa-plus"></i> Tambah
+              <a class="btn btn-app btn-lg" id="btn_hitung_gaji">
+                <i class="fa fa-plus"></i> Hitung
               </a>
             </center>
           </div>
         </div>
       </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-          <div class="icon"><i class="fa fa-group"></i></div>
-          <div class="count" id="jumlahPegawai"></div>
-          <h3>Jumlah</h3>
-          <p>Jumlah seluruh pegawai aktif.</p>
-        </div>
-      </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-          <div class="icon"><i class="fa fa-male"></i></div>
-          <div class="count" id="jumlahLaki"></div>
-          <h3>Laki-laki</h3>
-          <p>Jumlah pegawai laki-laki aktif.</p>
-        </div>
-      </div>
-      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-          <div class="icon"><i class="fa fa-female"></i></div>
-          <div class="count" id="jumlahPerempuan"></div>
-          <h3>Perempuan</h3>
-          <p>Jumlah pegawai perempuan aktif.</p>
-        </div>
-      </div>
-    </div>
+    
     <div class="row">
       <!-- TABEL DATA -->
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Daftar Pegawai</h2>
+            <h2>Daftar Gaji Pegawai</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -82,13 +58,16 @@
                 <tr class="headings">
                   <th class="column-title" width="5%">No</th>
                   <th class="column-title">NPP</th>
-                  <th class="column-title">Nama Pegawai</th>
-                  <th class="column-title">Sex</th>
-                  <th class="column-title">Bagian</th>
+                  <th class="column-title">Nama</th>
                   <th class="column-title">Divisi</th>
-                  <th class="column-title">Jabatan</th>
-                  <th class="column-title">Gapok</th>
-                  <th class="column-title">Status</th>
+                  <th class="column-title">Jumlah Masuk</th>
+                  <th class="column-title">Jumlah Izin</th>
+                  <th class="column-title">Jumlah Sakit</th>
+                  <th class="column-title">Cuti</th>
+                  <th class="column-title">Terlambat</th>
+                  <th class="column-title">Jam Lembur</th>
+                  <th class="column-title">Hari Kerja</th>
+                  <th class="column-title">Total</th>
                   <th class="column-title" width="10%">Aksi</th>
                 </tr>
               </thead>
@@ -449,7 +428,7 @@
     function tampil_data() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_data',
+        url: '<?= base_url() ?>gaji/get_data',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -461,10 +440,8 @@
               '<td>' + no++ + '</td>' +
               '<td>' + data[i].NPP + '</td>' +
               '<td>' + data[i].nama + '</td>' +
-              '<td>' + data[i].sex + '</td>' +
-              '<td>' + data[i].nama_bagian + '</td>' +
               '<td>' + data[i].nama_divisi + '</td>' +
-              '<td>' + data[i].nama_jabatan + '</td>' +
+
               '<td align="right">' + data[i].gapok.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + '</td>' +
               '<td>' + data[i].nama_status + '</td>' +
               '<td style="text-align:right;">' +
@@ -483,7 +460,7 @@
     function tampil_jumlah() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_jumlah',
+        url: '<?= base_url() ?>gaji/get_jumlah',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -502,7 +479,7 @@
     function tampil_status() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_status',
+        url: '<?= base_url() ?>gaji/get_status',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -521,7 +498,7 @@
     function tampil_bagian() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_bagian',
+        url: '<?= base_url() ?>gaji/get_bagian',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -540,7 +517,7 @@
     function tampil_divisi() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_divisi',
+        url: '<?= base_url() ?>gaji/get_divisi',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -559,7 +536,7 @@
     function tampil_jabatan() {
       $.ajax({
         type: 'ajax',
-        url: '<?= base_url() ?>pegawai/get_jabatan',
+        url: '<?= base_url() ?>gaji/get_jabatan',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -587,7 +564,7 @@
       var id = $(this).attr('data');
       $.ajax({
         type: "GET",
-        url: "<?= base_url() ?>pegawai/get_kode",
+        url: "<?= base_url() ?>gaji/get_kode",
         dataType: "JSON",
         data: {
           id: id
@@ -635,7 +612,7 @@
     $('#btn_simpan').on('click', function() {
       $.ajax({
         type: "POST",
-        url: "<?= base_url() ?>pegawai/simpan_data",
+        url: "<?= base_url() ?>gaji/simpan_data",
         dataType: "JSON",
         data: {
           NPP: $('#NPP').val(),
@@ -700,7 +677,7 @@
     $('#btn_update').on('click', function() {
       $.ajax({
         type: "POST",
-        url: "<?= base_url() ?>pegawai/update_data",
+        url: "<?= base_url() ?>gaji/update_data",
         dataType: "JSON",
         data: {
           NPP: $('#NPP').val(),
@@ -767,7 +744,7 @@
       var kode = $('#id_data').val();
       $.ajax({
         type: "POST",
-        url: "<?= base_url() ?>pegawai/hapus_data",
+        url: "<?= base_url() ?>gaji/hapus_data",
         dataType: "JSON",
         data: {
           kode: kode

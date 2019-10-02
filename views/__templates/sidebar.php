@@ -23,14 +23,14 @@
 								</li>
 								<li><a><i class="fa fa-fax"></i> Absensi <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="index.html">Import Data Absen</a></li>
-										<li><a href="index2.html">Cek Absen</a></li>
-										<li><a href="index3.html">Lihat Absen</a></li>
+										<li><a href="<?= base_url()?>absen/form_upload">Import Data Absen</a></li>
+										<li><a href="<?= base_url()?>absen">Cek Absen</a></li>
+										<li><a href="<?= base_url()?>absen/koreksi_absen">Lihat Absen</a></li>
 									</ul>
 								</li>
-								<li><a href="javascript:void(0)"><i class="fa fa-file-text-o"></i> SPL</a></li>
-								<li><a href="javascript:void(0)"><i class="fa fa-calculator"></i> Hitung Gaji</a></li>
-								<li><a href="javascript:void(0)"><i class="fa  fa-check-square-o"></i> Konfirmasi Absen</a></li>
+								<li><a href="<?= base_url()?>spl"><i class="fa fa-file-text-o"></i> SPL</a></li>
+								<li><a href="<?= base_url()?>gaji"><i class="fa fa-calculator"></i> Hitung Gaji</a></li>
+								<li><a href="javascript:void(0)"><i class="fa  fa-check-square-o"></i> Konfirmasi Gaji</a></li>
 								<li><a><i class="fa  fa-print"></i> Laporan <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="form.html">Gaji Harian</a></li>

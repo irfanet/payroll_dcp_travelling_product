@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Pegawai_model extends CI_Model
+class Gaji_model extends CI_Model
 {
 
 	private $_table = "gaji";
@@ -13,13 +13,79 @@ class Pegawai_model extends CI_Model
 	function data_list()
 	{
 		$this->db->select('*');
-		$this->db->from($this->_table);
-		// $this->db->join('bagian', 'bagian.kode_bagian = pegawai.kode_bagian');
-		// $this->db->join('jabatan', 'jabatan.kode_jabatan = pegawai.kode_jabatan');
-		// $this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
+		$this->db->from('pegawai');
+		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
 		// $this->db->join('status', 'status.id_status = pegawai.id_status');
 		$hasil = $this->db->get();
 		return $hasil->result();
+	}
+
+	function hitung_absen(){
+
+	}
+	
+	function get_absen_by_npp($npp){
+		$hasil = array();
+		$query = $this->db->get_where('absen', array('NPP' => $npp))->result_array();
+		foreach($query as $absen){
+			$hasil['tgl'] = $absen['tgl'];
+
+		}
+		return $hasil;
+	}
+	function get_absen_by_periode($tgl_mulai, $tgl_selesai){
+		$sql = "DELETE FROM gaji";
+        $this->db->query($sql);
+		
+		$absen = $this->db->query("SELECT * FROM absen WHERE tgl BETWEEN '$tgl_mulai' AND '$tgl_selesai'")->result_array();
+		$hari_kerja = $this->db->query("SELECT * FROM absen WHERE tgl BETWEEN '$tgl_mulai' AND '$tgl_selesai' group by tgl")->num_rows();
+		$pegawai = $this->db->get('pegawai')->result_array();
+		foreach($pegawai as $p){
+			$kehadiran = 0;
+			$izin = 0;
+			$sakit = 0;
+			$cuti = 0;
+			$jml_terlambat = 0;
+			$jml_jam_lembur = 0;
+
+			$npp = $p['NPP'];
+			foreach($absen as $a){
+				if($a['NPP']==$npp){
+					$kehadiran++;
+					if($a['keterangan']=="izin")
+						$izin++;
+					if($a['keterangan']=="sakit")
+						$sakit++;
+					if($a['keterangan']=="cuti")
+						$cuti++;	
+					$jam_datang = $a['jam_datang'];
+					if(strtotime('08:00:00') <= strtotime($jam_datang))
+						$jml_terlambat++;
+
+					$jam_pulang = strtotime($a['jam_pulang']);
+					$jam_selesai = strtotime('16:00:00');
+					$gap = round(abs($jam_pulang-$jam_selesai)/3600, 2);
+					$jml_jam_lembur+=$gap;
+					
+				}
+
+			}
+			$data = array(
+				'NPP' => $npp,
+				'jml_masuk' => $kehadiran,
+				'jml_izin' => $izin,
+				'jml_sakit' => $sakit,
+				'jml_cuti' => $cuti,
+				'jml_terlambat' => $jml_terlambat,
+				'jml_jam_lembur' => $jml_jam_lembur,
+				'hari_kerja' => $hari_kerja,
+				'id_kalender' => 1,
+				'total' => 10000
+			);
+			$hasil = $this->db->insert('gaji', $data);	
+		}
+		return $jam_pulang;
+
 	}
 
 	function jumlah()
