@@ -34,8 +34,8 @@
 								<li><a><i class="fa  fa-print"></i> Laporan <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="form.html">Gaji Harian</a></li>
-										<li><a href="form_advanced.html">Gaji Bulanan</a></li>
-										<li><a href="form_validation.html">Gaji Staff</a></li>
+										<li><a href="<?= base_url()?>cetak">Gaji Bulanan</a></li>
+										<li><a href="<?= base_url()?>cetak/cetak_transfer">Gaji Staff</a></li>
 										<li><a href="form_wizards.html">Report Absen</a></li>
 									</ul>
 								</li>
