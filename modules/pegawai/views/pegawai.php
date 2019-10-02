@@ -75,7 +75,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="x_content">
+          <div class="x_content" id="coba">
 
             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap jambo_table" cellspacing="0" width="100%">
               <thead>

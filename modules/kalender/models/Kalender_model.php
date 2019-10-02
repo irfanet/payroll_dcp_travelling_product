@@ -54,7 +54,7 @@ class Kalender_model extends CI_Model
 			'tgl_selesai' => date('Y-m-d', strtotime($this->input->post('tgl_selesai')))
 		);
 		$mulai = date('Y-m-d', strtotime($this->input->post('tgl_mulai')));
-		$selesai = date('Y-m-d', strtotime($this->input->post('tgl_selesai')));
+		$selesai = date('Y-m-d', strtotime($this->input->post('tgl_selesai') . "+1 day"));
 
 		$begin = new DateTime($mulai);
 		$end = new DateTime($selesai);
