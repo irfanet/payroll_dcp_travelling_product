@@ -258,8 +258,6 @@
       $('#form_add')[0].reset();
       $('[name="show_in_add"]').show();
       $('[name="show_in_edit"]').hide();
-      $('#asu').attr('type','checkbox');
-      $('#asu').attr('value','text');
       // $('#asu').replaceWith(btn_simpan);
       $('#email').attr('readonly', false);
       $('#username').attr('readonly', false);
