@@ -69,9 +69,9 @@ class Pegawai extends MY_Controller{
 		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('kode_jabatan','Kode Jabatan', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_masuk','Tanggal Masuk', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('norek','Norek', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'trim|strip_tags');
+		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'trim|strip_tags');
+		$this->form_validation->set_rules('norek','Norek', 'trim|strip_tags');
 		$this->form_validation->set_rules('gapok','Gapok', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tetap','Tunjangan Tetap', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tidak_tetap','Tunjangan Tidak Tetap', 'numeric|required|trim|strip_tags');
@@ -104,9 +104,9 @@ class Pegawai extends MY_Controller{
 		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('kode_jabatan','Kode Jabatan', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_masuk','Tanggal Masuk', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('norek','Norek', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl_keluar','Tanggal Keluar', 'trim|strip_tags');
+		$this->form_validation->set_rules('tgl_kontrak','Tanggal Kontrak', 'trim|strip_tags');
+		$this->form_validation->set_rules('norek','Norek', 'trim|strip_tags');
 		$this->form_validation->set_rules('gapok','Gapok', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tetap','Tunjangan Tetap', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_rules('tunjangan_tidak_tetap','Tunjangan Tidak Tetap', 'numeric|required|trim|strip_tags');
@@ -225,5 +225,32 @@ class Pegawai extends MY_Controller{
         redirect("pegawai");
     }
 
+	//pegawai non aktif
+	function index_non_aktif()
+    {
+        $this->load->template('pegawai_non_aktif');
+    }
+
+    function get_data_non_aktif(){
+		$data=$this->pegawai_model->data_list_non_aktif();
+		echo json_encode($data);
+	}
+
+	function aktifkan_pegawai(){
+		$kode=$this->input->post('kode');
+		$data=$this->pegawai_model->aktifkan_pegawai($kode);
+		echo json_encode($data);
+	}
+
+	function non_aktifkan_pegawai(){
+		$kode=$this->input->post('kode');
+		$data=$this->pegawai_model->non_aktifkan_pegawai($kode);
+		echo json_encode($data);
+	}
+
+    function get_jumlah_non_aktif(){
+		$data=$this->pegawai_model->jumlah_non_aktif();
+		echo json_encode($data);
+	}
 }
 

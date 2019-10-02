@@ -18,6 +18,7 @@ class Pegawai_model extends CI_Model
 		$this->db->join('jabatan', 'jabatan.kode_jabatan = pegawai.kode_jabatan');
 		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
 		$this->db->join('status', 'status.id_status = pegawai.id_status');
+		$this->db->where('active_status', '1');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
@@ -26,6 +27,7 @@ class Pegawai_model extends CI_Model
 	{
 		$this->db->select("COUNT(NPP) as jumlah, COUNT(case sex when 'Laki-laki' then 1 else null end) as laki, COUNT(case sex when 'Perempuan' then 1 else null end) as perempuan");
 		$this->db->from('pegawai');
+		$this->db->where('active_status', '1');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
@@ -138,6 +140,15 @@ class Pegawai_model extends CI_Model
 		return $hasil;
 	}
 
+	public function non_aktifkan_pegawai($kode){
+		$data = array(
+			'active_status' => '0'
+		);
+		$this->db->where('NPP', $kode);
+		$hasil = $this->db->update($this->_table, $data);
+		return $hasil;
+	}
+
 	public function upload_file($filename){
 		$this->load->library('upload'); 
 		
@@ -159,5 +170,40 @@ class Pegawai_model extends CI_Model
   
 	public function insert_multiple($data){
 	   $this->db->insert_batch($this->_table, $data);
+	}
+
+	//pegawai non aktif
+
+	public function aktifkan_pegawai($kode){
+		$data = array(
+			'jml_cuti' => '0',
+			'jml_tdk_datang' => '0',
+			'active_status' => '1'
+		);
+		$this->db->where('NPP', $kode);
+		$hasil = $this->db->update($this->_table, $data);
+		return $hasil;
+	}
+
+	function data_list_non_aktif()
+	{
+		$this->db->select('*');
+		$this->db->from($this->_table);
+		$this->db->join('bagian', 'bagian.kode_bagian = pegawai.kode_bagian');
+		$this->db->join('jabatan', 'jabatan.kode_jabatan = pegawai.kode_jabatan');
+		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
+		$this->db->join('status', 'status.id_status = pegawai.id_status');
+		$this->db->where('active_status', '0');
+		$hasil = $this->db->get();
+		return $hasil->result();
+	}
+
+	function jumlah_non_aktif()
+	{
+		$this->db->select("COUNT(NPP) as jumlah, COUNT(case sex when 'Laki-laki' then 1 else null end) as laki, COUNT(case sex when 'Perempuan' then 1 else null end) as perempuan");
+		$this->db->from('pegawai');
+		$this->db->where('active_status', '0');
+		$hasil = $this->db->get();
+		return $hasil->result();
 	}
 }
