@@ -9,6 +9,7 @@
 </div>
 </div>
 
+
 <!-- jQuery -->
 <script src="<?= base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -67,6 +68,16 @@
         ignoreReadonly: true,
         allowInputToggle: true,
         format: 'DD-MM-YYYY'
+    });
+    $('[name="input_tgl"]').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true,
+        format: 'DD-MM-YYYY'
+    });
+    $('[name="input_jam"').datetimepicker({
+        format: 'HH:mm',
+        ignoreReadonly: true,
+        allowInputToggle: true
     });
 </script>
 </body>

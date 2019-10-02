@@ -16,11 +16,21 @@ class Absen extends MY_Controller{
 
     function index()
     {
-        $this->load->template('divisi');
+        $this->load->template('absen');
     }
 
     function get_data(){
 		$data=$this->absen_model->data_list();
+		echo json_encode($data);
+	}
+
+	function koreksi_absen()
+    {
+        $this->load->template('koreksi_absen');
+    }
+
+    function get_koreksi_data(){
+		$data=$this->absen_model->koreksi_data_list();
 		echo json_encode($data);
 	}
 
@@ -32,11 +42,11 @@ class Absen extends MY_Controller{
 
 	function simpan_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags|is_unique[divisi.kode_divisi]'
-		,[
-            'is_unique' => 'Kode Divisi telah digunakan!'
-        ]);
-		$this->form_validation->set_rules('nama_divisi','Nama Divisi', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('NPP','NPP', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl','Tanggal', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('jam_datang','Jam Datang', 'required|trim');
+		$this->form_validation->set_rules('jam_pulang','Jam Pulang', 'required|trim');
+		$this->form_validation->set_rules('keterangan','Keterangan', 'trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -52,8 +62,11 @@ class Absen extends MY_Controller{
 
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('nama_divisi','Nama Divisi', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('NPP','NPP', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('tgl','Tanggal', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('jam_datang','Jam Datang', 'required|trim');
+		$this->form_validation->set_rules('jam_pulang','Jam Pulang', 'required|trim');
+		$this->form_validation->set_rules('keterangan','Keterangan', 'trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -112,14 +125,32 @@ class Absen extends MY_Controller{
 				'jam_datang'=>$get[9],
 				'jam_pulang'=>$get[10],
             	));
-            }        
+			}
+			
+			// $data = array(
+			// 	array(
+			// 		'NPP' => $get[2],
+			// 		'jam_datang' => $get[9],
+			// 		'Settings Value' => 'True'
+			// 	),
+			// 	array(
+			// 		'ID' => 2,
+			// 		'Settings Name' => 'World',
+			// 		'Settings Value' => 'Good'
+			// 	)
+			// );
+			// $this->db->update_batch('tableName', $data, 'id'); 
           $numrow++; 
         }
       
         $this->absen_model->insert_multiple($data);
         $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
         redirect("absen/form_upload");
-    }
+	}
+	function get_npp(){
+		$data=$this->absen_model->get_npp();
+		echo json_encode($data);
+	}
 	
 }
 
