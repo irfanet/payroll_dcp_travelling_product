@@ -1,85 +1,41 @@
-<!-- footer content -->
-<footer>
-    <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.18
     </div>
-    <div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    reserved.
+  </footer>
 </div>
-</div>
+<!-- ./wrapper -->
 
-
-<!-- jQuery -->
-<script src="<?= base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="<?= base_url(); ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jQuery 3 -->
+<script src="<?= base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?= base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url(); ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="<?= base_url(); ?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="<?= base_url(); ?>assets/vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="<?= base_url(); ?>assets/vendors/nprogress/nprogress.js"></script>
-<!-- DateJS -->
-<script src="<?= base_url(); ?>assets/vendors/DateJS/build/date.js"></script>
-<!-- bootstrap-daterangepicker -->
-<script src="<?= base_url(); ?>assets/vendors/moment/min/moment.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- bootstrap-datetimepicker -->
-<script src="<?= base_url(); ?>assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<!-- iCheck -->
-<script src="<?= base_url(); ?>assets/vendors/iCheck/icheck.min.js"></script>
-<!-- Datatables -->
-<script src="<?= base_url(); ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/jszip/dist/jszip.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/pdfmake/build/vfs_fonts.js"></script>
-<!-- Parsley -->
-<script src="<?= base_url(); ?>assets/vendors/parsleyjs/dist/parsley.min.js"></script>
-<!-- validator -->
-<script src="<?= base_url(); ?>assets/vendors/validator/validator.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="<?= base_url(); ?>assets/build/js/custom.min.js"></script>
-<!-- jQuery custom content scroller -->
-<script src="<?= base_url(); ?>assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-<!-- Initialize datetimepicker -->
-<script>    
-    $('#tgl_masuk_date').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true,
-        format: 'DD-MM-YYYY'
-    });
-    $('#tgl_keluar_date').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true,
-        format: 'DD-MM-YYYY'
-    });
-    $('#tgl_kontrak_date').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true,
-        format: 'DD-MM-YYYY'
-    });
-    $('[name="input_tgl"]').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true,
-        format: 'DD-MM-YYYY'
-    });
-    $('[name="input_jam"').datetimepicker({
-        format: 'HH:mm',
-        ignoreReadonly: true,
-        allowInputToggle: true
-    });
+<script src="<?= base_url(); ?>assets/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
 </script>
 </body>
-
 </html>
