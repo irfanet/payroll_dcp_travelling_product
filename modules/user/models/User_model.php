@@ -12,7 +12,7 @@ class User_model extends CI_Model
 
 	function data_list()
 	{
-		$this->db->where('id !=', $this->session->userdata('id_user'));
+		$this->db->where('id_user !=', $this->session->userdata('id_user'));
 		$hasil = $this->db->get($this->_table);
 		return $hasil->result();
 	}
@@ -39,6 +39,7 @@ class User_model extends CI_Model
 	{
 		$id_user = $this->input->post('id_user');
 		$data = array(
+			'username' => $this->input->post('username'),
 			'level' => $this->input->post('level'),
 			'is_active' => $this->input->post('is_active')
 		);

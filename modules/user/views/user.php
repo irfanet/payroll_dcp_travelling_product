@@ -1,466 +1,393 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Data Tables
-        <small>advanced tables</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol>
-    </section>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Data User
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Data User</li>
+    </ol>
+  </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box box-solid box-default">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>AOL browser (AOL desktop)</td>
-                  <td>Win XP</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.5</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 2.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 3.0</td>
-                  <td>Win 2k+ / OSX.3+</td>
-                  <td>1.9</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.0</td>
-                  <td>OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.5</td>
-                  <td>OSX.3+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape 7.2</td>
-                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Browser 8</td>
-                  <td>Win 98SE+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Navigator 9</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.1</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.2</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.2</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.3</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.4</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.4</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.5</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.6</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.7</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.8</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Seamonkey 1.1</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Epiphany 2.20</td>
-                  <td>Gnome</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>125.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>312.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 2.0</td>
-                  <td>OSX.4+</td>
-                  <td>419.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 3.0</td>
-                  <td>OSX.4+</td>
-                  <td>522.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>OmniWeb 5.5</td>
-                  <td>OSX.4+</td>
-                  <td>420</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>iPod Touch / iPhone</td>
-                  <td>iPod</td>
-                  <td>420.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>S60</td>
-                  <td>S60</td>
-                  <td>413</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.0</td>
-                  <td>Win 95+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.5</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera for Wii</td>
-                  <td>Wii</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nokia N800</td>
-                  <td>N800</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nintendo DS browser</td>
-                  <td>Nintendo DS</td>
-                  <td>8.5</td>
-                  <td>C/A<sup>1</sup></td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.1</td>
-                  <td>KDE 3.1</td>
-                  <td>3.1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.3</td>
-                  <td>KDE 3.3</td>
-                  <td>3.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.5</td>
-                  <td>KDE 3.5</td>
-                  <td>3.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.1</td>
-                  <td>Mac OS 7.6-9</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.2</td>
-                  <td>Mac OS 8-X</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.4</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Dillo 0.8</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="box box-solid box-default">
+          <div class="box-header">
+            <h3 class="box-title">Tambah User</h3>
           </div>
-          <!-- /.box -->
+          <!-- /.box-header -->
+          <div class="box-body">
+            <center>
+              <a class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_modal" data-target="#modal_add">
+                <i class="fa fa-plus"></i> Tambah
+              </a>
+            </center>
+          </div>
+          <!-- /.box-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.box -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+      <div class="col-xs-10">
+        <div class="box box-solid box-default">
+          <div class="box-header">
+            <h3 class="box-title">Data User</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Email</th>
+                  <th>Username</th>
+                  <th>Level</th>
+                  <th>Status</th>
+                  <th width="15%">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="show_data">
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- /.modal tambah dan edit -->
+<div class="modal fade" id="modal_add">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" name="show_in_add">Tambah User</h4>
+        <h4 class="modal-title" name="show_in_edit">Edit User</h4>
+      </div>
+      <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
+        <div class="modal-body">
+          <input type="hidden" id="id_user" name="id_user">
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="email">Email <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="email" name="email" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="username">Username <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="username" name="username" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br name="show_in_add">
+          <div class="row" name="show_in_add">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="password1" name="password1">Password <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="password" id="password1" name="password1" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br name="show_in_add">
+          <div class="row" name="show_in_add">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="password2" name="password2">Konfirmasi Password <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="password" id="password2" name="password2" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="level">Level <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <select class="form-control" name="level" id="level">
+                  <optgroup label="Admin">
+                    <option value="1">Super Admin</option>
+                    <option value="2">Manager</option>
+                    <option value="3">HRD</option>
+                  </optgroup>
+                  <optgroup label="Operator">
+                    <option value="4">Operator Absen & SPL</option>
+                    <option value="5">Operator Payroll</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row" name="show_in_edit">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="is_active">Status <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <select class="form-control" name="is_active" id="is_active">
+                  <option value="1">Aktif</option>
+                  <option value="0">Tidak Aktif</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <input type="submit" name="btn_simpan" id="btn_simpan" value="Simpan" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal tambah dan edit -->
+
+<!-- /.modal tambah dan edit -->
+<div class="modal fade" id="modal_delete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Hapus Data</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="id_data" id="id_data">
+        <h5>Apakah anda yakin?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+        <button type="button" id="btn_hapus" class="btn_hapus btn btn-danger">Ya</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal tambah dan edit -->
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    tampil_data();
+    var kondisi;
+
+    //fungsi tampil data
+    function tampil_data() {
+      $.ajax({
+        type: 'ajax',
+        url: '<?= base_url() ?>user/get_data',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+          $('#example2').dataTable().fnDestroy();
+          var html = '';
+          var i;
+          var no = 1;
+          for (i = 0; i < data.length; i++) {
+            html += '<tr>' +
+              '<td>' + no++ + '</td>' +
+              '<td>' + data[i].email + '</td>' +
+              '<td>' + data[i].username + '</td>' +
+              '<td>' + data[i].level + '</td>' +
+              '<td>' + data[i].is_active + '</td>' +
+              '<td style="text-align:center;">' +
+              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_user + '">Edit</a>' + ' ' +
+              '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].id_user + '">Hapus</a>' +
+              '</td>' +
+              '</tr>';
+          }
+          $('#show_data').html(html);
+          $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': true
+          });
+        }
+      });
+    }
+
+    //ATUR HIDE AND SHOW
+    $('#btn_add_modal').on('click', function() {
+      kondisi = "tambah";
+      $('#form_add')[0].reset();
+      $('[name="show_in_add"]').show();
+      $('[name="show_in_edit"]').hide();
+      $('#email').attr('readonly', false);
+      $('#username').attr('readonly', false);
+    });
+
+    //TOMBOL EDIT -> GET KODE & ATUR HIDE AND SHOW
+    $('#show_data').on('click', '.item_edit', function() {
+      kondisi = "edit";
+      var id = $(this).attr('data');
+      $.ajax({
+        type: "GET",
+        url: "<?= base_url() ?>user/get_kode",
+        dataType: "JSON",
+        data: {
+          id: id
+        },
+        success: function(data) {
+          $.each(data, function(id_user, email, username, level, is_active) {
+            $('#modal_add').modal('show');
+            $('[name="show_in_add"]').hide();
+            $('[name="show_in_edit"]').show();
+            $('#id_user').val(data.id_user);
+            $('#email').val(data.email).attr('readonly', true);
+            $('#username').val(data.username).attr('readonly', false);
+            $('#level').val(data.level);
+            $('#is_active').val(data.is_active);
+          });
+        }
+      });
+      return false;
+    });
+
+    //TOMBOL HAPUS -> GET KODE
+    $('#show_data').on('click', '.item_hapus', function() {
+      var id = $(this).attr('data');
+      $('#modal_delete').modal('show');
+      $('[name="id_data"]').val(id);
+    });
+
+    //SIMPAN DATA
+    $('#btn_simpan').on('click', function() {
+      if (kondisi == "tambah") {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url() ?>user/simpan_data",
+          dataType: "JSON",
+          data: {
+            email: $('#email').val(),
+            username: $('#username').val(),
+            password1: $('#password1').val(),
+            password2: $('#password2').val(),
+            level: $('#level').val()
+          },
+          success: function(data) {
+            if (data.success == true) {
+              $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+                ' <b>Berhasil</b> ! Data telah disimpan ' + '</div>');
+              $('.form-group').removeClass('has-error')
+                .removeClass('has-success');
+              $('.text-danger').remove();
+              $('.alert-success').delay(500).show(1000, function() {
+                $(this).delay(2000).slideUp(500, function() {
+                  $(this).remove();
+                });
+              })
+              $('#form_add')[0].reset();
+              $('#modal_add').modal('hide');
+              tampil_data();
+            } else {
+              $.each(data.messages, function(key, value) {
+                var element = $('#' + key);
+                element.closest('div.form-group')
+                  .removeClass('has-error')
+                  .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                  .find('.text-danger')
+                  .remove();
+                element.after(value);
+              });
+            }
+          }
+        });
+        return false;
+      }
+      //EDIT DATA
+      else if (kondisi == "edit") {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url() ?>user/update_data",
+          dataType: "JSON",
+          data: {
+            id_user: $('#id_user').val(),
+            username: $('#username').val(),
+            level: $('#level').val(),
+            is_active: $('#is_active').val()
+          },
+          success: function(data) {
+            if (data.success == true) {
+              $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+                ' Berhasil ! Data telah diperbaharui ' + '</div>');
+              $('.form-group').removeClass('has-error')
+                .removeClass('has-success');
+              $('.text-danger').remove();
+              $('.alert-success').delay(500).show(1000, function() {
+                $(this).delay(2000).slideUp(500, function() {
+                  $(this).remove();
+                });
+              })
+              $('#form_add')[0].reset();
+              $('#modal_add').modal('hide');
+              tampil_data();
+            } else {
+              $.each(data.messages, function(key, value) {
+                var element = $('#' + key);
+                element.closest('div.form-group')
+                  .removeClass('has-error')
+                  .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                  .find('.text-danger')
+                  .remove();
+                element.after(value);
+              });
+            }
+          }
+
+        });
+        return false;
+      }
+    });
+
+    //HAPUS DATA
+    $('#btn_hapus').on('click', function() {
+      var kode = $('#id_data').val();
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url() ?>user/hapus_data",
+        dataType: "JSON",
+        data: {
+          kode: kode
+        },
+        success: function(data) {
+          $('#modal_delete').modal('hide');
+          tampil_data();
+          $('#info').append('<div class="alert alert-danger"><i class="fa fa-trash-o"></i>' +
+            ' Data telah dihapus !' + '</div>');
+          $('.alert-danger').delay(500).show(1000, function() {
+            $(this).delay(2000).slideUp(500, function() {
+              $(this).remove();
+            });
+          })
+        }
+      });
+      return false;
+    });
+
+  });
+</script>

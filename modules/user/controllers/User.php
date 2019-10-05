@@ -66,6 +66,7 @@ class User extends MY_Controller
 	function update_data()
 	{
 		$data = array('success' => false, 'messages' => array());
+		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('level', 'Level', 'required|trim');
 		$this->form_validation->set_rules('is_active', 'Status', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
