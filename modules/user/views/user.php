@@ -14,6 +14,9 @@
   <!-- Main content -->
   <section class="content">
     <div class="row">
+      <div class="col-xs-12" id="info"></div>
+    </div>
+    <div class="row">
       <div class="col-xs-2">
         <div class="box box-solid box-default">
           <div class="box-header">
@@ -67,7 +70,7 @@
 
 <!-- /.modal tambah dan edit -->
 <div class="modal fade" id="modal_add">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -163,7 +166,7 @@
 </div>
 <!-- /.modal tambah dan edit -->
 
-<!-- /.modal tambah dan edit -->
+<!-- /.modal hapus -->
 <div class="modal fade" id="modal_delete">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -185,7 +188,7 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-<!-- /.modal tambah dan edit -->
+<!-- /.modal hapus -->
 
 
 <script type="text/javascript">
@@ -239,6 +242,9 @@
       $('[name="show_in_edit"]').hide();
       $('#email').attr('readonly', false);
       $('#username').attr('readonly', false);
+      $('#modal_add').on('shown.bs.modal', function() {
+        $('#email').focus()
+      });
     });
 
     //TOMBOL EDIT -> GET KODE & ATUR HIDE AND SHOW
@@ -262,6 +268,9 @@
             $('#username').val(data.username).attr('readonly', false);
             $('#level').val(data.level);
             $('#is_active').val(data.is_active);
+            $('#modal_add').on('shown.bs.modal', function() {
+              $('#username').focus()
+            });
           });
         }
       });
