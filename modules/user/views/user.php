@@ -5,10 +5,6 @@
     <h1>
       Data User
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Data User</li>
-    </ol>
   </section>
 
   <!-- Main content -->
@@ -17,7 +13,7 @@
       <div class="col-xs-12" id="info"></div>
     </div>
     <div class="row">
-      <div class="col-xs-2">
+      <div class="col-xs-12 col-md-12 col-lg-2">
         <div class="box box-solid box-default">
           <div class="box-header">
             <h3 class="box-title">Tambah User</h3>
@@ -34,13 +30,13 @@
         </div>
         <!-- /.box -->
       </div>
-      <div class="col-xs-10">
+      <div class="col-xs-12 col-md-12 col-lg-10">
         <div class="box box-solid box-default">
           <div class="box-header">
             <h3 class="box-title">Data User</h3>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">
+          <div class="box-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
