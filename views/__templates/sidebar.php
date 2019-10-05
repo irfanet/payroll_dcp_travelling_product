@@ -65,7 +65,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="simple.html"><i class="fa fa-circle-o"></i> Gaji Harian</a></li>
+          <li><a href="<?= base_url(); ?>cetak"><i class="fa fa-circle-o"></i> Gaji Harian</a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> Gaji Bulanan</a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> Gaji Staff</a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> Absensi</a></li>
