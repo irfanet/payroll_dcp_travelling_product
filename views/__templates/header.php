@@ -74,55 +74,57 @@
           </div>
           <form autocomplete="off" id="form_profile" class="form-horizontal form-label-left" method="post" action="<?= base_url(); ?>user/edit_profile">
             <div class="modal-body">
-              <input type="hidden" id="id_user_profile" name="id_user_profile" value="<?= $this->session->userdata('id_user'); ?>">
-              <div class="row">
-                <div class="form-group">
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12">
-                  </label>
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12" for="email_profile">Email <span class="required">*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="email_profile" name="email_profile" required class="form-control col-md-7 col-xs-12" value="<?= $this->session->userdata('email'); ?>">
+              <div class="box-body">
+                <input type="hidden" id="id_user_profile" name="id_user_profile" value="<?= $this->session->userdata('id_user'); ?>">
+                <div class="row">
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                    </label>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="email_profile">Email <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" id="email_profile" name="email_profile" required class="form-control col-md-7 col-xs-12" value="<?= $this->session->userdata('email'); ?>">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                    </label>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="username_profile">Username <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" id="username_profile" name="username_profile" required class="form-control col-md-7 col-xs-12" value="<?= $this->session->userdata('username'); ?>">
+                    </div>
+                  </div>
+                </div>
+                <br name="show_in_add">
+                <div class="row" name="show_in_add">
+                  <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                    </label>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password1_profile">Password <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="password" id="password1_profile" name="password1_profile" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                </div>
+                <br name="show_in_add">
+                <div class="row" name="show_in_add">
+                  <div class="form-group">
+                    <label class="control-label col-md-1 col-sm-1 col-xs-12">
+                    </label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password2_profile">Konfirmasi Password <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="password" id="password2_profile" name="password2_profile" class="form-control col-md-7 col-xs-12">
+                    </div>
                   </div>
                 </div>
               </div>
-              <br>
-              <div class="row">
-                <div class="form-group">
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12">
-                  </label>
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12" for="username_profile">Username <span class="required">*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="username_profile" name="username_profile" required class="form-control col-md-7 col-xs-12" value="<?= $this->session->userdata('username'); ?>">
-                  </div>
-                </div>
-              </div>
-              <br name="show_in_add">
-              <div class="row" name="show_in_add">
-                <div class="form-group">
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12">
-                  </label>
-                  <label class="control-label col-md-2 col-sm-2 col-xs-12" for="password1_profile">Password <span class="required">*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="password" id="password1_profile" name="password1_profile" class="form-control col-md-7 col-xs-12">
-                  </div>
-                </div>
-              </div>
-              <br name="show_in_add">
-              <div class="row" name="show_in_add">
-                <div class="form-group">
-                  <label class="control-label col-md-1 col-sm-1 col-xs-12">
-                  </label>
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password2_profile">Konfirmasi Password <span class="required">*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="password" id="password2_profile" name="password2_profile" class="form-control col-md-7 col-xs-12">
-                  </div>
-                </div>
-              </div>
-
+              <!-- /.box-body -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_cancel">Batal</button>
