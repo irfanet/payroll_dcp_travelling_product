@@ -31,6 +31,7 @@ $lang['notif_hapus'] = 'Data telah dihapus !';
 //Lain
 $lang['periode_kerja'] = 'Periode Kerja :';
 $lang['lihat_detail'] = 'Lihat Detail';
+$lang['edit_profil'] = 'Edit Profil';
 
 
 //Per Modul

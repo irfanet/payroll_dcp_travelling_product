@@ -31,6 +31,7 @@ $lang['notif_hapus'] = '數據已被刪除';
 //Lain
 $lang['periode_kerja'] = '工作时间：';
 $lang['lihat_detail'] = '阅读详情';
+$lang['edit_profil'] = '编辑个人资料';
 
 
 //Per Modul
