@@ -2,13 +2,13 @@
 
 (defined('BASEPATH')) or exit('No direct script access allowed');
 
-class Absen extends MY_Controller{
+class Absensi extends MY_Controller{
 
-	private $filename = "Data_absen";
+	private $filename = "Data_absensi";
     function __construct()
     {
         parent::__construct();
-		$this->load->model('absen_model');
+		$this->load->model('absensi_model');
 		if($this->session->userdata('id_user') != TRUE){
             redirect('auth');
         }
@@ -16,27 +16,27 @@ class Absen extends MY_Controller{
 
     function index()
     {
-        $this->load->template('absen');
+        $this->load->template('absensi');
     }
 
     function get_data(){
-		$data=$this->absen_model->data_list();
+		$data=$this->absensi_model->data_list();
 		echo json_encode($data);
 	}
 
-	function koreksi_absen()
+	function koreksi_absensi()
     {
-        $this->load->template('koreksi_absen');
+        $this->load->template('koreksi_absensi');
     }
 
     function get_koreksi_data(){
-		$data=$this->absen_model->koreksi_data_list();
+		$data=$this->absensi_model->koreksi_data_list();
 		echo json_encode($data);
 	}
 
 	function get_kode(){
 		$kode=$this->input->get('id');
-		$data=$this->absen_model->get_data_by_kode($kode);
+		$data=$this->absensi_model->get_data_by_kode($kode);
 		echo json_encode($data);
 	}
 
@@ -55,7 +55,7 @@ class Absen extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->absen_model->simpan_data();	
+			$this->absensi_model->simpan_data();	
 		}
 		echo json_encode($data);
 	}
@@ -75,14 +75,14 @@ class Absen extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->absen_model->update_data();	
+			$this->absensi_model->update_data();	
 		}
 		echo json_encode($data);
 	}
 
 	function hapus_data(){
 		$kode=$this->input->post('kode');
-		$data=$this->absen_model->hapus_data($kode);
+		$data=$this->absensi_model->hapus_data($kode);
 		echo json_encode($data);
 	}
 
@@ -95,7 +95,7 @@ class Absen extends MY_Controller{
 		$sql = "DELETE FROM absen";
         $this->db->query($sql);
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
-        $upload = $this->absen_model->upload_file($this->filename);
+        $upload = $this->absensi_model->upload_file($this->filename);
         if ($upload['result'] == 'failed') {
           $data['upload_error'] = $upload['error'];
         }
@@ -143,12 +143,12 @@ class Absen extends MY_Controller{
           $numrow++; 
         }
       
-        $this->absen_model->insert_multiple($data);
+        $this->absensi_model->insert_multiple($data);
         $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
-        redirect("absen/form_upload");
+        redirect("absensi/form_upload");
 	}
 	function get_npp(){
-		$data=$this->absen_model->get_npp();
+		$data=$this->absensi_model->get_npp();
 		echo json_encode($data);
 	}
 	

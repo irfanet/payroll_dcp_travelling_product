@@ -1,8 +1,8 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	class Absen_model extends CI_Model{
+	class Absensi_model extends CI_Model{
 
-		private $_table = "absen";
+		private $_table = "absensi";
 
 		function __construct(){
 			parent::__construct();
@@ -14,8 +14,8 @@
 		}
 		function koreksi_data_list(){
 			$this->db->select('*')
-			->from('absen')
-			->join('pegawai', 'absen.NPP = pegawai.NPP','outer');
+			->from('absensi')
+			->join('pegawai', 'absensi.NPP = pegawai.NPP','outer');
    			$hasil = $this->db->get();
 			return $hasil->result();
 		}
@@ -37,12 +37,12 @@
 		}
 	
 		function get_data_by_kode($kode){
-			$hasil = $this->db->get_where($this->_table, array('id_absen' => $kode))->row_array();
+			$hasil = $this->db->get_where($this->_table, array('id_absensi' => $kode))->row_array();
 			return $hasil;
 		}
 	
 		function update_data(){
-			$id_absen = $this->input->post('id_absen');
+			$id_absensi = $this->input->post('id_absensi');
 			$data = array(
 				'NPP' => $this->input->post('NPP'), 
 				'tgl' =>  date('Y-m-d', strtotime($this->input->post('tgl'))),
@@ -50,13 +50,13 @@
 				'jam_pulang' => $this->input->post('jam_pulang'),
 				'keterangan' => $this->input->post('keterangan')
 			);
-			$this->db->where('id_absen', $id_absen);
+			$this->db->where('id_absensi', $id_absensi);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 	
 		function hapus_data($kode){
-			$this->db->where('id_absen', $kode);
+			$this->db->where('id_absensi', $kode);
 			$hasil = $this->db->delete($this->_table);
 			return $hasil;
 		}
@@ -80,9 +80,9 @@
             }
         }
       
-        function insert_multiple($data_absen){
+        function insert_multiple($data_absensi){
 			$updateArray = array();
-			foreach($data_absen as $data){
+			foreach($data_absensi as $data){
 				$updateArray[] = array(
 					'npp'=>$data['npp'],
 					'absen_datang' => $data['jam_datang'],
@@ -90,6 +90,6 @@
 				);
 			} 
 			$this->db->update_batch('spl', $updateArray, 'npp');
-           	$this->db->insert_batch($this->_table, $data_absen);
+           	$this->db->insert_batch($this->_table, $data_absensi);
         }
 	}

@@ -25,7 +25,7 @@ class Auth extends MY_Controller{
 			// validasinya success
 			$this->_login();
 		}
-        $this->load->view('login');
+
     }
     public function _login(){
 		$email = $this->input->post('email');

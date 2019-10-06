@@ -37,18 +37,18 @@ class User extends MY_Controller
 		$data = array('success' => false, 'messages' => array());
 		$this->form_validation->set_rules(
 			'email',
-			'Email',
+			'lang:email',
 			'valid_email|required|trim|strip_tags|is_unique[user.email]',
 			[
 				'is_unique' => 'Email telah digunakan user lain!'
 			]
 		);
 		$this->form_validation->set_rules('username', 'Username', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
+		$this->form_validation->set_rules('password1', 'lang:password', 'required|trim|min_length[6]|matches[password2]', [
 			'matches' => 'Password dont match!',
 			'min_length' => 'Password to short!'
 		]);
-		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+		$this->form_validation->set_rules('password2', 'lang:password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('level', 'Level', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
@@ -66,7 +66,7 @@ class User extends MY_Controller
 	function update_data()
 	{
 		$data = array('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('username', 'Username', 'required|trim');
+		$this->form_validation->set_rules('username', 'lang:username', 'required|trim');
 		$this->form_validation->set_rules('level', 'Level', 'required|trim');
 		$this->form_validation->set_rules('is_active', 'Status', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');

@@ -1,11 +1,15 @@
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.18
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-    reserved.
-  </footer>
+  <div class="pull-right hidden-xs">
+    <select  onchange="javascript:window.location.href='<?php echo base_url(); ?>multilanguageswitcher/switch/'+this.value;">
+      <option value="indonesia" <?php if ($this->session->userdata('site_lang') == 'indonesia') echo 'selected="selected"'; ?>>Indonesia</option>
+      <option value="chinese" <?php if ($this->session->userdata('site_lang') == 'chinese') echo 'selected="selected"'; ?>>Chinese</option>
+    </select>
+  </div>
+  <strong>Copyright &copy; 2019 <a href="<?= base_url()?>">Heisenberg</a>.</strong> All rights
+  reserved.
+</footer>
 </div>
 <!-- ./wrapper -->
 </body>
+
 </html>
