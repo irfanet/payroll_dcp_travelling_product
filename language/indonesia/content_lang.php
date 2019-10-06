@@ -47,3 +47,24 @@ $lang['status']    = 'Status';
 $lang['password'] = 'Password';
 $lang['konfirmasi_password'] = 'Konfirmasi Password';
 $lang['aksi'] = 'Aksi';
+
+//Modul Jabatan
+$lang['data_jabatan'] = 'Data Jabatan';
+$lang['tambah_jabatan'] = 'Tambah Jabatan';
+$lang['edit_jabatan'] = 'Edit Jabatan';
+$lang['nama_jabatan'] = 'Nama Jabatan';
+$lang['kd_jabatan'] = 'Kode Jabatan';
+
+//Modul Departemen
+$lang['data_departemen'] = 'Data Departemen';
+$lang['tambah_departemen'] = 'Tambah Departemen';
+$lang['edit_departemen'] = 'Edit Departemen';
+$lang['nama_departemen'] = 'Nama Departemen';
+$lang['kd_departemen'] = 'Kode Departemen';
+
+//Modul Line
+$lang['data_line'] = 'Data Line';
+$lang['tambah_line'] = 'Tambah Line';
+$lang['edit_line'] = 'Edit Line';
+$lang['nama_line'] = 'Nama Line';
+$lang['kd_line'] = 'Kode Line';

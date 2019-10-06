@@ -2,13 +2,14 @@
 
 (defined('BASEPATH')) or exit('No direct script access allowed');
 
-class Divisi extends MY_Controller{
+class Line extends MY_Controller{
 
-	private $filename = "Data_divisi";
+	private $filename = "Data_line";
+
     function __construct()
     {
         parent::__construct();
-		$this->load->model('divisi_model');
+		$this->load->model('line_model');
 		if($this->session->userdata('id_user') != TRUE){
             redirect('auth');
         }
@@ -16,27 +17,27 @@ class Divisi extends MY_Controller{
 
     function index()
     {
-        $this->load->template('divisi');
+        $this->load->template('line');
     }
 
     function get_data(){
-		$data=$this->divisi_model->data_list();
+		$data=$this->line_model->data_list();
 		echo json_encode($data);
 	}
 
 	function get_kode(){
 		$kode=$this->input->get('id');
-		$data=$this->divisi_model->get_data_by_kode($kode);
+		$data=$this->line_model->get_data_by_kode($kode);
 		echo json_encode($data);
 	}
 
 	function simpan_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags|is_unique[divisi.kode_divisi]'
+		$this->form_validation->set_rules('kd_line','Kode Line', 'required|trim|strip_tags|is_unique[line.kd_line]'
 		,[
-            'is_unique' => 'Kode Divisi telah digunakan!'
+            'is_unique' => 'Kode Line tidak boleh sama!'
         ]);
-		$this->form_validation->set_rules('nama_divisi','Nama Divisi', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('nama_line','Nama Line', 'required|trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -45,15 +46,14 @@ class Divisi extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->divisi_model->simpan_data();	
+			$this->line_model->simpan_data();	
 		}
 		echo json_encode($data);
 	}
 
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('kode_divisi','Kode Divisi', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('nama_divisi','Nama Divisi', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('nama_line', 'Nama Line', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -62,23 +62,25 @@ class Divisi extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->divisi_model->update_data();	
+			$this->line_model->update_data();	
 		}
 		echo json_encode($data);
 	}
 
 	function hapus_data(){
 		$kode=$this->input->post('kode');
-		$data=$this->divisi_model->hapus_data($kode);
+		$data=$this->line_model->hapus_data($kode);
 		echo json_encode($data);
 	}
+
 	function form_upload(){
 		$this->load->view('import');
 	}
+	
 	function import_excel(){
 		error_reporting(E_ALL ^ E_NOTICE);
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
-        $upload = $this->divisi_model->upload_file($this->filename);
+        $upload = $this->line_model->upload_file($this->filename);
         if ($upload['result'] == 'failed') {
           $data['upload_error'] = $upload['error'];
         }
@@ -100,17 +102,17 @@ class Divisi extends MY_Controller{
             	array_push($get, $cell->getValue()); 
             }           
             array_push($data, array(
-                'kode_divisi'=>$get[0], 
-                'nama_divisi'=>$get[1],
+                'kd_line'=>$get[0], 
+                'nama_line'=>$get[1],
             	));
             }        
           $numrow++; 
         // }
       
-        $this->divisi_model->insert_multiple($data);
-        $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
-        redirect("divisi");
+        $this->line_model->insert_multiple($data);
+        $this->session->set_flashdata('flash','Line Berhasil ditambahkan');
+        redirect("line");
     }
-	
+
 }
 

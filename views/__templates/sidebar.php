@@ -89,9 +89,9 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="<?= base_url()?>honor_lembur"><i class="fa fa-circle-o"></i> <?= $this->lang->line('honor_lembur'); ?></a></li>
-          <li><a href="../examples/profile.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('departemen'); ?></a></li>
+          <li><a href="<?= base_url()?>departemen"><i class="fa fa-circle-o"></i> <?= $this->lang->line('departemen'); ?></a></li>
           <li><a href="<?= base_url()?>jabatan"><i class="fa fa-circle-o"></i> <?= $this->lang->line('jabatan'); ?></a></li>
-          <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('line'); ?></a></li>
+          <li><a href="<?= base_url()?>line"><i class="fa fa-circle-o"></i> <?= $this->lang->line('line'); ?></a></li>
         </ul>
       </li>
     </ul>

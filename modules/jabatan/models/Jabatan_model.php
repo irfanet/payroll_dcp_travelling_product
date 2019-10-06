@@ -15,32 +15,30 @@
 	
 		function simpan_data(){			
 			$data = array(
-				'kode_jabatan' => $this->input->post('kode_jabatan'),
-				'nama_jabatan' => $this->input->post('nama_jabatan'),
-				'status' => $this->input->post('status')
+				'kd_jabatan' => $this->input->post('kd_jabatan'),
+				'nama_jabatan' => $this->input->post('nama_jabatan')
 			);
 			$hasil = $this->db->insert($this->_table, $data);
 			return $hasil;
 		}
 	
 		function get_data_by_kode($kode){
-			$hasil = $this->db->get_where($this->_table, array('kode_jabatan' => $kode))->row_array();
+			$hasil = $this->db->get_where($this->_table, array('kd_jabatan' => $kode))->row_array();
 			return $hasil;
 		}
 	
 		function update_data(){
-			$kode_jabatan = $this->input->post('kode_jabatan');
+			$kd_jabatan = $this->input->post('kd_jabatan');
 			$data = array(
-				'nama_jabatan' => $this->input->post('nama_jabatan'),
-				'status' => $this->input->post('status')
+				'nama_jabatan' => $this->input->post('nama_jabatan')
 			);
-			$this->db->where('kode_jabatan', $kode_jabatan);
+			$this->db->where('kd_jabatan', $kd_jabatan);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 	
 		function hapus_data($kode){
-			$this->db->where('kode_jabatan', $kode);
+			$this->db->where('kd_jabatan', $kode);
 			$hasil = $this->db->delete($this->_table);
 			return $hasil;
 		}

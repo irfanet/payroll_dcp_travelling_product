@@ -1,8 +1,8 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	class bagian_model extends CI_Model{
+	class Line_model extends CI_Model{
 
-		private $_table = "bagian";
+		private $_table = "line";
 		
 		function __construct(){
 			parent::__construct();
@@ -15,30 +15,30 @@
 	
 		function simpan_data(){			
 			$data = array(
-				'kode_bagian' => $this->input->post('kode_bagian'),
-				'nama_bagian' => $this->input->post('nama_bagian')
+				'kd_line' => $this->input->post('kd_line'),
+				'nama_line' => $this->input->post('nama_line')
 			);
 			$hasil = $this->db->insert($this->_table, $data);
 			return $hasil;
 		}
 	
 		function get_data_by_kode($kode){
-			$hasil = $this->db->get_where($this->_table, array('kode_bagian' => $kode))->row_array();
+			$hasil = $this->db->get_where($this->_table, array('kd_line' => $kode))->row_array();
 			return $hasil;
 		}
 	
 		function update_data(){
-			$kode_bagian = $this->input->post('kode_bagian');
+			$kd_line = $this->input->post('kd_line');
 			$data = array(
-				'nama_bagian' => $this->input->post('nama_bagian')
+				'nama_line' => $this->input->post('nama_line')
 			);
-			$this->db->where('kode_bagian', $kode_bagian);
+			$this->db->where('kd_line', $kd_line);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 	
 		function hapus_data($kode){
-			$this->db->where('kode_bagian', $kode);
+			$this->db->where('kd_line', $kode);
 			$hasil = $this->db->delete($this->_table);
 			return $hasil;
 		}

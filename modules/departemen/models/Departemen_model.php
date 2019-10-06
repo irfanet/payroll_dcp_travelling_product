@@ -1,8 +1,8 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	class Divisi_model extends CI_Model{
+	class Departemen_model extends CI_Model{
 
-		private $_table = "divisi";
+		private $_table = "departemen";
 
 		function __construct(){
 			parent::__construct();
@@ -14,37 +14,37 @@
 		}
 	
 		function simpan_data(){
-			$kode_divisi=$this->input->post('kode_divisi');
-			$nama_divisi=$this->input->post('nama_divisi');
+			$kd_departemen=$this->input->post('kd_departemen');
+			$nama_departemen=$this->input->post('nama_departemen');
 			
 			$data = array(
-				'kode_divisi' => $kode_divisi, 
-				'nama_divisi' => $nama_divisi);
+				'kd_departemen' => $kd_departemen, 
+				'nama_departemen' => $nama_departemen);
 			$hasil = $this->db->insert($this->_table, $data);
 			return $hasil;
 		}
 	
 		function get_data_by_kode($kode){
-			$hsl = $this->db->get_where($this->_table, array('kode_divisi' => $kode))->row_array();
+			$hsl = $this->db->get_where($this->_table, array('kd_departemen' => $kode))->row_array();
 			$hasil = array(
-				'kode_divisi' => $hsl['kode_divisi'],
-				'nama_divisi' => $hsl['nama_divisi'],
+				'kd_departemen' => $hsl['kd_departemen'],
+				'nama_departemen' => $hsl['nama_departemen'],
 			);
 			return $hasil;
 		}
 	
 		function update_data(){
-			$kode_divisi = $this->input->post('kode_divisi');
-			$nama_divisi = $this->input->post('nama_divisi');
+			$kd_departemen = $this->input->post('kd_departemen');
+			$nama_departemen = $this->input->post('nama_departemen');
 
-			$data = array('nama_divisi' => $nama_divisi);
-			$this->db->where('kode_divisi', $kode_divisi);
+			$data = array('nama_departemen' => $nama_departemen);
+			$this->db->where('kd_departemen', $kd_departemen);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 	
 		function hapus_data($kode){
-			$this->db->where('kode_divisi', $kode);
+			$this->db->where('kd_departemen', $kode);
 			$hasil = $this->db->delete($this->_table);
 			return $hasil;
 		}

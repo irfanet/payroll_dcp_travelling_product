@@ -47,3 +47,24 @@ $lang['status']    = '地位';
 $lang['password'] = '密碼';
 $lang['konfirmasi_password'] = '確認密碼';
 $lang['aksi'] = '行動';
+
+//Modul Jabatan
+$lang['data_jabatan'] = '部门数据';
+$lang['tambah_jabatan'] = '添加部门';
+$lang['edit_jabatan'] = '编辑部';
+$lang['nama_jabatan'] = '部门名称';
+$lang['kd_jabatan'] = '部门代码';
+
+//Modul Departemen
+$lang['data_departemen'] = '部门数据';
+$lang['tambah_departemen'] = '新增部门';
+$lang['edit_departemen'] = '编辑部';
+$lang['nama_departemen'] = '部门名称';
+$lang['kd_departemen'] = '部门代码';
+
+//Modul Line
+$lang['data_line'] = '数据线';
+$lang['tambah_line'] = '加线';
+$lang['edit_line'] = '编辑线';
+$lang['nama_line'] = '行名';
+$lang['kd_line'] = '代码行';

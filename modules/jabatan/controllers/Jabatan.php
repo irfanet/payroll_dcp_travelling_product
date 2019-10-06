@@ -32,12 +32,11 @@ class Jabatan extends MY_Controller{
 
 	function simpan_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('kode_jabatan','Kode Jabatan', 'required|trim|strip_tags|is_unique[jabatan.kode_jabatan]'
+		$this->form_validation->set_rules('kd_jabatan','Kode Jabatan', 'required|trim|strip_tags|is_unique[jabatan.kd_jabatan]'
 		,[
             'is_unique' => 'Kode Jabatan tidak boleh sama!'
         ]);
 		$this->form_validation->set_rules('nama_jabatan','Nama Jabatan', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('status','Status', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -54,7 +53,6 @@ class Jabatan extends MY_Controller{
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
 		$this->form_validation->set_rules('nama_jabatan', 'Nama Jabatan', 'required|trim');
-		$this->form_validation->set_rules('status','Status', 'required|trim');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -103,17 +101,16 @@ class Jabatan extends MY_Controller{
             	array_push($get, $cell->getValue()); 
             }           
             array_push($data, array(
-                'kode_jabatan'=>$get[0], 
-				'nama_jabatan'=>$get[1],
-				'status'=>$get[2],
+                'kd_jabatan'=>$get[0], 
+				'nama_jabatan'=>$get[1]
             	));
             }        
           $numrow++; 
         // }
       
         $this->jabatan_model->insert_multiple($data);
-        $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
-        redirect("divisi");
+        $this->session->set_flashdata('flash','Jabatan Berhasil ditambahkan');
+        redirect("jabatan");
     }
 	
 }
