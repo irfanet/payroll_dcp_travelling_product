@@ -69,7 +69,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_harian'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_harian'); ?></a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_staf'); ?></a></li>
           <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
