@@ -412,31 +412,6 @@
       var kode = $('#id_data').val();
       $.ajax({
         type: "POST",
-        url: "<?= base_url() ?>pegawai/non_aktifkan_pegawai",
-        dataType: "JSON",
-        data: {
-          kode: kode
-        },
-        success: function(data) {
-          $('#modal_delete').modal('hide');
-          tampil_data();
-          $('#info').append('<div class="alert alert-danger"><i class="fa fa-trash-o"></i>' +
-            ' Pegawai telah dinon-aktifkan !' + '</div>');
-          $('.alert-danger').delay(500).show(1000, function() {
-            $(this).delay(2000).slideUp(500, function() {
-              $(this).remove();
-            });
-          })
-        }
-      });
-      return false;
-    });
-
-    //HAPUS DATA
-    $('#btn_hapus').on('click', function() {
-      var kode = $('#id_data').val();
-      $.ajax({
-        type: "POST",
         url: "<?= base_url() ?>pegawai/hapus_data",
         dataType: "JSON",
         data: {
