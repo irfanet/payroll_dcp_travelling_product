@@ -89,7 +89,7 @@ $lang['kd_periode'] = '期间代码';
 
 //Modul Pegawai
 $lang['tambah_pegawai'] = '新增员工';
-$lang['data_pegawai'] = 'Data Pegawai';
+$lang['data_pegawai'] = '员工资料';
 $lang['edit_pegawai'] = '员工资料';
 $lang['nonaktifkan'] = '禁用';
 $lang['nik'] = 'NIK';
