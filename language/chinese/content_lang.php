@@ -86,3 +86,22 @@ $lang['tanggal'] = '日期';
 $lang['hari'] = '日';
 $lang['edit_kalender'] = '编辑日历';
 $lang['kd_periode'] = '期间代码';
+
+//Modul Pegawai
+$lang['tambah_pegawai'] = '新增员工';
+$lang['data_pegawai'] = 'Data Pegawai';
+$lang['edit_pegawai'] = '员工资料';
+$lang['nonaktifkan'] = '禁用';
+$lang['nik'] = 'NIK';
+$lang['nama'] = '员工姓名';
+$lang['gaji_pokok'] = '基本工资';
+$lang['tunj_jabatan'] = '职位津贴';
+$lang['tunj_kinerja'] = '绩效津贴';
+$lang['bonus'] = '红利';
+$lang['insentif'] = '激励措施';
+$lang['pph21'] = 'PPH 21';
+$lang['norek'] = '帐号';
+$lang['pilih'] = '-- 选择一个 --';
+//non aktif
+$lang['aktifkan'] = '激活它';
+$lang['data_pegawai_non_aktif'] = '员工数据无效';

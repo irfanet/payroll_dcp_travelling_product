@@ -14,44 +14,26 @@ class Pegawai_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from($this->_table);
-		$this->db->join('bagian', 'bagian.kode_bagian = pegawai.kode_bagian');
-		$this->db->join('jabatan', 'jabatan.kode_jabatan = pegawai.kode_jabatan');
-		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
-		$this->db->join('status', 'status.id_status = pegawai.id_status');
-		$this->db->where('active_status', '1');
+		$this->db->join('departemen', 'departemen.kd_departemen = pegawai.kd_departemen');
+		$this->db->join('jabatan', 'jabatan.kd_jabatan = pegawai.kd_jabatan');
+		$this->db->join('line', 'line.kd_line = pegawai.kd_line');
+		$this->db->where('is_active', '1');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
 
-	function jumlah()
-	{
-		$this->db->select("COUNT(NPP) as jumlah, COUNT(case sex when 'Laki-laki' then 1 else null end) as laki, COUNT(case sex when 'Perempuan' then 1 else null end) as perempuan");
-		$this->db->from('pegawai');
-		$this->db->where('active_status', '1');
-		$hasil = $this->db->get();
-		return $hasil->result();
-	}
-
-	function data_status()
+	function data_line()
 	{
 		$this->db->select('*');
-		$this->db->from('status');
+		$this->db->from('line');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
 
-	function data_bagian()
+	function data_departemen()
 	{
 		$this->db->select('*');
-		$this->db->from('bagian');
-		$hasil = $this->db->get();
-		return $hasil->result();
-	}
-
-	function data_divisi()
-	{
-		$this->db->select('*');
-		$this->db->from('divisi');
+		$this->db->from('departemen');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
@@ -67,27 +49,18 @@ class Pegawai_model extends CI_Model
 	function simpan_data()
 	{
 		$data = array(
-			'NPP' => $this->input->post('NPP'),
+			'nik' => $this->input->post('nik'),
 			'nama' => $this->input->post('nama'),
-			'sex' => $this->input->post('sex'),
-			'id_status' => $this->input->post('id_status'),
-			'kode_bagian' => $this->input->post('kode_bagian'),
-			'kode_divisi' => $this->input->post('kode_divisi'),
-			'kode_jabatan' => $this->input->post('kode_jabatan'),
-			'tgl_masuk' => date('Y-m-d', strtotime($this->input->post('tgl_masuk'))),
-			'tgl_keluar' => date('Y-m-d', strtotime($this->input->post('tgl_keluar'))),
-			'tgl_kontrak' => date('Y-m-d', strtotime($this->input->post('tgl_kontrak'))),
-			'norek' => $this->input->post('norek'),
-			'gapok' => $this->input->post('gapok'),
-			'tunjangan_tetap' => $this->input->post('tunjangan_tetap'),
-			'tunjangan_tidak_tetap' => $this->input->post('tunjangan_tidak_tetap'),
-			'tunjangan_pss' => $this->input->post('tunjangan_pss'),
-			'potongan_lain' => $this->input->post('potongan_lain'),
-			'bpjs' => $this->input->post('bpjs'),
+			'kd_departemen' => $this->input->post('kd_departemen'),
+			'kd_jabatan' => $this->input->post('kd_jabatan'),
+			'kd_line' => $this->input->post('kd_line'),
+			'gaji_pokok' => $this->input->post('gaji_pokok'),
+			'tunj_jabatan' => $this->input->post('tunj_jabatan'),
+			'tunj_kinerja' => $this->input->post('tunj_kinerja'),
 			'bonus' => $this->input->post('bonus'),
-			'target' => $this->input->post('target'),
-			'potongan_target' => $this->input->post('potongan_target'),
-			'dapat_lain' => $this->input->post('dapat_lain')
+			'insentif' => $this->input->post('insentif'),
+			'pph21' => $this->input->post('pph21'),
+			'norek' => $this->input->post('norek')
 		);
 		$hasil = $this->db->insert($this->_table, $data);
 		return $hasil;
@@ -95,56 +68,44 @@ class Pegawai_model extends CI_Model
 
 	function get_data_by_kode($kode)
 	{
-		$this->db->select('*,
-		DATE_FORMAT(pegawai.tgl_masuk, "%d-%m-%Y") as tgl_masuk_format,
-		DATE_FORMAT(pegawai.tgl_keluar, "%d-%m-%Y") as tgl_keluar_format,
-		DATE_FORMAT(pegawai.tgl_kontrak, "%d-%m-%Y") as tgl_kontrak_format');
-		$hasil = $this->db->get_where($this->_table, array('NPP' => $kode))->row_array();
+		$this->db->select('*');
+		$hasil = $this->db->get_where($this->_table, array('nik' => $kode))->row_array();
 		return $hasil;
 	}
 
 	function update_data()
 	{
-		$NPP = $this->input->post('NPP');
+		$nik = $this->input->post('nik');
 		$data = array(
 			'nama' => $this->input->post('nama'),
-			'sex' => $this->input->post('sex'),
-			'id_status' => $this->input->post('id_status'),
-			'kode_bagian' => $this->input->post('kode_bagian'),
-			'kode_divisi' => $this->input->post('kode_divisi'),
-			'kode_jabatan' => $this->input->post('kode_jabatan'),
-			'tgl_masuk' => date('Y-m-d', strtotime($this->input->post('tgl_masuk'))),
-			'tgl_keluar' => date('Y-m-d', strtotime($this->input->post('tgl_keluar'))),
-			'tgl_kontrak' => date('Y-m-d', strtotime($this->input->post('tgl_kontrak'))),
-			'norek' => $this->input->post('norek'),
-			'gapok' => $this->input->post('gapok'),
-			'tunjangan_tetap' => $this->input->post('tunjangan_tetap'),
-			'tunjangan_tidak_tetap' => $this->input->post('tunjangan_tidak_tetap'),
-			'tunjangan_pss' => $this->input->post('tunjangan_pss'),
-			'potongan_lain' => $this->input->post('potongan_lain'),
-			'bpjs' => $this->input->post('bpjs'),
+			'kd_departemen' => $this->input->post('kd_departemen'),
+			'kd_jabatan' => $this->input->post('kd_jabatan'),
+			'kd_line' => $this->input->post('kd_line'),
+			'gaji_pokok' => $this->input->post('gaji_pokok'),
+			'tunj_jabatan' => $this->input->post('tunj_jabatan'),
+			'tunj_kinerja' => $this->input->post('tunj_kinerja'),
 			'bonus' => $this->input->post('bonus'),
-			'target' => $this->input->post('target'),
-			'potongan_target' => $this->input->post('potongan_target'),
-			'dapat_lain' => $this->input->post('dapat_lain')
+			'insentif' => $this->input->post('insentif'),
+			'pph21' => $this->input->post('pph21'),
+			'norek' => $this->input->post('norek')
 		);
-		$this->db->where('NPP', $NPP);
+		$this->db->where('nik', $nik);
 		$hasil = $this->db->update($this->_table, $data);
 		return $hasil;
 	}
 
 	function hapus_data($kode)
 	{
-		$this->db->where('NPP', $kode);
+		$this->db->where('nik', $kode);
 		$hasil = $this->db->delete($this->_table);
 		return $hasil;
 	}
 
 	public function non_aktifkan_pegawai($kode){
 		$data = array(
-			'active_status' => '0'
+			'is_active' => '0'
 		);
-		$this->db->where('NPP', $kode);
+		$this->db->where('nik', $kode);
 		$hasil = $this->db->update($this->_table, $data);
 		return $hasil;
 	}
@@ -176,11 +137,9 @@ class Pegawai_model extends CI_Model
 
 	public function aktifkan_pegawai($kode){
 		$data = array(
-			'jml_cuti' => '0',
-			'jml_tdk_datang' => '0',
-			'active_status' => '1'
+			'is_active' => '1'
 		);
-		$this->db->where('NPP', $kode);
+		$this->db->where('nik', $kode);
 		$hasil = $this->db->update($this->_table, $data);
 		return $hasil;
 	}
@@ -189,20 +148,19 @@ class Pegawai_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from($this->_table);
-		$this->db->join('bagian', 'bagian.kode_bagian = pegawai.kode_bagian');
-		$this->db->join('jabatan', 'jabatan.kode_jabatan = pegawai.kode_jabatan');
-		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
-		$this->db->join('status', 'status.id_status = pegawai.id_status');
-		$this->db->where('active_status', '0');
+		$this->db->join('departemen', 'departemen.kd_departemen = pegawai.kd_departemen');
+		$this->db->join('jabatan', 'jabatan.kd_jabatan = pegawai.kd_jabatan');
+		$this->db->join('line', 'line.kd_line = pegawai.kd_line');
+		$this->db->where('is_active', '0');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
 
 	function jumlah_non_aktif()
 	{
-		$this->db->select("COUNT(NPP) as jumlah, COUNT(case sex when 'Laki-laki' then 1 else null end) as laki, COUNT(case sex when 'Perempuan' then 1 else null end) as perempuan");
+		$this->db->select("COUNT(nik) as jumlah");
 		$this->db->from('pegawai');
-		$this->db->where('active_status', '0');
+		$this->db->where('is_active', '0');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
