@@ -68,3 +68,21 @@ $lang['tambah_line'] = 'Tambah Line';
 $lang['edit_line'] = 'Edit Line';
 $lang['nama_line'] = 'Nama Line';
 $lang['kd_line'] = 'Kode Line';
+
+//Modul Honor
+$lang['data_honor'] = 'Data Honor';
+$lang['edit_honor'] = 'Edit Honor';
+$lang['honor'] = 'Honor';
+
+//Modul Kalender
+$lang['data_kalender'] = 'Data Kalender';
+$lang['libur'] = 'Libur';
+$lang['masuk'] = 'Masuk';
+$lang['periode'] = 'Periode';
+$lang['mulai'] = 'Tanggal Mulai';
+$lang['selesai'] = 'Tanggal Selesai';
+$lang['ganti_periode'] = 'Ganti Periode';
+$lang['tanggal'] = 'Tanggal';
+$lang['hari'] = 'Hari';
+$lang['edit_kalender'] = 'Edit Kalender';
+$lang['kd_periode'] = 'Kode Periode';

@@ -68,3 +68,21 @@ $lang['tambah_line'] = '加线';
 $lang['edit_line'] = '编辑线';
 $lang['nama_line'] = '行名';
 $lang['kd_line'] = '代码行';
+
+//Modul Honor
+$lang['data_honor'] = '荣誉资料';
+$lang['edit_honor'] = '编辑荣誉';
+$lang['honor'] = '资质荣誉';
+
+//Modul Kalender
+$lang['data_kalender'] = '日历数据';
+$lang['libur'] = '休假';
+$lang['masuk'] = '进入';
+$lang['periode'] = '期间';
+$lang['mulai'] = '开始日期';
+$lang['selesai'] = '结束日期';
+$lang['ganti_periode'] = '变更期间';
+$lang['tanggal'] = '日期';
+$lang['hari'] = '日';
+$lang['edit_kalender'] = '编辑日历';
+$lang['kd_periode'] = '期间代码';

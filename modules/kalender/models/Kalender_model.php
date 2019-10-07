@@ -17,7 +17,7 @@ class Kalender_model extends CI_Model
 		DATE_FORMAT(kalender.tgl_selesai, "%d-%m-%Y") as tgl_selesai_format');
 		$this->db->from($this->_table);
 		$this->db->limit(1);
-		$this->db->order_by('id_kalender', 'DESC');
+		$this->db->order_by('id_periode', 'DESC');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
@@ -36,8 +36,9 @@ class Kalender_model extends CI_Model
 
 	function jumlah()
 	{
-		$tglStart=$this->input->get('tglStart');
-		$tglEnd=$this->input->get('tglEnd');
+		$periode = $this->db->select('*')->order_by('id_periode', "desc")->limit(1)->get('kalender')->row_array();
+		$tglStart=$periode['tgl_mulai'];
+		$tglEnd=$periode['tgl_selesai'];
 		$this->db->select("COUNT(case status when 'L' then 1 else null end) as libur, COUNT(case status when 'B' then 1 else null end)+COUNT(case status when 'S' then 1 else null end) as masuk");
 		$this->db->from('kalender_detail');
 		$this->db->where('tgl >=', $tglStart);
@@ -49,7 +50,7 @@ class Kalender_model extends CI_Model
 	function simpan_data()
 	{
 		$data = array(
-			'judul_periode' => $this->input->post('judul_periode'),
+			'kd_periode' => $this->input->post('kd_periode'),
 			'tgl_mulai' => date('Y-m-d', strtotime($this->input->post('tgl_mulai'))),
 			'tgl_selesai' => date('Y-m-d', strtotime($this->input->post('tgl_selesai')))
 		);

@@ -24,8 +24,9 @@ class Kalender extends MY_Controller{
 	}
 
     function get_table(){
-		$tglStart=$this->input->get('tglStart');
-		$tglEnd=$this->input->get('tglEnd');
+		$periode = $this->db->select('*')->order_by('id_periode', "desc")->limit(1)->get('kalender')->row_array();
+		$tglStart=$periode['tgl_mulai'];
+		$tglEnd=$periode['tgl_selesai'];
 		$data=$this->kalender_model->data_list_detail($tglStart, $tglEnd);
 		echo json_encode($data);
 	}
@@ -43,7 +44,7 @@ class Kalender extends MY_Controller{
 
 	function atur_periode(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('judul_periode','Judul Periode', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('kd_periode','Judul Periode', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_mulai','Tanggal Mulai', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('tgl_selesai','Tanggal Selesai', 'required|trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
@@ -54,7 +55,7 @@ class Kalender extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->kalender_model->simpan_data();	
+			$this->kalender_model->simpan_data();
 		}
 		echo json_encode($data);
 	}

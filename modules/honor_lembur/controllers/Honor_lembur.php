@@ -31,7 +31,7 @@ class Honor_lembur extends MY_Controller{
 
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('nominal', 'Honor Lembur', 'numeric|required|trim|strip_tags');
+		$this->form_validation->set_rules('honor', 'Honor Lembur', 'numeric|required|trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {

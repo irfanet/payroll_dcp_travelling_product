@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	class Honor_lembur_model extends CI_Model{
 
-		private $_table = "setting";
+		private $_table = "honor_lembur";
 		
 		function __construct(){
 			parent::__construct();
@@ -14,16 +14,16 @@
 		}
 	
 		function get_data_by_kode($kode){
-			$hasil = $this->db->get_where($this->_table, array('id_setting' => $kode))->row_array();
+			$hasil = $this->db->get_where($this->_table, array('id_honor' => $kode))->row_array();
 			return $hasil;
 		}
 	
 		function update_data(){
-			$id_setting = $this->input->post('id_setting');
+			$id_honor = $this->input->post('id_honor');
 			$data = array(
-				'nominal' => $this->input->post('nominal')
+				'honor' => $this->input->post('honor')
 			);
-			$this->db->where('id_setting', $id_setting);
+			$this->db->where('id_honor', $id_honor);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
