@@ -63,6 +63,8 @@
      <script src="<?= base_url(); ?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
      <!-- FastClick -->
      <script src="<?= base_url(); ?>assets/bower_components/fastclick/lib/fastclick.js"></script>
+     <!-- ChartJS -->
+     <script src="<?= base_url(); ?>assets/bower_components/chart.js/Chart.js"></script>
      <!-- AdminLTE App -->
      <script src="<?= base_url(); ?>assets/dist/js/adminlte.min.js"></script>
      <!-- AdminLTE for demo purposes -->
