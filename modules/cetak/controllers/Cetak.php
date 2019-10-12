@@ -16,7 +16,7 @@ class Cetak extends MY_Controller{
 
     function index()
     {
-        $this->load->view('cetak');
+        $this->load->view('slip_gaji');
 	}
 	
     function cetak_transfer()
