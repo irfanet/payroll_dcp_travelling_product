@@ -1,13 +1,13 @@
 <?php
 
 // create new PDF document
-$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+$pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Fardhani');
-$pdf->SetTitle('Slip Gaji');
-$pdf->SetSubject('Slip Gaji Pegawai');
+$pdf->SetTitle('Rekap Gaji');
+$pdf->SetSubject('Rekap Gaji Pegawai');
 $pdf->SetKeywords('');
 $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);
@@ -15,7 +15,7 @@ $pdf->SetPrintFooter(false);
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(5, 5, 5);
+$pdf->SetMargins(3, 3, 3);
 $pdf->SetHeaderMargin(20);
 $pdf->SetFooterMargin(10);
 
@@ -25,565 +25,102 @@ $pdf->SetAutoPageBreak(TRUE, 0);
 // ---------------------------------------------------------
 
 // set font
-$pdf->SetFont('helvetica', '', 9);
+$pdf->SetFont('helvetica', '', 8);
 
 // add a page
 $pdf->AddPage();
 
 $tbl = <<<EOD
-<table cellspacing="0" cellpadding="1" border="1">
-    <tr width='100%'>
-      <td width='50%' style="max-height: 399px; height: 399px;">
-        <table border="0">
-          <tr>
-            <td align="center" colspan="3"><h2><b>DCP Travelling Product</b></h2></td>
-          </tr>
-          <tr>
-            <td colspan="3"><h2><b>Periode: </b></h2><hr></td>
-          </tr>
-          <tr>
-            <td width="40%">NIK</td>
-            <td width="2%">: </td>
-            <td width="58%">contoh</td>
-          </tr>
-          <tr>
-            <td><h2><b>Nama</b></h2></td>
-            <td><h2>:</h2></td>
-            <td><h2>contoh</h2></td>
-          </tr>
-          <tr>
-            <td>Departemen</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Gaji Pokok</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kinerja</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Premi Lembur</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kehadiran</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Insentif</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Bonus<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Pengurangan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JHT</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JP</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS Kes</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>PPH 21</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Terlambat/ Pulang Awal</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Ketidakhadiran<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td rowspan="6">Jumlah Hari</td>
-            <td>: </td>
-            <td>masuk</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>absen</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>sakit</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin resmi</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>cuti</td>
-          </tr>
-          <tr>
-            <td>Jam Lembur<br></td>
-            <td>: </td>
-            <td>lembur</td>
-          </tr>
-          <tr>
-            <td>Gaji diterima</td>
-            <td>: </td>
-            <td>gaji</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table border="0">
-          <tr>
-            <td align="center" colspan="3"><h2><b>DCP Travelling Product</b></h2></td>
-          </tr>
-          <tr>
-            <td colspan="3"><h2><b>Periode: </b></h2><hr></td>
-          </tr>
-          <tr>
-            <td width="40%">NIK</td>
-            <td width="2%">: </td>
-            <td width="58%">contoh</td>
-          </tr>
-          <tr>
-            <td><h2><b>Nama</b></h2></td>
-            <td><h2>:</h2></td>
-            <td><h2>contoh</h2></td>
-          </tr>
-          <tr>
-            <td>Departemen</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Gaji Pokok</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kinerja</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Premi Lembur</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kehadiran</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Insentif</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Bonus<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Pengurangan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JHT</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JP</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS Kes</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>PPH 21</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Terlambat/ Pulang Awal</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Ketidakhadiran<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td rowspan="6">Jumlah Hari</td>
-            <td>: </td>
-            <td>masuk</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>absen</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>sakit</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin resmi</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>cuti</td>
-          </tr>
-          <tr>
-            <td>Jam Lembur<br></td>
-            <td>: </td>
-            <td>lembur</td>
-          </tr>
-          <tr>
-            <td>Gaji diterima</td>
-            <td>: </td>
-            <td>gaji</td>
-          </tr>
-        </table>
-      </td>
+<table cellspacing="0" cellpadding="1" border="0">
+    <tr width="100%">
+      <td><b>DCP TRAVELLING PRODUCT</b></td>
     </tr>
-    <tr>
-      <td style="max-height: 399px; height: 399px;">
-        <table border="0">
-          <tr>
-            <td align="center" colspan="3"><h2><b>DCP Travelling Product</b></h2></td>
-          </tr>
-          <tr>
-            <td colspan="3"><h2><b>Periode: </b></h2><hr></td>
-          </tr>
-          <tr>
-            <td width="40%">NIK</td>
-            <td width="2%">: </td>
-            <td width="58%">contoh</td>
-          </tr>
-          <tr>
-            <td><h2><b>Nama</b></h2></td>
-            <td><h2>:</h2></td>
-            <td><h2>contoh</h2></td>
-          </tr>
-          <tr>
-            <td>Departemen</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Gaji Pokok</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kinerja</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Premi Lembur</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kehadiran</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Insentif</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Bonus<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Pengurangan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JHT</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JP</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS Kes</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>PPH 21</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Terlambat/ Pulang Awal</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Ketidakhadiran<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td rowspan="6">Jumlah Hari</td>
-            <td>: </td>
-            <td>masuk</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>absen</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>sakit</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin resmi</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>cuti</td>
-          </tr>
-          <tr>
-            <td>Jam Lembur<br></td>
-            <td>: </td>
-            <td>lembur</td>
-          </tr>
-          <tr>
-            <td>Gaji diterima</td>
-            <td>: </td>
-            <td>gaji</td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table border="0">
-          <tr>
-            <td align="center" colspan="3"><h2><b>DCP Travelling Product</b></h2></td>
-          </tr>
-          <tr>
-            <td colspan="3"><h2><b>Periode: </b></h2><hr></td>
-          </tr>
-          <tr>
-            <td width="40%">NIK</td>
-            <td width="2%">: </td>
-            <td width="58%">contoh</td>
-          </tr>
-          <tr>
-            <td><h2><b>Nama</b></h2></td>
-            <td><h2>:</h2></td>
-            <td><h2>contoh</h2></td>
-          </tr>
-          <tr>
-            <td>Departemen</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Gaji Pokok</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Jabatan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kinerja</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Premi Lembur</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Tunjangan Kehadiran</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Insentif</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Bonus<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Pengurangan</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JHT</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS TK JP</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>BPJS Kes</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>PPH 21</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Terlambat/ Pulang Awal</td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td>Ketidakhadiran<br></td>
-            <td>: </td>
-            <td>contoh</td>
-          </tr>
-          <tr>
-            <td rowspan="6">Jumlah Hari</td>
-            <td>: </td>
-            <td>masuk</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>absen</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>sakit</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>izin resmi</td>
-          </tr>
-          <tr>
-            <td>: </td>
-            <td>cuti</td>
-          </tr>
-          <tr>
-            <td>Jam Lembur<br></td>
-            <td>: </td>
-            <td>lembur</td>
-          </tr>
-          <tr>
-            <td>Gaji diterima</td>
-            <td>: </td>
-            <td>gaji</td>
-          </tr>
-        </table>
-      </td>
+    <tr width="100%">
+      <td><b>REKAP GAJI PERIODE: </b></td>
     </tr>
+</table>
+EOD;
 
+$pdf->writeHTML($tbl, true, false, false, false, '');
+
+$tbl = <<<EOD
+<table>
+  <tr width="100%">
+    <td><b>DEPARTEMEN : departemen</b><br></td>
+  </tr>
+</table>
+<table cellspacing="0" cellpadding="1" border="1">
+    <tr width="100%">
+      <th width="2%">No</th>
+      <th>NIK</th>
+      <th>Nama</th>
+      <th>Nama Departemen</th>
+      <th>Nama Jabatan</th>
+      <th>Nama Line</th>
+      <th>Gaji Pokok</th>
+      <th>Tunj. Jabatan</th>
+      <th>Tunj. Kinerja</th>
+      <th>Bonus</th>
+      <th>Insentif</th>
+      <th>PPH 21</th>
+      <th>Norek</th>
+      <th>Jumlah</th>
+      <th>Hari Kerja</th>
+      <th>Izin</th>
+      <th>Absen</th>
+      <th>Sakit</th>
+      <th>Izin Resmi</th>
+      <th>Cuti</th>
+      <th>Lemburan</th>
+      <th>Menit Terlambat</th>
+      <th>Hari Terlambat</th>
+      <th>BPJS TK JHT</th>
+      <th>BPJS TK JP</th>
+      <th>BPJS KES</th>
+      <th>Honor Lembur</th>
+      <th>Potongan</th>
+      <th>Ketidakhadiran</th>
+      <th>Total Gaji</th>
+    </tr>
+    <tr width="100%">
+      <td>No</td>
+      <td>NIK</td>
+      <td>Nama</td>
+      <td>Nama Departemen</td>
+      <td>Nama Jabatan</td>
+      <td>Nama Line</td>
+      <td>Gaji Pokok</td>
+      <td>Tunj. Jabatan</td>
+      <td>Tunj. Kinerja</td>
+      <td>Bonus</td>
+      <td>Insentif</td>
+      <td>PPH 21</td>
+      <td>Norek</td>
+      <td>Jumlah</td>
+      <td>Hari Kerja</td>
+      <td>Izin</td>
+      <td>Absen</td>
+      <td>Sakit</td>
+      <td>Izin Resmi</td>
+      <td>Cuti</td>
+      <td>Lemburan</td>
+      <td>Menit Terlambat</td>
+      <td>Hari Terlambat</td>
+      <td>BPJS TK JHT</td>
+      <td>BPJS TK JP</td>
+      <td>BPJS KES</td>
+      <td>Honor Lembur</td>
+      <td>Potongan</td>
+      <td>Ketidakhadiran</td>
+      <td>Total Gaji</td>
+    </tr>
 </table>
 EOD;
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 
 //Close and output PDF document
-$pdf->Output('SLIP_GAJI.pdf', 'D');
+$pdf->Output('REKAP_GAJI.pdf', 'D');
 
 //============================================================+
 // END OF FILE

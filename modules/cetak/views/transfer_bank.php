@@ -6,8 +6,8 @@ $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Irfan');
-$pdf->SetTitle('Slip Gaji');
-$pdf->SetSubject('Slip Gaji Pegawai');
+$pdf->SetTitle('Transfer Bank Gaji');
+$pdf->SetSubject('Transfer Bank Gaji Pegawai');
 $pdf->SetKeywords('');
 $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);

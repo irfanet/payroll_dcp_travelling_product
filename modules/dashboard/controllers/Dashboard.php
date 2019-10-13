@@ -16,7 +16,11 @@ class Dashboard extends MY_Controller{
 
     function index()
     {
-        $this->load->template('dashboard');
+		$data['pegawai_aktif'] = $this->dashboard_model->get_aktif();
+		$data['pegawai_non_aktif'] = $this->dashboard_model->get_non_aktif();
+		$data['hari_kerja'] = $this->dashboard_model->get_hari_kerja();
+		$data['honor'] = $this->dashboard_model->get_honor();
+        $this->load->template('dashboard', $data);
 	}
 
     function get_data(){

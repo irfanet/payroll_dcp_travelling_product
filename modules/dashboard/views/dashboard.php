@@ -13,11 +13,11 @@
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+          <span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-ok-circle"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Pegawai Aktif</span>
-            <span class="info-box-number">90<small>%</small></span>
+            <span class="info-box-number"><?= $pegawai_aktif->pegawai_aktif; ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -26,11 +26,11 @@
       <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+          <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-ban-circle"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Pegawai Non Aktif</span>
-            <span class="info-box-number">41,410</span>
+            <span class="info-box-number"><?= $pegawai_non_aktif->pegawai_non_aktif; ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -43,11 +43,11 @@
 
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+          <span class="info-box-icon bg-green"><i class="glyphicon glyphicon-calendar"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Hari Kerja</span>
-            <span class="info-box-number">760</span>
+            <span class="info-box-number"><?= $hari_kerja->hari_kerja; ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -56,11 +56,11 @@
       <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+          <span class="info-box-icon bg-yellow"><i class="fa fa-money"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">Honor Lembur</span>
-            <span class="info-box-number">2,000</span>
+            <span class="info-box-number">IDR <?= nominal($honor->honor); ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>

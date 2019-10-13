@@ -22,6 +22,16 @@ class Cetak extends MY_Controller{
     function cetak_transfer()
     {
         $this->load->view('transfer_bank');
+	}
+	
+    function rekap_gaji()
+    {
+        $this->load->view('rekap_gaji');
+	}
+	
+    function absensi()
+    {
+        $this->load->view('absensi');
     }
 
     function get_data(){
