@@ -132,3 +132,25 @@ $lang['hari_kerja'] = '工作日';
 $lang['menit_terlambat'] = '晚了几分钟';
 $lang['hari_terlambat'] = '天晚';
 $lang['total_gaji'] = '总工资';
+
+//Modul Pegawai
+$lang['tambah_pegawai'] = '新增员工';
+$lang['data_pegawai'] = '员工资料';
+$lang['edit_pegawai'] = '员工资料';
+$lang['import_pegawai'] = '导入员工数据';
+$lang['excel_pegawai'] = '员工excel文件';
+$lang['ket_xlsx'] = '确保文件为.xlsx格式';
+$lang['nonaktifkan'] = '禁用';
+$lang['nik'] = 'NIK';
+$lang['nama'] = '员工姓名';
+$lang['gaji_pokok'] = '基本工资';
+$lang['tunj_jabatan'] = '职位津贴';
+$lang['tunj_kinerja'] = '绩效津贴';
+$lang['bonus'] = '红利';
+$lang['insentif'] = '激励措施';
+$lang['pph21'] = 'PPH 21';
+$lang['norek'] = '帐号';
+$lang['pilih'] = '-- 选择一个 --';
+//non aktif
+$lang['aktifkan'] = '激活它';
+$lang['data_pegawai_non_aktif'] = '员工数据无效';

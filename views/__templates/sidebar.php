@@ -5,8 +5,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header"><?= $this->lang->line('main_navigation'); ?></li>
-      <li>
-        <a href="#">
+      <li class="<?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
+        <a href="<?= base_url(); ?>dashboard">
           <i class="fa fa-dashboard"></i> <span><?= $this->lang->line('dashboard'); ?></span>
         </a>
       </li>
@@ -69,10 +69,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?= base_url()?>cetak"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_harian'); ?></a></li>
-          <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
-          <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_staf'); ?></a></li>
-          <li><a href="simple.html"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak/cetak_transfer"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak/rekap_gaji"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak/absensi"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
         </ul>
       </li>
       <li class=" <?php echo $this->uri->segment(1) == 'kalender' ? 'active': '' ?>">

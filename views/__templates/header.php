@@ -138,8 +138,8 @@
                     </div>
                   </div>
                 </div>
-                <br name="show_in_add">
-                <div class="row" name="show_in_add">
+                <br>
+                <div class="row">
                   <div class="form-group">
                     <label class="control-label col-md-2 col-sm-2 col-xs-12">
                     </label>
@@ -150,8 +150,8 @@
                     </div>
                   </div>
                 </div>
-                <br name="show_in_add">
-                <div class="row" name="show_in_add">
+                <br>
+                <div class="row">
                   <div class="form-group">
                     <label class="control-label col-md-1 col-sm-1 col-xs-12">
                     </label>

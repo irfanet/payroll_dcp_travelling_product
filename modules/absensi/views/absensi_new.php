@@ -142,7 +142,7 @@
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="file_excel"><?= $this->lang->line('excel_absensi'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="file" name="file" id="exampleInputFile" required>
+                <input type="file" name="file" accept=".xls" id="exampleInputFile" required>
                 <p class="help-block"><?= $this->lang->line('ket_file'); ?></p>
               </div>
             </div>

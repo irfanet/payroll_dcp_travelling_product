@@ -134,4 +134,24 @@ $lang['menit_terlambat'] = 'Menit Terlambat';
 $lang['hari_terlambat'] = 'Hari Terlambat';
 $lang['total_gaji'] = 'Total Gaji';
 
-
+//Modul Pegawai
+$lang['tambah_pegawai'] = 'Tambah Pegawai';
+$lang['data_pegawai'] = 'Data Pegawai';
+$lang['edit_pegawai'] = 'Edit Pegawai';
+$lang['import_pegawai'] = 'Import Pegawai';
+$lang['excel_pegawai'] = 'File Excel Pegawai';
+$lang['ket_xlsx'] = 'Pastikan File Berformat .xlsx';
+$lang['nonaktifkan'] = 'Non Aktifkan';
+$lang['nik'] = 'NIK';
+$lang['nama'] = 'Nama Pegawai';
+$lang['gaji_pokok'] = 'Gaji Pokok';
+$lang['tunj_jabatan'] = 'Tunjangan Jabatan';
+$lang['tunj_kinerja'] = 'Tunjangan Kinerja';
+$lang['bonus'] = 'Bonus';
+$lang['insentif'] = 'Insentif';
+$lang['pph21'] = 'PPH 21';
+$lang['norek'] = 'Nomor Rekening';
+$lang['pilih'] = '-- Pilih Salah Satu --';
+//non aktif
+$lang['aktifkan'] = 'Aktifkan';
+$lang['data_pegawai_non_aktif'] = 'Data Pegawai Non Aktif';

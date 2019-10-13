@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-          <br>
+          <!-- <br>
           <div class="row">
             <div class="form-group">
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="tgl_lembur"><?= $this->lang->line('tgl_lembur'); ?> <span class="required">*</span>
@@ -114,7 +114,7 @@
                 <input type="text" id="tgl_lembur" name="tgl_lembur" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
-          </div>
+          </div> -->
           <br name="show_in_add">
           <div class="row" name="show_in_add">
             <div class="form-group">
@@ -171,10 +171,10 @@
     tampil_nik();
     var kondisi;
 
-	document.getElementById("id_absensi_nik").onchange = function () {
-	var count = $('#id_absensi_nik option:selected').length;
-	$("#jml").val(count);
-	}
+    document.getElementById("id_absensi_nik").onchange = function () {
+    var count = $('#id_absensi_nik option:selected').length;
+    $("#jml").val(count);
+    }
 
     function tampil_nik() {
         $.ajax({

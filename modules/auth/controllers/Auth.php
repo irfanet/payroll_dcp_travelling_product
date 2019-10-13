@@ -43,7 +43,7 @@ class Auth extends MY_Controller{
 						'level' => $user['level']
 					];
 					$this->session->set_userdata($data);
-                    redirect('user');	
+                    redirect('dashboard');	
 				}else{
 					$this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
 					Login failed! Wrong password.</div>');

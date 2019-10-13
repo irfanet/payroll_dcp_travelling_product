@@ -2,13 +2,13 @@
 
 (defined('BASEPATH')) or exit('No direct script access allowed');
 
-class Cetak extends MY_Controller{
+class Dashboard extends MY_Controller{
 
     function __construct()
     {
         parent::__construct();
 		$this->load->library('Pdf');
-		$this->load->model('cetak_model');
+		$this->load->model('dashboard_model');
 		if($this->session->userdata('id_user') != TRUE){
             redirect('auth');
         }
@@ -16,32 +16,21 @@ class Cetak extends MY_Controller{
 
     function index()
     {
-        $this->load->view('slip_gaji');
+		$data['pegawai_aktif'] = $this->dashboard_model->get_aktif();
+		$data['pegawai_non_aktif'] = $this->dashboard_model->get_non_aktif();
+		$data['hari_kerja'] = $this->dashboard_model->get_hari_kerja();
+		$data['honor'] = $this->dashboard_model->get_honor();
+        $this->load->template('dashboard', $data);
 	}
-	
-    function cetak_transfer()
-    {
-        $this->load->view('transfer_bank');
-	}
-	
-    function rekap_gaji()
-    {
-        $this->load->view('rekap_gaji');
-	}
-	
-    function absensi()
-    {
-        $this->load->view('absensi');
-    }
 
     function get_data(){
-		$data=$this->cetak_model->data_list();
+		$data=$this->dashboard_model->data_list();
 		echo json_encode($data);
 	}
 
 	function get_kode(){
 		$kode=$this->input->get('id');
-		$data=$this->cetak_model->get_data_by_kode($kode);
+		$data=$this->dashboard_model->get_data_by_kode($kode);
 		echo json_encode($data);
 	}
 
@@ -60,7 +49,7 @@ class Cetak extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->cetak_model->simpan_data();	
+			$this->dashboard_model->simpan_data();	
 		}
 		echo json_encode($data);
 	}
@@ -76,14 +65,14 @@ class Cetak extends MY_Controller{
 			}   
 		}else{
 			$data['success'] = true;
-			$this->cetak_model->update_data();	
+			$this->dashboard_model->update_data();	
 		}
 		echo json_encode($data);
 	}
 
 	function hapus_data(){
 		$kode=$this->input->post('kode');
-		$data=$this->cetak_model->hapus_data($kode);
+		$data=$this->dashboard_model->hapus_data($kode);
 		echo json_encode($data);
 	}
 
@@ -94,7 +83,7 @@ class Cetak extends MY_Controller{
 	function import_excel(){
 		error_reporting(E_ALL ^ E_NOTICE);
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
-        $upload = $this->cetak_model->upload_file($this->filename);
+        $upload = $this->dashboard_model->upload_file($this->filename);
         if ($upload['result'] == 'failed') {
           $data['upload_error'] = $upload['error'];
         }
@@ -123,7 +112,7 @@ class Cetak extends MY_Controller{
           $numrow++; 
         // }
       
-        $this->cetak_model->insert_multiple($data);
+        $this->dashboard_model->insert_multiple($data);
         $this->session->set_flashdata('flash','Pegawai Berhasil ditambahkan');
         redirect("bagian");
     }
