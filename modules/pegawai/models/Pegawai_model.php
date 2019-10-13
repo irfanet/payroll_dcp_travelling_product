@@ -153,7 +153,7 @@ class Pegawai_model extends CI_Model
 		$this->load->library('upload'); 
 		
 		$config['upload_path'] = './upload/excel/';
-		$config['allowed_types'] = 'xls|xlsx';
+		$config['allowed_types'] = 'xlsx';
 		$config['max_size']  = '2048';
 		$config['overwrite'] = true;
 		$config['file_name'] = $filename;

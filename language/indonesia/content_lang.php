@@ -17,6 +17,8 @@ $lang['bt_ya'] = 'Ya';
 $lang['bt_tidak'] = 'Tidak';
 //Button
 $lang['tambah'] = 'Tambah';
+$lang['import'] = 'Import';
+$lang['export'] = 'Export';
 $lang['bt_simpan'] = 'Simpan';
 $lang['bt_batal'] = 'Batal';
 $lang['bt_edit'] = 'Edit';
@@ -24,6 +26,9 @@ $lang['bt_hapus'] = 'Hapus';
 $lang['bt_profil'] = 'Profil';
 $lang['bt_logout'] = 'Sign Out';
 $lang['bt_login'] = 'Sign In';
+$lang['bt_upload'] = 'Upload';
+$lang['bt_salah'] = 'Salah';
+$lang['bt_konfirmasi'] = 'Konfirmasi';
 //Notif
 $lang['notif_simpan'] = '<b>Berhasil</b> ! Data telah disimpan';
 $lang['notif_update'] = '<b>Berhasil</b> ! Data telah diperbaharui';
@@ -86,3 +91,47 @@ $lang['tanggal'] = 'Tanggal';
 $lang['hari'] = 'Hari';
 $lang['edit_kalender'] = 'Edit Kalender';
 $lang['kd_periode'] = 'Kode Periode';
+
+//Modul Absensi
+$lang['data_absensi'] = 'Data Absensi';
+$lang['import_absensi'] = 'Import Absensi';
+$lang['edit_absensi'] = 'Edit Absensi';
+$lang['absensi_orderby'] = "Filter";
+$lang['nik'] = 'NIK';
+$lang['nama_karyawan'] = 'Nama Karyawan';
+$lang['tgl_absensi'] = 'Tanggal';
+$lang['jam_datang'] = 'Jam Datang';
+$lang['jam_pulang'] = 'Jam Pulang';
+$lang['kd_status'] = 'Status';
+$lang['lembur'] = 'Lembur';
+$lang['terlambat'] = 'Terlambat';
+$lang['berangkat'] = 'Berangkat';
+$lang['tidak_berangkat'] = 'Tidak Berangkat';
+$lang['absensi_semua'] = 'Semua';
+$lang['absen'] = 'Absen';
+$lang['masuk_normal'] = 'Masuk Normal';
+$lang['izin'] = 'Izin';
+$lang['sakit'] = 'Sakit';
+$lang['izin_resmi'] = 'Izin Resmi';
+$lang['cuti'] = 'Cuti';
+$lang['excel_absensi'] = "File Absensi Excel";
+$lang['ket_file'] = "Pastikan File Berformat .xls";
+
+//Modul SPL
+$lang['data_spl'] = 'Data SPL';
+$lang['tambah_spl'] = 'Tambah SPL';
+$lang['edit_spl'] = 'Edit SPL';
+$lang['tgl_lembur'] = 'Tanggal Lembur';
+
+
+//Modul Gaji
+$lang['hitung_gaji'] = 'Hitung Gaji';
+$lang['hitung'] = 'Hitung';
+$lang['data_gaji'] = 'Data Gaji';
+$lang['jumlah'] = 'Jumlah';
+$lang['hari_kerja'] = 'Hari Kerja';
+$lang['menit_terlambat'] = 'Menit Terlambat';
+$lang['hari_terlambat'] = 'Hari Terlambat';
+$lang['total_gaji'] = 'Total Gaji';
+
+

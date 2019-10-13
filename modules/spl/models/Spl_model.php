@@ -2,14 +2,18 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	class Spl_model extends CI_Model{
 
-		private $_table = "spl";
+		private $_table = "absensi";
 		
 		function __construct(){
 			parent::__construct();
         }
 
 		function data_list(){
-			$hasil = $this->db->get($this->_table);
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->where('absensi.lembur >','0');
+			$hasil = $this->db->get();
 			return $hasil->result();
 		}
 	
@@ -51,8 +55,27 @@
 		}
 
 		
-		function get_npp(){
-			$hasil = $this->db->get("pegawai");
+		function get_nik(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->where('absensi.tgl_absensi','2019-10-15')
+			->where('absensi.lembur =','0');
+			$hasil = $this->db->get();
 			return $hasil->result();
+		}
+
+		function tambah_spl(){
+			$count = $this->input->post('jml');
+				for($i = 0; $i<$count; $i++){
+				$id_absensi[$i]=$_POST['id_absensi_nik'][$i];
+			}
+			for($i = 0; $i<$count; $i++){ 
+				$entries[] = array( 
+					'id_absensi'=>$id_absensi[$i],
+					'lembur' => $this->input->post('lembur')
+				); 
+			}
+			$this->db->update_batch('absensi', $entries, 'id_absensi');
 		}
 	}

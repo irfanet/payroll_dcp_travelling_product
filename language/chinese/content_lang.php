@@ -17,6 +17,8 @@ $lang['bt_ya'] = '是';
 $lang['bt_tidak'] = '沒有';
 //Button
 $lang['tambah'] = '加';
+$lang['import'] = '进口';
+$lang['export'] = '出口';
 $lang['bt_simpan'] = '救';
 $lang['bt_batal'] = '取消';
 $lang['bt_edit'] = '編輯';
@@ -24,6 +26,9 @@ $lang['bt_hapus'] = '刪除';
 $lang['bt_profil'] = '轮廓';
 $lang['bt_logout'] = '登出';
 $lang['bt_login'] = '登入';
+$lang['bt_upload'] = '已上传';
+$lang['bt_salah'] = '是错的';
+$lang['bt_konfirmasi'] = '确认';
 //Notif
 $lang['notif_simpan'] = '<b>成功！</b> 數據已保存';
 $lang['notif_update'] = '<b>成功！</b> 數據已更新';
@@ -39,7 +44,7 @@ $lang['edit_profil'] = '编辑个人资料';
 $lang['data_user'] = '用戶數據';
 $lang['tambah_user'] = '添加用戶';
 $lang['edit_user'] = '編輯用戶';
-$lang['no']    = '數';
+$lang['no']    = '序号';
 $lang['email'] = '電子郵件';
 $lang['username']    = '用戶名';
 $lang['level'] = '水平';
@@ -86,3 +91,44 @@ $lang['tanggal'] = '日期';
 $lang['hari'] = '日';
 $lang['edit_kalender'] = '编辑日历';
 $lang['kd_periode'] = '期间代码';
+
+//Modul Absensi
+$lang['data_absensi'] = '考勤数据';
+$lang['import_absensi'] = '考勤导入';
+$lang['edit_absensi'] = '编辑出勤';
+$lang['absensi_orderby'] = "排序";
+$lang['nik'] = '工号';
+$lang['nama_karyawan'] = '员工姓名';
+$lang['tgl_absensi'] = '出勤日期';
+$lang['jam_datang'] = '时间到了';
+$lang['jam_pulang'] = '上班时间';
+$lang['kd_status'] = '明细';
+$lang['lembur'] = '加班费';
+$lang['terlambat'] = '晚了';
+$lang['berangkat'] = '走开';
+$lang['tidak_berangkat'] = '不离开';
+$lang['absensi_semua'] = '所有的';
+$lang['absen'] = '旷工';
+$lang['masuk_normal'] = '正常进入';
+$lang['izin'] = '请假';
+$lang['sakit'] = '生病';
+$lang['izin_resmi'] = '请假带薪';
+$lang['cuti'] = '休假';
+$lang['excel_absensi'] = "Excel文件出勤";
+$lang['ket_file'] = "确保文件为.xls格式";
+
+//Modul SPL
+$lang['data_spl'] = '加班凭单数据';
+$lang['tambah_spl'] = '加上加班令';
+$lang['edit_spl'] = '编辑加班令';
+$lang['tgl_lembur'] = '加班日期';
+
+//Modul Gaji
+$lang['hitung_gaji'] = '计算薪水';
+$lang['hitung'] = '算一下';
+$lang['data_gaji'] = '工资数据';
+$lang['jumlah'] = '金额';
+$lang['hari_kerja'] = '工作日';
+$lang['menit_terlambat'] = '晚了几分钟';
+$lang['hari_terlambat'] = '天晚';
+$lang['total_gaji'] = '总工资';

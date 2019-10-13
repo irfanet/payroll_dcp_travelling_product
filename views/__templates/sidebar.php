@@ -41,9 +41,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?= base_url() ?>absensi/form_upload"><i class="fa fa-circle-o"></i><?= $this->lang->line('import_data_absensi'); ?></a></li>
+          <!-- <li><a href="<?= base_url() ?>absensi/form_upload"><i class="fa fa-circle-o"></i><?= $this->lang->line('import_data_absensi'); ?></a></li> -->
           <li><a href="<?= base_url() ?>absensi"><i class="fa fa-circle-o"></i><?= $this->lang->line('cek_absensi'); ?></a></li>
-          <li><a href="<?= base_url() ?>absensi/koreksi_absensi"><i class="fa fa-circle-o"></i><?= $this->lang->line('lihat_absensi'); ?></a></li>
+          <!-- <li><a href="<?= base_url() ?>absensi/koreksi_absensi"><i class="fa fa-circle-o"></i><?= $this->lang->line('lihat_absensi'); ?></a></li> -->
         </ul>
       </li>
       <li class="<?php echo $this->uri->segment(1) == 'spl' ? 'active': '' ?>">

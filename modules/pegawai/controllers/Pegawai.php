@@ -147,12 +147,18 @@ class Pegawai extends MY_Controller{
         if ($upload['result'] == 'failed') {
           $data['upload_error'] = $upload['error'];
         }
-        $sql = "DELETE FROM pegawai";
-        $this->db->query($sql);
+        // $sql = "DELETE FROM pegawai";
+		// $this->db->query($sql);
+		
+		// XLSX
+		$excelreader = PHPExcel_IOFactory::createReader("Excel2007");
+		$loadexcel = $excelreader->load('upload/excel/'.$this->filename.'.xlsx'); 
 
-        $excelreader =  new PHPExcel_Reader_Excel5();
-        $loadexcel = $excelreader->load('upload/excel/'.$this->filename.'.xls'); 
-        $sheet = $loadexcel->getActiveSheet()->getRowIterator();
+		// XLS
+        // $excelreader =  new PHPExcel_Reader_Excel5();
+        // $loadexcel = $excelreader->load('upload/excel/'.$this->filename.'.xls'); 
+
+		$sheet = $loadexcel->getActiveSheet()->getRowIterator();
         
         $data = array();
         
@@ -175,45 +181,34 @@ class Pegawai extends MY_Controller{
             // $tgl_masuk = gmdate("Y-m-d", $unix_date);
             
 
-            if($get[8]=="  -   -") {
-              $tgl_masuk = "";
-            }else{
-              $tgl_masuk = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[8]));             
-            }
-            if($get[9]=="  -   -") {
-              $tgl_keluar = "";
-            }else{
-              $tgl_keluar = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[9]));             
-            }
-            if($get[10]=="  -   -") {
-              $tgl_kontrak = "";
-            }else{
-              $tgl_kontrak = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[10]));             
-            }
+            // if($get[8]=="  -   -") {
+            //   $tgl_masuk = "";
+            // }else{
+            //   $tgl_masuk = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[8]));             
+            // }
+            // if($get[9]=="  -   -") {
+            //   $tgl_keluar = "";
+            // }else{
+            //   $tgl_keluar = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[9]));             
+            // }
+            // if($get[10]=="  -   -") {
+            //   $tgl_kontrak = "";
+            // }else{
+            //   $tgl_kontrak = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($get[10]));             
+            // }
             array_push($data, array(
-                'npp'=>$get[1], 
-                'nama'=>$get[2],
-                'sex'=>$get[3], 
-                'id_status'=>$get[4],
-                'kode_bagian'=>$get[5],
-                'kode_divisi'=>$get[6],
-                'kode_jabatan'=>$get[7], 
-                'tgl_masuk'=>$tgl_masuk,
-                'tgl_keluar'=>$tgl_keluar,
-                'tgl_kontrak'=>$tgl_kontrak,
-                'norek'=>$get[11],
-                'gapok'=>$get[12],
-                'tunjangan_tetap'=>$get[13],
-                'tunjangan_tidak_tetap'=>$get[14],
-                'tunjangan_pss'=>$get[15],
-                'potongan_lain'=>$get[16],
-                'bpjs'=>$get[17],
-                'bonus'=>$get[18],
-                'target'=>$get[19],
-                'potongan_target'=>$get[20],
-                'dapat_lain'=>$get[21],
-                'jml_cuti'=>$get[22],
-                'jml_tdk_datang'=>$get[23],
+                'nik'=>$get[1], 
+				'nama'=>$get[2],
+				'kd_departemen'=>$get[3], 
+                'kd_jabatan'=>$get[3], 
+                'kd_line'=>$get[4],
+                'gaji_pokok'=>$get[11],
+                'tunj_jabatan'=>$get[12],
+                'tunj_kinerja'=>$get[14], 
+                'bonus'=>$get[12],
+                'insentif'=>$get[14],
+                'pph21'=>$get[14],
+                'norek'=>$get[13]
             ));
             }
                     
