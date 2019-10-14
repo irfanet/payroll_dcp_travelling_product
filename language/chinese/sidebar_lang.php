@@ -35,7 +35,7 @@ $lang['kalender'] = '行事历';
 $lang['setting'] = '设定值';
 $lang['honor_lembur'] = '加班荣誉';
 $lang['departemen'] = '部门';
-$lang['jabatan'] = '位置';
+$lang['jabatan'] = '岗位';
 $lang['line'] = '线';
 
 

@@ -24,6 +24,14 @@
               <a class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_modal" data-target="#modal_add">
                 <i class="fa fa-plus"></i> <?= $this->lang->line('tambah'); ?>
               </a>
+              <br>
+              <a href="<?= base_url()?>pegawai/import" class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_import" data-target="#modal_import">
+                <i class="fa fa-file-excel-o"></i> <?= $this->lang->line('import'); ?>
+              </a>
+              <br>
+              <a href="<?= base_url()?>pegawai/export" class="btn btn-app btn-lg" id="export">
+                <i class="fa fa-file-excel-o"></i> <?= $this->lang->line('export'); ?>
+              </a>
             </center>
           </div>
           <!-- /.box-body -->
@@ -167,6 +175,40 @@
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal tambah dan edit -->
+
+<!-- /.modal upload excel -->
+<div class="modal fade" id="modal_import">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><?= $this->lang->line('import_pegawai'); ?></h4>
+      </div>
+      <form method="post" action='<?= base_url("pegawai/import_excel") ?>' enctype="multipart/form-data" class="form-horizontal form-label-left">
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="excel_pegawai"><?= $this->lang->line('excel_pegawai'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="file" name="file" id="exampleInputFile" accept=".xlsx" required>
+                <p class="help-block"><?= $this->lang->line('ket_xlsx'); ?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('bt_batal'); ?></button>
+          <input type="submit" name="import" value="<?= $this->lang->line('bt_upload'); ?>" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal upload excel -->
 
 <!-- /.modal hapus -->
 <div class="modal modal-danger fade" id="modal_delete">

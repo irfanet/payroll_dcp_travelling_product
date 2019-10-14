@@ -19,7 +19,15 @@ class Pegawai_model extends CI_Model
 		$this->db->join('line', 'line.kd_line = pegawai.kd_line');
 		$this->db->where('is_active', '1');
 		$hasil = $this->db->get();
-		return $hasil->result();
+		return $hasil->result_array();
+	}
+	function data_list_temp()
+	{
+		$this->db->select('*');
+		$this->db->from($this->_table);
+		$this->db->where('is_active', '1');
+		$hasil = $this->db->get();
+		return $hasil->result_array();
 	}
 
 	function data_line()
@@ -114,7 +122,7 @@ class Pegawai_model extends CI_Model
 		$this->load->library('upload'); 
 		
 		$config['upload_path'] = './upload/excel/';
-		$config['allowed_types'] = 'xls|xlsx';
+		$config['allowed_types'] = 'xlsx';
 		$config['max_size']  = '2048';
 		$config['overwrite'] = true;
 		$config['file_name'] = $filename;

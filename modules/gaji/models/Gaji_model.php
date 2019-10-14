@@ -14,10 +14,10 @@ class Gaji_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('pegawai');
-		$this->db->join('divisi', 'divisi.kode_divisi = pegawai.kode_divisi');
-		// $this->db->join('status', 'status.id_status = pegawai.id_status');
+		$this->db->join('gaji', 'gaji.nik = pegawai.nik')
+		->where('gaji.status_konfirmasi = ',NULL);;
 		$hasil = $this->db->get();
-		return $hasil->result();
+		return $hasil->result_array();
 	}
 
 	function hitung_absen(){
@@ -33,59 +33,188 @@ class Gaji_model extends CI_Model
 		}
 		return $hasil;
 	}
-	function get_absen_by_periode($tgl_mulai, $tgl_selesai){
+	function get_absen_by_periode($kd_periode,$tgl_mulai, $tgl_selesai,$cek=0){
 		$sql = "DELETE FROM gaji";
         $this->db->query($sql);
 		
-		$absen = $this->db->query("SELECT * FROM absen WHERE tgl BETWEEN '$tgl_mulai' AND '$tgl_selesai'")->result_array();
-		$hari_kerja = $this->db->query("SELECT * FROM absen WHERE tgl BETWEEN '$tgl_mulai' AND '$tgl_selesai' group by tgl")->num_rows();
+		// $honor_lembur = 19007.5;
+		$get_honor = $this->db->get_where('honor_lembur', array('id_honor' => 1))->row_array();
+		$honor_lembur = $get_honor['honor'];
+		$absensi = $this->db->query("SELECT * FROM absensi WHERE tgl_absensi BETWEEN '$tgl_mulai' AND '$tgl_selesai'")->result_array();
+		// $jml_hari_kerja = $this->db->query("SELECT * FROM absensi WHERE tgl_absensi BETWEEN '$tgl_mulai' AND '$tgl_selesai' group by tgl_absensi")->num_rows();
+		$jml_hari_kerja = 10;
 		$pegawai = $this->db->get('pegawai')->result_array();
 		foreach($pegawai as $p){
-			$kehadiran = 0;
+			$hari_kerja = 0;
 			$izin = 0;
+			$absen = 0;
+			$izin_resmi  = 0;
 			$sakit = 0;
 			$cuti = 0;
-			$jml_terlambat = 0;
-			$jml_jam_lembur = 0;
+			$tidak_hadir = 0;
+			$jml_lembur = 0;
+			$menit_terlambat = 0;
+			$hari_terlambat = 0;
+			$pot_terlambat = 0;
 
-			$npp = $p['NPP'];
-			foreach($absen as $a){
-				if($a['NPP']==$npp){
-					$kehadiran++;
-					if($a['keterangan']=="izin")
+			$nik = $p['nik'];
+			$nama = $p['nama'];
+			$gaji_pokok = $p['gaji_pokok'];
+			$gaji_perhari = $gaji_pokok/($jml_hari_kerja-1); //gajipokok : 25
+			$gaji_utama = ($jml_hari_kerja-1) * $gaji_perhari;
+			$tunj_jabatan = $p['tunj_jabatan'];
+			$tunj_kinerja = $p['tunj_kinerja'];
+			$bonus = $p['bonus'];
+			$insentif = $p['insentif'];
+			$premi_lembur = 0; //????????
+			$uang_makan = 0; //????????
+			$pengurangan_gaji = 0; //????????
+
+			$pph21 = $p['pph21'];
+
+			foreach($absensi as $a){
+				if($a['nik']==$nik){
+					if ($a['kd_status'] == "A"){
+						$absen++;
+						$tidak_hadir++;
+					}
+					if ($a['kd_status'] == "IZ"){
 						$izin++;
-					if($a['keterangan']=="sakit")
+						$tidak_hadir++;
+					}
+					if ($a['kd_status'] == "IR")
+						$izin_resmi++;
+					if ($a['kd_status'] == "SK")
 						$sakit++;
-					if($a['keterangan']=="cuti")
-						$cuti++;	
-					$jam_datang = $a['jam_datang'];
-					if(strtotime('08:00:00') <= strtotime($jam_datang))
-						$jml_terlambat++;
-
-					$jam_pulang = strtotime($a['jam_pulang']);
-					$jam_selesai = strtotime('16:00:00');
-					$gap = round(abs($jam_pulang-$jam_selesai)/3600, 2);
-					$jml_jam_lembur+=$gap;
-					
+					if ($a['kd_status'] == "CT")
+						$cuti++;
+					if ($a['kd_status'] == "MS")
+						$hari_kerja++;
+					if ($a['kd_status'] == "TR"){
+						$hari_kerja++;
+						$hari_terlambat++;
+						$jam_masuk = strtotime('08:00:00');
+						$jam_datang = strtotime($a['jam_datang']);
+						$terlambat = round(abs($jam_datang - $jam_masuk)/60, 2);	
+						$menit_terlambat += $terlambat;		
+					}
+					$jml_lembur += $a['lembur'];	
 				}
 
 			}
-			$data = array(
-				'NPP' => $npp,
-				'jml_masuk' => $kehadiran,
-				'jml_izin' => $izin,
-				'jml_sakit' => $sakit,
-				'jml_cuti' => $cuti,
-				'jml_terlambat' => $jml_terlambat,
-				'jml_jam_lembur' => $jml_jam_lembur,
-				'hari_kerja' => $hari_kerja,
-				'id_kalender' => 1,
-				'total' => 10000
-			);
-			$hasil = $this->db->insert('gaji', $data);	
-		}
-		return $jam_pulang;
+	
+			//tunjangan
+			if($hari_kerja == $jml_hari_kerja){
+				$tunj_kehadiran = 100000;
+			}else{
+				$tunj_kehadiran = 0;
+			}
+			$lemburan = $jml_lembur * $honor_lembur;
 
+			$total_tunjangan = $tunj_jabatan+$tunj_kinerja+$tunj_kehadiran+$premi_lembur+$lemburan+$insentif+$uang_makan+$bonus+$pengurangan_gaji;
+			$total_temp = $gaji_utama+$total_tunjangan;
+
+			//pocongan
+			$pot_bpjs_jht = ($gaji_pokok + $tunj_jabatan) * (2 / 100);
+			$pot_bpjs_jp = ($gaji_pokok + $tunj_jabatan) * (1 / 100);
+			$pot_bpjs_kes = ($gaji_pokok + $tunj_jabatan) * (1 / 100);
+			if($hari_terlambat>0)
+				$pot_terlambat = $gaji_perhari/((7*60)*$menit_terlambat);
+			else
+				$pot_terlambat = 0;
+			$pot_ketidakhadiran = $gaji_perhari*$tidak_hadir;
+
+			$total_pot = $pot_bpjs_jht+$pot_bpjs_jp+$pot_bpjs_kes+$pph21+$pot_terlambat+$pot_ketidakhadiran;
+
+
+			$grand_total =  $total_temp - $total_pot;
+			$data = array(
+				'nik' => $nik,
+				'jumlah' => $jml_hari_kerja,
+				'hari_kerja' => $hari_kerja,
+				'izin' => $izin,
+				'absen' => $absen,
+				'sakit' => $sakit,
+				'izin_resmi' => $izin_resmi,
+				'cuti' => $cuti,
+				'lemburan' => $jml_lembur,
+				'menit_terlambat' => $menit_terlambat,
+				'hari_terlambat' => $hari_terlambat,
+				'kd_periode' => $kd_periode,
+				'bpjs_tk_jht' => $pot_bpjs_jht,
+				'bpjs_tk_jp' => $pot_bpjs_jp,
+				'bpjs_kes' => $pot_bpjs_kes,
+				'honor_lembur' => $lemburan,
+				'potongan' => $pot_terlambat,
+				'ketidakhadiran' => $pot_ketidakhadiran,
+				'total_gaji' => $grand_total
+			);
+			$this->db->insert('gaji', $data);	
+
+			if($cek == 1){
+				$debug = array(
+					'nik' => $nik,
+					'nama' => $nama,
+					'absensi' => array(
+						'jumlah' => $jml_hari_kerja,
+						'hari_kerja' => $hari_kerja,
+						'izin' => $izin,
+						'absen' => $absen,
+						'sakit' => $sakit,
+						'izin_resmi' => $izin_resmi,
+						'cuti' => $cuti,
+						'lemburan' => $jml_lembur,
+						'menit_terlambat' => $menit_terlambat,
+						'hari_terlambat' => $hari_terlambat
+					),
+					'gaji' => array(
+						'gaji_pokok' => $gaji_pokok,
+						'gaji_utama' => $gaji_utama,
+						'gaji_perhari' => $gaji_perhari
+					),
+					'tunjangan' => array(
+						'tunj_jabatan' => $tunj_jabatan,
+						'tunj_kinerja' => $tunj_kinerja,
+						'tunj_kehadiran' => $tunj_kehadiran,
+						'lemburan' => $lemburan,
+						'bonus' => $bonus,
+						'insentif' => $insentif,
+						'total_tunj' => $total_tunjangan,
+						'total_sementara' => $total_temp
+					),
+					'potongan' => array(
+						'bpjs_jht' => $pot_bpjs_jht,
+						'bpjs_jp' => $pot_bpjs_jp,
+						'bpjs_kes' => $pot_bpjs_kes,
+						'pph21' => $pph21,
+						'pot_terlambat' => $pot_terlambat,
+						'pot_ketidakhadiran' => $pot_ketidakhadiran,
+						'total_pot' => $total_pot
+					),
+					'kd_periode' => $kd_periode,
+					'total_gaji' => $grand_total,
+				);
+				$json_string = json_encode($debug, JSON_PRETTY_PRINT);
+				echo "<pre>".$json_string."</pre><br>";
+			}
+		}
+	}
+	function backup(){
+		// $data = array(
+		// 	'nik' => $nik,
+		// 	'jumlah' => $jml_hari_kerja,
+		// 	'hari_kerja' => $hari_kerja,
+		// 	'izin' => $izin,
+		// 	'absen' => $absen,
+		// 	'sakit' => $sakit,
+		// 	'izin_resmi' => $izin_resmi,
+		// 	'cuti' => $cuti,
+		// 	'lemburan' => $jml_lembur,
+		// 	'menit_terlambat' => $menit_terlambat,
+		// 	'hari_terlambat' => $hari_terlambat,
+		// 	'kd_periode' => $kd_periode,
+		// 	'total_gaji' => $grand_total,
+		// );
 	}
 
 	function jumlah()
@@ -112,10 +241,10 @@ class Gaji_model extends CI_Model
 		return $hasil->result();
 	}
 
-	function data_divisi()
+	function data_gaji()
 	{
 		$this->db->select('*');
-		$this->db->from('divisi');
+		$this->db->from('gaji');
 		$hasil = $this->db->get();
 		return $hasil->result();
 	}
@@ -136,7 +265,7 @@ class Gaji_model extends CI_Model
 			'sex' => $this->input->post('sex'),
 			'id_status' => $this->input->post('id_status'),
 			'kode_bagian' => $this->input->post('kode_bagian'),
-			'kode_divisi' => $this->input->post('kode_divisi'),
+			'kode_gaji' => $this->input->post('kode_gaji'),
 			'kode_jabatan' => $this->input->post('kode_jabatan'),
 			'tgl_masuk' => date('Y-m-d', strtotime($this->input->post('tgl_masuk'))),
 			'tgl_keluar' => date('Y-m-d', strtotime($this->input->post('tgl_keluar'))),
@@ -175,7 +304,7 @@ class Gaji_model extends CI_Model
 			'sex' => $this->input->post('sex'),
 			'id_status' => $this->input->post('id_status'),
 			'kode_bagian' => $this->input->post('kode_bagian'),
-			'kode_divisi' => $this->input->post('kode_divisi'),
+			'kode_gaji' => $this->input->post('kode_gaji'),
 			'kode_jabatan' => $this->input->post('kode_jabatan'),
 			'tgl_masuk' => date('Y-m-d', strtotime($this->input->post('tgl_masuk'))),
 			'tgl_keluar' => date('Y-m-d', strtotime($this->input->post('tgl_keluar'))),
@@ -203,6 +332,16 @@ class Gaji_model extends CI_Model
 		$hasil = $this->db->delete($this->_table);
 		return $hasil;
 	}
+	function data_salah($kode)
+	{
+		$data = array(
+			'status_konfirmasi' => 0
+		);
+		$this->db->where('id_gaji', $kode);
+		$hasil = $this->db->update($this->_table, $data);
+		return $hasil;
+	}
+
 
 	public function upload_file($filename){
 		$this->load->library('upload'); 
