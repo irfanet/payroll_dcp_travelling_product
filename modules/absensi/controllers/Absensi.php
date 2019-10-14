@@ -165,6 +165,11 @@ class Absensi extends MY_Controller{
 		$data=$this->absensi_model->get_status();
 		echo json_encode($data);
 	}
+	function get_pegawai_by_kode(){
+		$kode=$this->input->get('id');
+		$data=$this->absensi_model->get_pegawai_by_kode($kode);
+		echo json_encode($data);
+	}
 	public function export(){
 		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';   
         $excel = new PHPExcel();

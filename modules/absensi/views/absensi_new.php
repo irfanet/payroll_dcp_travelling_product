@@ -25,7 +25,7 @@
                 <i class="fa fa-plus"></i> <?= $this->lang->line('import'); ?>
               </a>
               <br>
-              <a href="<?= base_url()?>absensi/export" class="btn btn-app btn-lg" id="export">
+              <a href="<?= base_url() ?>absensi/export" class="btn btn-app btn-lg" id="export">
                 <i class="fa fa-file-excel-o"></i> <?= $this->lang->line('export'); ?>
               </a>
             </center>
@@ -42,7 +42,7 @@
             <li><a href="#tab_2-2" data-toggle="tab"><?= $this->lang->line('tidak_berangkat'); ?></a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#order_by">
-              <?= $this->lang->line('absensi_orderby'); ?> <span class="caret"></span>
+                <?= $this->lang->line('absensi_orderby'); ?> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#action1"><?= $this->lang->line('absensi_semua'); ?></a></li>
@@ -167,7 +167,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" name="show_in_edit"><?= $this->lang->line('edit_user'); ?></h4>
+        <h4 class="modal-title" name="show_in_edit"><?= $this->lang->line('edit_absensi'); ?></h4>
       </div>
       <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
         <div class="modal-body">
@@ -229,7 +229,7 @@
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="lembur"><?= $this->lang->line('lembur'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="lembur" name="lembur" required class="form-control col-md-7 col-xs-12">  
+                <input type="text" id="lembur" name="lembur" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
@@ -245,6 +245,92 @@
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal tambah dan edit -->
+
+<!-- /.modal koreksi absen -->
+<div class="modal fade" id="modal_koreksi">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" name="show_in_edit"><?= $this->lang->line('edit_absensi'); ?></h4>
+      </div>
+      <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
+        <div class="modal-body">
+          <!-- <input type="hidden" id="nik" name="nik"> -->
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nik"><?= $this->lang->line('nik'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="nik" name="nik" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nama"><?= $this->lang->line('tgl_absensi'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="nama" name="nama" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="jam_datang" name="jam_datang"><?= $this->lang->line('jam_datang'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="jam_datang" name="jam_datang" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="jam_pulang" name="jam_pulang"><?= $this->lang->line('jam_pulang'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="jam_pulang" name="jam_pulang" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="kd_status"><?= $this->lang->line('kd_status'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <select class="form-control" name="kd_status" id="kd_status">
+
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row" name="show_in_edit">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="lembur"><?= $this->lang->line('lembur'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="lembur" name="lembur" required class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('bt_batal'); ?></button>
+          <input type="submit" name="btn_simpan" id="btn_simpan" value="<?= $this->lang->line('bt_simpan'); ?>" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal koreksi absen -->
 
 <!-- /.modal hapus -->
 <div class="modal modal-danger fade" id="modal_delete">
@@ -334,6 +420,23 @@
 
       });
     }
+    function tampil_nik() {
+      $.ajax({
+        type: 'ajax',
+        url: '<?= base_url() ?>absensi/get_nik',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+          var html = '<option value="">-- Pilih Salah Satu --</option>';
+          var i;
+          for (i = 0; i < data.length; i++) {
+            html += '<option value="' + data[i].nik + '">' + data[i].nama + '</option>';
+          }
+          $('#nik').html(html);
+        }
+
+      });
+    }
 
     //hitung terlambat permenit
     function hitung_terlambat(jam) {
@@ -345,7 +448,7 @@
       time_start.setHours(jam_masuk[0], jam_masuk[1], jam_masuk[2], 0)
       time_end.setHours(jam_datang[0], jam_datang[1], jam_datang[2], 0)
 
-      return (time_end - time_start)/60000
+      return (time_end - time_start) / 60000
     }
 
     //fungsi tampil data
@@ -366,7 +469,7 @@
             var terlambat;
             terlambat = hitung_terlambat(data[i].jam_datang);
             if (data[i].kd_status == "TR") {
-              status = data[i].nama_status + " <br> " + terlambat +  " menit " ;
+              status = data[i].nama_status + " <br> " + terlambat + " menit ";
             } else {
               status = data[i].nama_status;
             }
@@ -417,7 +520,7 @@
               '<td>' + data[i].nama + '</td>' +
               '<td>' + status + '</td>' +
               '<td style="text-align:center;">' +
-              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
+              '<a href="javascript:;" class="btn btn-info btn-xs item_edit2" data="' + data[i].nik + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
               // '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_hapus'); ?></a>' +
               '</td>' +
               '</tr>';
@@ -464,7 +567,7 @@
             $('#modal_add').modal('show');
             // $('[name="show_in_edit"]').show();
             $('#id_absensi').val(data.id_absensi);
-            $('#nik').val(data.nik);
+            $('#nik').val(data.nik).attr('readonly', true);
             $('#jam_datang').val(data.jam_datang);
             $('#jam_pulang').val(data.jam_pulang);
             $('#tgl_absensi').val(data.tgl_absensi).attr('readonly', true);
@@ -477,6 +580,37 @@
       });
       return false;
     });
+
+    //TOMBOL EDIT2 -> GET KODE & ATUR HIDE AND SHOW
+    $('#show_data2').on('click', '.item_edit2', function() {
+      kondisi = "edit";
+      var id = $(this).attr('data');
+      $.ajax({
+        type: "GET",
+        url: "<?= base_url() ?>absensi/get_pegawai_by_kode",
+        dataType: "JSON",
+        data: {
+          id: id
+        },
+        success: function(data) {
+          $.each(data, function(nik, nama) {
+            $('#modal_koreksi').modal('show');
+            // $('[name="show_in_edit"]').show();
+            $('#nik').val(data.nik);
+            $('#nama').val(data.nama);
+            // $('#jam_datang').val(data.jam_datang);
+            // $('#jam_pulang').val(data.jam_pulang);
+            // $('#tgl_absensi').val(data.tgl_absensi).attr('readonly', true);
+            // // $('#nama_karyawan').val(data.nama_karyawan).attr('readonly', false);
+            // $('#kd_status').val(data.kd_status);
+            // $('#lembur').val(data.lembur);
+
+          });
+        }
+      });
+      return false;
+    });
+
 
     //TOMBOL HAPUS -> GET KODE
     $('#show_data').on('click', '.item_hapus', function() {

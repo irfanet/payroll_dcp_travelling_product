@@ -220,10 +220,10 @@
     tampil_nik();
     var kondisi;
 
-	document.getElementById("id_absensi_nik").onchange = function () {
-	var count = $('#id_absensi_nik option:selected').length;
-	$("#jml").val(count);
-	}
+    document.getElementById("id_absensi_nik").onchange = function () {
+      var count = $('#id_absensi_nik option:selected').length;
+      $("#jml").val(count);
+    }
 
     function tampil_nik() {
         $.ajax({
@@ -276,7 +276,7 @@
               '<td>IDR. ' + data[i].total_gaji.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + '</td>' +
               '<td style="text-align:center;">' +
             //   '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
-              '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_salah'); ?></a>' +
+              '<a href="javascript:;" class="btn btn-warning btn-xs item_salah" data="' + data[i].id_gaji + '">X</a>' +
               '</td>' +
               '</tr>';
           }
@@ -334,6 +334,32 @@
         }
       });
       return false;
+    });
+
+    //TOMBOL SALAH -> GET KODE
+    $('#show_data').on('click', '.item_salah', function() {
+      var id = $(this).attr('data');
+      $.ajax({
+        type: "GET",
+        url: "<?= base_url() ?>gaji/data_salah",
+        dataType: "JSON",
+        data: {
+          id: id
+        },
+        success: function(data) {
+          // $('#modal_delete').modal('hide');
+          tampil_data();
+          $('#info').append('<div class="alert alert-warning"><i class="fa fa-trash-o"></i>' +
+            ' <?= $this->lang->line('notif_hapus'); ?>' + '</div>');
+          $('.alert-warning').delay(500).show(1000, function() {
+            $(this).delay(2000).slideUp(500, function() {
+              $(this).remove();
+            });
+          })
+        }
+      });
+      return false;
+
     });
 
     //TOMBOL HAPUS -> GET KODE
@@ -428,6 +454,31 @@
         });
         return false;
       }
+    });
+
+     //DATA SALAH
+     $('#btn_hapus').on('click', function() {
+      var kode = $('#id_data').val();
+      $.ajax({
+        type: "POST",
+        url: "<?= base_url() ?>gaji/hapus_data",
+        dataType: "JSON",
+        data: {
+          kode: kode
+        },
+        success: function(data) {
+          $('#modal_delete').modal('hide');
+          tampil_data();
+          $('#info').append('<div class="alert alert-danger"><i class="fa fa-trash-o"></i>' +
+            ' <?= $this->lang->line('notif_hapus'); ?>' + '</div>');
+          $('.alert-danger').delay(500).show(1000, function() {
+            $(this).delay(2000).slideUp(500, function() {
+              $(this).remove();
+            });
+          })
+        }
+      });
+      return false;
     });
 
     //HAPUS DATA

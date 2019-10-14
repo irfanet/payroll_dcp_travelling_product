@@ -99,6 +99,12 @@ class Gaji extends MY_Controller
 		$data = $this->gaji_model->hapus_data($kode);
 		echo json_encode($data);
 	}
+	function data_salah()
+	{
+		$kode = $this->input->get('id');
+		$data = $this->gaji_model->data_salah($kode);
+		echo json_encode($data);
+	}
 
 	public function export(){
 		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';   

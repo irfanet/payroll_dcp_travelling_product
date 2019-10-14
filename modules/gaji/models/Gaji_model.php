@@ -14,7 +14,8 @@ class Gaji_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('pegawai');
-		$this->db->join('gaji', 'gaji.nik = pegawai.nik');
+		$this->db->join('gaji', 'gaji.nik = pegawai.nik')
+		->where('gaji.status_konfirmasi = ',NULL);;
 		$hasil = $this->db->get();
 		return $hasil->result_array();
 	}
@@ -331,6 +332,16 @@ class Gaji_model extends CI_Model
 		$hasil = $this->db->delete($this->_table);
 		return $hasil;
 	}
+	function data_salah($kode)
+	{
+		$data = array(
+			'status_konfirmasi' => 0
+		);
+		$this->db->where('id_gaji', $kode);
+		$hasil = $this->db->update($this->_table, $data);
+		return $hasil;
+	}
+
 
 	public function upload_file($filename){
 		$this->load->library('upload'); 
