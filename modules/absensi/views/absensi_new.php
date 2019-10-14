@@ -52,6 +52,7 @@
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#action5"><?= $this->lang->line('sakit'); ?></a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#action6"><?= $this->lang->line('izin_resmi'); ?></a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#action7"><?= $this->lang->line('cuti'); ?></a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#action8"><?= $this->lang->line('absen'); ?></a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
               </ul>
@@ -169,7 +170,7 @@
           <span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" name="show_in_edit"><?= $this->lang->line('edit_absensi'); ?></h4>
       </div>
-      <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
+      <form id="form_koreksi" data-parsley-validate class="form-horizontal form-label-left">
         <div class="modal-body">
           <input type="hidden" id="id_absensi" name="id_absensi">
           <div class="row">
@@ -263,37 +264,27 @@
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nik"><?= $this->lang->line('nik'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="nik" name="nik" required class="form-control col-md-7 col-xs-12">
+                <input type="text" id="nik2" name="nik" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="form-group">
-              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nama"><?= $this->lang->line('tgl_absensi'); ?> <span class="required">*</span>
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nama"><?= $this->lang->line('nama'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="nama" name="nama" required class="form-control col-md-7 col-xs-12">
+                <input type="text" id="nama2" name="nama" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="form-group">
-              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="jam_datang" name="jam_datang"><?= $this->lang->line('jam_datang'); ?> <span class="required">*</span>
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="tgl_absensi"><?= $this->lang->line('tgl_absensi'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="jam_datang" name="jam_datang" required class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="form-group">
-              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="jam_pulang" name="jam_pulang"><?= $this->lang->line('jam_pulang'); ?> <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="jam_pulang" name="jam_pulang" required class="form-control col-md-7 col-xs-12">
+                <input type="text" id="tgl_absensi2" name="tgl_absensi" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
@@ -303,26 +294,16 @@
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="kd_status"><?= $this->lang->line('kd_status'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <select class="form-control" name="kd_status" id="kd_status">
+                <select class="form-control" name="kd_status" id="kd_status2">
 
                 </select>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="row" name="show_in_edit">
-            <div class="form-group">
-              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="lembur"><?= $this->lang->line('lembur'); ?> <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="lembur" name="lembur" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><?= $this->lang->line('bt_batal'); ?></button>
-          <input type="submit" name="btn_simpan" id="btn_simpan" value="<?= $this->lang->line('bt_simpan'); ?>" class="btn btn-primary">
+          <input type="submit" name="btn_simpan" id="btn_simpan2" value="<?= $this->lang->line('bt_simpan'); ?>" class="btn btn-primary">
         </div>
       </form>
     </div>
@@ -388,16 +369,50 @@
       show_data = "#show_data";
       tampil_data();
     });
+    $('a[href="#action4"]').on('click', function() {
+      url = "absensi/get_izin";
+      tabel = "#example";
+      show_data = "#show_data";
+      tampil_data();
+    });
+    $('a[href="#action5"]').on('click', function() {
+      url = "absensi/get_sakit";
+      tabel = "#example";
+      show_data = "#show_data";
+      $('#order_by').text('Masuk Normal');
+      tampil_data();
+    });
+    $('a[href="#action6"]').on('click', function() {
+      url = "absensi/get_izin_resmi";
+      tabel = "#example";
+      show_data = "#show_data";
+      tampil_data();
+    });
+    $('a[href="#action7"]').on('click', function() {
+      url = "absensi/get_cuti";
+      tabel = "#example";
+      show_data = "#show_data";
+      tampil_data();
+    });
+    $('a[href="#action8"]').on('click', function() {
+      url = "absensi/get_absen";
+      tabel = "#example";
+      show_data = "#show_data";
+      tampil_data();
+    });
+
     $('a[href="#tab_1-1"]').on('click', function() {
       url = "absensi/get_data";
       tabel = "#example";
       show_data = "#show_data";
+      $('#form_add')[0].reset();
       tampil_data();
     });
     $('a[href="#tab_2-2"]').on('click', function() {
       url2 = "absensi/get_koreksi_data";
       tabel2 = "#example2";
       show_data2 = "#show_data2";
+      $('#form_koreksi')[0].reset();
       tampil_data2();
     });
 
@@ -410,12 +425,13 @@
         async: false,
         dataType: 'json',
         success: function(data) {
-          var html = '<option value="">-- Pilih Salah Satu --</option>';
+          var html = '<option disabled value="">-- Pilih Salah Satu --</option>';
           var i;
           for (i = 0; i < data.length; i++) {
             html += '<option value="' + data[i].kd_status + '">' + data[i].nama_status + '</option>';
           }
           $('#kd_status').html(html);
+          $('[name="kd_status"]').html(html);
         }
 
       });
@@ -467,8 +483,8 @@
           var no = 1;
           for (i = 0; i < data.length; i++) {
             var terlambat;
-            terlambat = hitung_terlambat(data[i].jam_datang);
             if (data[i].kd_status == "TR") {
+              terlambat = hitung_terlambat(data[i].jam_datang);
               status = data[i].nama_status + " <br> " + terlambat + " menit ";
             } else {
               status = data[i].nama_status;
@@ -596,14 +612,10 @@
           $.each(data, function(nik, nama) {
             $('#modal_koreksi').modal('show');
             // $('[name="show_in_edit"]').show();
-            $('#nik').val(data.nik);
-            $('#nama').val(data.nama);
-            // $('#jam_datang').val(data.jam_datang);
-            // $('#jam_pulang').val(data.jam_pulang);
-            // $('#tgl_absensi').val(data.tgl_absensi).attr('readonly', true);
-            // // $('#nama_karyawan').val(data.nama_karyawan).attr('readonly', false);
-            // $('#kd_status').val(data.kd_status);
-            // $('#lembur').val(data.lembur);
+            $('#nik2').val(data.nik);
+            $('#tgl_absensi2').attr('readonly', true);
+            $('#nama2').val(data.nama);
+            $('#kd_status2').val(data.kd_status);
 
           });
         }
@@ -711,6 +723,49 @@
       }
     });
 
+
+    //SIMPAN DATA2
+    $('#btn_simpan2').on('click', function() {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url() ?>absensi/simpan_koreksi",
+          dataType: "JSON",
+          data: {
+            tgl_absensi: $('#tgl_absensi2').val(),
+            nik: $('#nik2').val(),
+            kd_status: $('#kd_status2').val()
+          },
+          success: function(data) {
+            if (data.success == true) {
+              $('#info').append('<div class="alert alert-success"><i class="fa fa-check"></i>' +
+                ' <?= $this->lang->line('notif_simpan'); ?> ' + '</div>');
+              $('.form-group').removeClass('has-error')
+                .removeClass('has-success');
+              $('.text-danger').remove();
+              $('.alert-success').delay(500).show(1000, function() {
+                $(this).delay(2000).slideUp(500, function() {
+                  $(this).remove();
+                });
+              })
+              $('#form_koreksi')[0].reset();
+              $('#modal_koreksi').modal('hide');
+              tampil_data2();
+              tampil_data();
+            } else {
+              $.each(data.messages, function(key, value) {
+                var element = $('#' + key);
+                element.closest('div.form-group')
+                  .removeClass('has-error')
+                  .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                  .find('.text-danger')
+                  .remove();
+                element.after(value);
+              });
+            }
+          }
+        });
+        return false;
+    });
     //HAPUS DATA
     $('#btn_hapus').on('click', function() {
       var kode = $('#id_data').val();
@@ -738,6 +793,13 @@
 
   });
 
+  $(function() {
+    //Date picker
+    $('#tgl_absensi2').datepicker({
+      autoclose: true,
+      format: 'dd-mm-yyyy'
+    })
+  })
   $(function() {
     //Date picker
     $('#tgl_absensi').datepicker({

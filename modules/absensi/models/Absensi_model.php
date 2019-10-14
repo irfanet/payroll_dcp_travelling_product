@@ -49,6 +49,51 @@
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}
+		function get_izin(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.kd_status','IZ');
+			$hasil = $this->db->get();
+			return $hasil->result();
+		}
+		function get_sakit(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.kd_status','SK');
+			$hasil = $this->db->get();
+			return $hasil->result();
+		}
+		function get_izin_resmi(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.kd_status','IR');
+			$hasil = $this->db->get();
+			return $hasil->result();
+		}
+		function get_cuti(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.kd_status','CT');
+			$hasil = $this->db->get();
+			return $hasil->result();
+		}
+		function get_absen(){
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.kd_status','A');
+			$hasil = $this->db->get();
+			return $hasil->result();
+		}
 		function get_nik(){
 			$hasil = $this->db->get("pegawai");
 			return $hasil->result();
@@ -130,5 +175,14 @@
 			// } 
 			// $this->db->update_batch('spl', $updateArray, 'nik');
            	$this->db->insert_batch($this->_table, $data_absensi);
-        }
+		}
+		function simpan_koreksi(){
+			$data = array(
+				'nik' => $this->input->post('nik'), 
+				'tgl_absensi' => date('Y-m-d', strtotime($this->input->post('tgl_absensi'))),
+				'kd_status' => $this->input->post('kd_status')
+			);
+			$hasil = $this->db->insert($this->_table, $data);
+			return $hasil;
+		}
 	}
