@@ -140,8 +140,8 @@ class Absensi extends MY_Controller{
 		error_reporting(E_ALL ^ E_NOTICE);
 		$tgl_absensi = $this->input->post('import_tgl_absensi');
 		$tgl_absensi = date('Y-m-d', strtotime($tgl_absensi));
-		$sql = "DELETE FROM absensi";
-        $this->db->query($sql);
+		// $sql = "DELETE FROM absensi";
+        // $this->db->query($sql);
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
         $upload = $this->absensi_model->upload_file($this->filename);
         if ($upload['result'] == 'failed') {
