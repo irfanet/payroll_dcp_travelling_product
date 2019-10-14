@@ -1,4 +1,6 @@
 <?php
+set_time_limit(0);
+ini_set('memory_limit', '-1');
 
 // create new PDF document
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -21,7 +23,7 @@ $pdf->SetHeaderMargin(10);
 $pdf->SetFooterMargin(10);
 
 // set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, 0);
+$pdf->SetAutoPageBreak(TRUE, 10);
 
 // ---------------------------------------------------------
 
@@ -31,50 +33,72 @@ $pdf->SetFont('helvetica', '', 10);
 // add a page
 $pdf->AddPage();
 
-$tbl = <<<EOD
+$tbl = '
 <table cellspacing="0" cellpadding="1" border="0">
     <tr width="100%">
       <td><b>DCP TRAVELLING PRODUCT</b></td>
     </tr>
     <tr width="100%">
-      <td><b>PERIODE: </b></td>
+      <td><b>PERIODE: ' . $gaji[0]["kd_periode"] . '</b></td>
     </tr>
-</table>
-EOD;
+</table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 
-$tbl = <<<EOD
-<table cellspacing="0" cellpadding="1" border="0">
+$tbl = '';
+for ($i = 0, $j = 1; $i < sizeof($gaji); $i = $i + 1, $j++) :
+  if($i == 0){
+    $tbl = $tbl . '
+    <table cellspacing="0" cellpadding="1" border="0">
     <tr width="100%">
       <td colspan="6" align="center"><b>TRANSFER BANK GAJI PEGAWAI</b></td>
     </tr>
     <tr width="100%">
-      <td colspan="6"><b>DEPARTEMEN : departemen</b><br></td>
+      <td colspan="6"><b>DEPARTEMEN : '. $gaji[$i]["nama_departemen"] .'</b><br></td>
     </tr>
     <tr width="100%">
-      <td style="border-bottom: 1pt solid black;"><b>No</b></td>
-      <td style="border-bottom: 1pt solid black;"><b>NIK</b></td>
-      <td style="border-bottom: 1pt solid black;"><b>Nama</b></td>
-      <td style="border-bottom: 1pt solid black;"><b>Jabatan</b></td>
-      <td style="border-bottom: 1pt solid black;"><b>Total Gaji</b></td>
-      <td style="border-bottom: 1pt solid black;"><b>No Rekening</b></td>
+      <td style="border-bottom: 1pt solid black;" width="5%"><b>No</b></td>
+      <td style="border-bottom: 1pt solid black;" width="20%"><b>NIK</b></td>
+      <td style="border-bottom: 1pt solid black;" width="30%"><b>Nama</b></td>
+      <td style="border-bottom: 1pt solid black;" width="10%"><b>Jabatan</b></td>
+      <td style="border-bottom: 1pt solid black;" width="20%"><b>Total Gaji</b></td>
+      <td style="border-bottom: 1pt solid black;" width="15%"><b>No Rekening</b></td>
+    </tr>';
+  }
+  else if($gaji[$i]["nama_departemen"] != $gaji[$i-1]["nama_departemen"] && $i != 0){
+    $j=1;
+    $tbl = $tbl . '
+    </table><br pagebreak="true"/><table cellspacing="0" cellpadding="1" border="0">
+    <tr width="100%">
+      <td colspan="6" align="center"><b>TRANSFER BANK GAJI PEGAWAI</b></td>
     </tr>
     <tr width="100%">
-      <td style="border-bottom: 1pt solid black;">No</td>
-      <td style="border-bottom: 1pt solid black;">NIK</td>
-      <td style="border-bottom: 1pt solid black;">Nama</td>
-      <td style="border-bottom: 1pt solid black;">Jabatan</td>
-      <td style="border-bottom: 1pt solid black;">Total Gaji</td>
-      <td style="border-bottom: 1pt solid black;">No Rekening</td>
+      <td colspan="6"><b>DEPARTEMEN : '. $gaji[$i]["nama_departemen"] .'</b><br></td>
     </tr>
-</table>
-EOD;
+    <tr width="100%">
+      <td style="border-bottom: 1pt solid black;" width="5%"><b>No</b></td>
+      <td style="border-bottom: 1pt solid black;" width="20%"><b>NIK</b></td>
+      <td style="border-bottom: 1pt solid black;" width="30%"><b>Nama</b></td>
+      <td style="border-bottom: 1pt solid black;" width="10%"><b>Jabatan</b></td>
+      <td style="border-bottom: 1pt solid black;" width="20%"><b>Total Gaji</b></td>
+      <td style="border-bottom: 1pt solid black;" width="15%"><b>No Rekening</b></td>
+    </tr>';
+  }
+  $tbl = $tbl . '
+    <tr width="100%">
+      <td style="border-bottom: 1pt solid black;">' . $j . '</td>
+      <td style="border-bottom: 1pt solid black;">' . $gaji[$i]["nik"] . '</td>
+      <td style="border-bottom: 1pt solid black;">' . $gaji[$i]["nama"] . '</td>
+      <td style="border-bottom: 1pt solid black;">' . $gaji[$i]["nama_jabatan"] . '</td>
+      <td style="border-bottom: 1pt solid black;">IDR ' . nominal($gaji[$i]["total_gaji"]) . '</td>
+      <td style="border-bottom: 1pt solid black;">' . $gaji[$i]["norek"] . '</td>
+    </tr>';
+endfor;
 
-$pdf->writeHTML($tbl, true, false, false, false, '');
+$pdf->writeHTML($tbl, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output('TRANSFER_BANK.pdf', 'D');
+$pdf->Output('TRANSFER_BANK.pdf', 'I');
 
 //============================================================+
 // END OF FILE

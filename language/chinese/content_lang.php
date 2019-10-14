@@ -105,3 +105,9 @@ $lang['pilih'] = '-- 选择一个 --';
 //non aktif
 $lang['aktifkan'] = '激活它';
 $lang['data_pegawai_non_aktif'] = '员工数据无效';
+
+//Modul Dashboard
+$lang['pegawai_aktif'] = '在职员工';
+$lang['pegawai_non_aktif'] = '非在职员工';
+$lang['hari_kerja'] = '工作日';
+$lang['jumlah_tiap_dep'] = '各部门员工数';

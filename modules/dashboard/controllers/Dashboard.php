@@ -20,6 +20,7 @@ class Dashboard extends MY_Controller{
 		$data['pegawai_non_aktif'] = $this->dashboard_model->get_non_aktif();
 		$data['hari_kerja'] = $this->dashboard_model->get_hari_kerja();
 		$data['honor'] = $this->dashboard_model->get_honor();
+		$data['aktif_dep'] = $this->dashboard_model->get_aktif_dep();
         $this->load->template('dashboard', $data);
 	}
 

@@ -105,3 +105,9 @@ $lang['pilih'] = '-- Pilih Salah Satu --';
 //non aktif
 $lang['aktifkan'] = 'Aktifkan';
 $lang['data_pegawai_non_aktif'] = 'Data Pegawai Non Aktif';
+
+//Modul Dashboard
+$lang['pegawai_aktif'] = 'Pegawai Aktif';
+$lang['pegawai_non_aktif'] = 'Pegawai Non Aktif';
+$lang['hari_kerja'] = 'Hari Kerja';
+$lang['jumlah_tiap_dep'] = 'Jumlah Pegawai Tiap Departemen';
