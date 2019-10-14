@@ -9,10 +9,12 @@
         }
 
 		function data_list(){
+			$tgl = $this->get_tgl_terbaru();
 			$this->db->select('*')
 			->from('absensi')
 			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
-			->where('absensi.lembur >','0');
+			->where('absensi.lembur >','0')
+			->where('absensi.tgl_absensi =',$tgl);
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}
@@ -54,11 +56,13 @@
 
 		
 		function get_nik(){
+			$tgl = $this->get_tgl_terbaru();
 			$this->db->select('*')
 			->from('absensi')
 			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
-			->where('absensi.tgl_absensi','2019-10-15');
-			// ->where('absensi.lembur =','0');
+			->where('absensi.tgl_absensi',$tgl)
+			->where('absensi.kd_status =','TR')
+			->or_where('absensi.kd_status =','MS');
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}
@@ -75,5 +79,17 @@
 				); 
 			}
 			$this->db->update_batch('absensi', $entries, 'id_absensi');
+		}
+		function get_tgl_terbaru(){
+			$this->db->select('tgl_absensi')
+			->from($this->_table)
+			->order_by('tgl_absensi', 'desc')
+			->limit(1);
+			$hasil = $this->db->get();
+
+			foreach($hasil->result_array() as $h){
+				$tgl = $h['tgl_absensi'];
+			}
+			return $tgl;
 		}
 	}

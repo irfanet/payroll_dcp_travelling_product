@@ -92,7 +92,6 @@ class Absensi extends MY_Controller{
 	function simpan_koreksi(){
 		$data = array ('success' => false, 'messages' => array());
 		$this->form_validation->set_rules('nik','nik', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_absensi','Tanggal', 'required|trim|strip_tags');
 		$this->form_validation->set_rules('kd_status','Kode Status', 'trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 

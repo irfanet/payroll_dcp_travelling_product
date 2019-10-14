@@ -133,7 +133,7 @@
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="import_tgl_absensi"><?= $this->lang->line('tgl_absensi'); ?> <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                <input type="text" id="import_tgl_absensi" name="import_tgl_absensi" required class="form-control col-md-7 col-xs-12">
+                <input type="text" id="import_tgl_absensi" readonly name="import_tgl_absensi" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@
               </div>
             </div>
           </div>
-          <br>
+          <!-- <br>
           <div class="row">
             <div class="form-group">
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="tgl_absensi"><?= $this->lang->line('tgl_absensi'); ?> <span class="required">*</span>
@@ -287,7 +287,7 @@
                 <input type="text" id="tgl_absensi2" name="tgl_absensi" required class="form-control col-md-7 col-xs-12">
               </div>
             </div>
-          </div>
+          </div> -->
           <br>
           <div class="row">
             <div class="form-group">
@@ -731,7 +731,7 @@
           url: "<?= base_url() ?>absensi/simpan_koreksi",
           dataType: "JSON",
           data: {
-            tgl_absensi: $('#tgl_absensi2').val(),
+            // tgl_absensi: $('#tgl_absensi2').val(),
             nik: $('#nik2').val(),
             kd_status: $('#kd_status2').val()
           },
