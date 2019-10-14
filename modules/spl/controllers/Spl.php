@@ -50,12 +50,7 @@ class Spl extends MY_Controller{
 
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
-		$this->form_validation->set_rules('NPP','NPP', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('tgl_lembur','Tanggal Lembur', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('jumlah_jam_lembur','Jumlah Jam Lembur', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('jam_datang','Jam Datang', 'trim');
-		$this->form_validation->set_rules('jam_pulang','Jam Lembur', 'trim');
-		$this->form_validation->set_rules('keterangan','Keterangan', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('lembur','Lembur', 'required|trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
 		if ($this->form_validation->run() == FALSE) {
