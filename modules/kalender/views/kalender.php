@@ -221,7 +221,7 @@
               '<td>' + hari + '</td>' +
               '<td>' + data[i].status + '</td>' +
               '<td style="align:center;">' +
-              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].tgl + '"><?= $this->lang->line('bt_edit'); ?></a>' + 
+              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].tgl + '"><?= $this->lang->line('bt_edit'); ?></a>' +
               '</td>' +
               '</tr>';
           }
@@ -384,7 +384,8 @@
     //Date picker
     $('#tgl_mulai').datepicker({
       autoclose: true,
-      format: 'dd-mm-yyyy'
+      format: 'dd-mm-yyyy',
+      datesDisabled: '10-10-2019'
     })
 
     $('#tgl_selesai').datepicker({

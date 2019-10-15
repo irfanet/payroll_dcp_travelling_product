@@ -275,8 +275,8 @@
               '<td>' + data[i].kd_periode + '</td>' +
               '<td>IDR. ' + data[i].total_gaji.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + '</td>' +
               '<td style="text-align:center;">' +
-            //   '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
-              '<a href="javascript:;" class="btn btn-warning btn-xs item_salah" data="' + data[i].id_gaji + '">X</a>' +
+              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_gaji + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
+              // '<a href="javascript:;" class="btn btn-warning btn-xs item_salah" data="' + data[i].id_gaji + '">X</a>' +
               '</td>' +
               '</tr>';
           }

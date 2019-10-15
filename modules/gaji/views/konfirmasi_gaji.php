@@ -392,8 +392,8 @@
         success: function(data) {
           // $('#modal_delete').modal('hide');
           tampil_data();
-          $('#info').append('<div class="alert alert-warning"><i class="fa fa-trash-o"></i>' +
-            ' <?= $this->lang->line('notif_hapus'); ?>' + '</div>');
+          $('#info').append('<div class="alert alert-warning"><i class="fa fa-info"></i>' +
+            ' <?= $this->lang->line('notif_warning'); ?>' + '</div>');
           $('.alert-warning').delay(500).show(1000, function() {
             $(this).delay(2000).slideUp(500, function() {
               $(this).remove();

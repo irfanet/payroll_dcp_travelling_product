@@ -13,7 +13,7 @@
       <div class="col-xs-12" id="info"></div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-md-12 col-lg-4">
+      <div class="col-xs-12 col-md-12 col-lg-3">
         <div class="box box-solid box-default">
           <div class="box-header">
             <h3 class="box-title"><?= $this->lang->line('slip_gaji'); ?></h3>
@@ -30,7 +30,7 @@
         </div>
         <!-- /.box -->
       </div>
-      <div class="col-xs-12 col-md-12 col-lg-4">
+      <div class="col-xs-12 col-md-12 col-lg-3">
         <div class="box box-solid box-default">
           <div class="box-header">
             <h3 class="box-title"><?= $this->lang->line('transfer_gaji'); ?></h3>
@@ -47,7 +47,7 @@
         </div>
         <!-- /.box -->
       </div>
-      <div class="col-xs-12 col-md-12 col-lg-4">
+      <div class="col-xs-12 col-md-12 col-lg-3">
         <div class="box box-solid box-default">
           <div class="box-header">
             <h3 class="box-title"><?= $this->lang->line('rekap_gaji'); ?></h3>
@@ -56,6 +56,23 @@
           <div class="box-body">
             <center>
               <a class="btn btn-app btn-lg" href="<?= base_url()?>cetak/rekap_gaji">
+                <i class="glyphicon glyphicon-print"></i> <?= $this->lang->line('cetak'); ?>
+              </a>
+            </center>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <div class="col-xs-12 col-md-12 col-lg-3">
+        <div class="box box-solid box-default">
+          <div class="box-header">
+            <h3 class="box-title"><?= $this->lang->line('absensi'); ?></h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <center>
+              <a class="btn btn-app btn-lg" href="<?= base_url()?>cetak/absensi">
                 <i class="glyphicon glyphicon-print"></i> <?= $this->lang->line('cetak'); ?>
               </a>
             </center>
