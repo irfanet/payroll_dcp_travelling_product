@@ -17,6 +17,7 @@ class Cetak extends MY_Controller
 
 	function index()
 	{
+		$this->load->template('cetak');
 	}
 
 	function slip_gaji()

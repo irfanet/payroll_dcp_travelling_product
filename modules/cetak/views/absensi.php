@@ -94,28 +94,23 @@ for ($i = 0, $j = 1; $i < sizeof($gaji); $i++, $j++) :
   <tr>
     <td>Terlambat: ' . $gaji[$i]["hari_terlambat"] . '</td>
     <td>Sakit: ' . $gaji[$i]["sakit"] . '</td>
-    
-    
-  </tr>
-  <tr>
-    <td>Izin: ' . $gaji[$i]["izin"] . '</td>
-    <td>Izin Resmi: ' . $gaji[$i]["izin_resmi"] . '</td>
     <td rowspan="3">Status</td>
     ' . $col4 . '
   </tr>
   <tr>
+    <td>Izin: ' . $gaji[$i]["izin"] . '</td>
+    <td>Izin Resmi: ' . $gaji[$i]["izin_resmi"] . '</td>
+  </tr>
+  <tr>
     <td>Absen: ' . $gaji[$i]["absen"] . '</td>
     <td>Cuti: ' . $gaji[$i]["cuti"] . '</td>
-    
-    
   </tr>
   <tr>
     <td colspan="2">Lembur: ' . $gaji[$i]["lemburan"] . '</td>
-    
     <td>Lembur</td>
     ' . $col5 . '
   </tr>';
-  if ($i % 5 == 0 && $i != 0) {
+  if ($i % 4 == 0 && $i != 0) {
     $tbl = $tbl . '</table><br pagebreak="true"/>' . $header;
   }
 endfor;

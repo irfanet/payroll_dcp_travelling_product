@@ -69,9 +69,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?= base_url()?>cetak/slip_gaji"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
-          <li><a href="<?= base_url()?>cetak/cetak_transfer"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
-          <li><a href="<?= base_url()?>cetak/rekap_gaji"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
+          <li><a href="<?= base_url()?>cetak"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
           <li><a href="<?= base_url()?>cetak/absensi"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
         </ul>
       </li>

@@ -160,3 +160,10 @@ $lang['pegawai_aktif'] = '在职员工';
 $lang['pegawai_non_aktif'] = '非在职员工';
 $lang['hari_kerja'] = '工作日';
 $lang['jumlah_tiap_dep'] = '各部门员工数';
+
+//Modul Laporan
+$lang['data_laporan'] = '报告数据';
+$lang['slip_gaji'] = '打印工资单';
+$lang['transfer_gaji'] = '打印转账工资';
+$lang['rekap_gaji'] = '打印薪水回顾';
+$lang['cetak'] = '列印';

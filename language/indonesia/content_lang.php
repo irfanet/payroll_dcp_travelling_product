@@ -161,3 +161,10 @@ $lang['pegawai_aktif'] = 'Pegawai Aktif';
 $lang['pegawai_non_aktif'] = 'Pegawai Non Aktif';
 $lang['hari_kerja'] = 'Hari Kerja';
 $lang['jumlah_tiap_dep'] = 'Jumlah Pegawai Tiap Departemen';
+
+//Modul Laporan
+$lang['data_laporan'] = 'Data Laporan';
+$lang['slip_gaji'] = 'Cetak Slip Gaji';
+$lang['transfer_gaji'] = 'Cetak Gaji Transfer';
+$lang['rekap_gaji'] = 'Cetak Rekap Gaji';
+$lang['cetak'] = 'Cetak';
