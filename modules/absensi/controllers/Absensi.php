@@ -53,10 +53,18 @@ class Absensi extends MY_Controller{
 	}
 
 
-	function koreksi_absensi()
+	function lihat_absensi()
     {
-        $this->load->template('koreksi_absensi');
-    }
+        $this->load->template('lihat_absensi');
+	}
+	
+	function get_all_absensi(){
+		$periode = $this->db->select('*')->order_by('id_periode', "desc")->limit(1)->get('kalender')->row_array();
+		$tgl_mulai = $periode['tgl_mulai'];
+		$tgl_selesai = $periode['tgl_selesai'];
+		$data=$this->absensi_model->get_all_absensi($tgl_mulai,$tgl_selesai);
+		echo json_encode($data);
+	}
 
     function get_koreksi_data(){
 		$data=$this->absensi_model->koreksi_data_list();

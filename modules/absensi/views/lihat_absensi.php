@@ -21,10 +21,10 @@
           <!-- /.box-header -->
           <div class="box-body">
             <center>
-              <a class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_modal" data-target="#modal_import">
+              <!-- <a class="btn btn-app btn-lg" data-toggle="modal" id="btn_add_modal" data-target="#modal_import">
                 <i class="fa fa-plus"></i> <?= $this->lang->line('import'); ?>
               </a>
-              <br>
+              <br> -->
               <a href="<?= base_url() ?>absensi/export" class="btn btn-app btn-lg" id="export">
                 <i class="fa fa-file-excel-o"></i> <?= $this->lang->line('export'); ?>
               </a>
@@ -38,8 +38,8 @@
         <!-- Custom Tabs (Pulled to the right) -->
         <div class="nav-tabs-custom bg-info">
           <ul class="nav nav-tabs pull-right">
-            <li class="active"><a href="#tab_1-1" data-toggle="tab"><?= $this->lang->line('berangkat'); ?></a></li>
-            <li><a href="#tab_2-2" data-toggle="tab"><?= $this->lang->line('tidak_berangkat'); ?></a></li>
+            <li class="active"><a href="#tab_1-1" data-toggle="tab"><?= $this->lang->line('absensi_semua'); ?></a></li>
+            <!-- <li><a href="#tab_2-2" data-toggle="tab"><?= $this->lang->line('tidak_berangkat'); ?></a></li> -->
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#order_by">
                 <?= $this->lang->line('absensi_orderby'); ?> <span class="caret"></span>
@@ -74,7 +74,7 @@
                       <th><?= $this->lang->line('jam_pulang'); ?></th>
                       <th><?= $this->lang->line('kd_status'); ?></th>
                       <th><?= $this->lang->line('lembur'); ?></th>
-                      <th width="15%"><?= $this->lang->line('aksi'); ?></th>
+                      <!-- <th width="15%"><?= $this->lang->line('aksi'); ?></th> -->
                     </tr>
                   </thead>
                   <tbody id="show_data">
@@ -344,7 +344,7 @@
     var url;
     var tabel;
     var show_data;
-    url = "absensi/get_data";
+    url = "absensi/get_all_absensi";
     tabel = "#example";
     show_data = "#show_data";
     tampil_data();
@@ -497,11 +497,11 @@
               '<td>' + data[i].jam_datang + '</td>' +
               '<td>' + data[i].jam_pulang + '</td>' +
               '<td>' + status + '</td>' +
-              '<td>' + data[i].lembur + ' jam</td>' +
-              '<td style="text-align:center;">' +
-              '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
+              '<td>' + data[i].lembur + ' jam </td>' +
+            //   '<td style="text-align:center;">' +
+            //   '<a href="javascript:;" class="btn btn-info btn-xs item_edit" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_edit'); ?></a>' + ' ' +
               // '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus" data="' + data[i].id_absensi + '"><?= $this->lang->line('bt_hapus'); ?></a>' +
-              '</td>' +
+            //   '</td>' +
               '</tr>';
           }
           $("" + show_data + "").html(html);

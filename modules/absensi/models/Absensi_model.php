@@ -142,6 +142,19 @@
 			$hasil = $this->db->get_where("pegawai", array('nik' => $kode))->row_array();
 			return $hasil;
 		}
+
+		function get_all_absensi($tgl_mulai,$tgl_selesai){
+			// $hasil = $this->db->query("SELECT * FROM absensi WHERE tgl_absensi BETWEEN '$tgl_mulai' AND '$tgl_selesai'")->result_array();
+
+			$this->db->select('*')
+			->from('absensi')
+			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
+			->join('status_kehadiran', 'absensi.kd_status = status_kehadiran.kd_status','inner')
+			->where('absensi.tgl_absensi >=',$tgl_mulai)
+			->where('absensi.tgl_absensi <=', $tgl_selesai);
+			$hasil = $this->db->get();
+			return $hasil->result_array();
+		}
 	
 		function update_data(){
 			$id_absensi = $this->input->post('id_absensi');
