@@ -133,8 +133,8 @@ class Pegawai extends MY_Controller
         if ($upload['result'] == 'failed') {
           $data['upload_error'] = $upload['error'];
         }
-        // $sql = "DELETE FROM pegawai";
-		// $this->db->query($sql);
+        $sql = "DELETE FROM pegawai";
+		$this->db->query($sql);
 		
 		// XLSX
 		$excelreader = PHPExcel_IOFactory::createReader("Excel2007");

@@ -33,6 +33,7 @@ $lang['bt_konfirmasi'] = 'Konfirmasi';
 $lang['notif_simpan'] = '<b>Berhasil</b> ! Data telah disimpan';
 $lang['notif_update'] = '<b>Berhasil</b> ! Data telah diperbaharui';
 $lang['notif_hapus'] = 'Data telah dihapus !';
+$lang['notif_warning'] = 'Data ditolak !';
 //Lain
 $lang['periode_kerja'] = 'Periode Kerja :';
 $lang['lihat_detail'] = 'Lihat Detail';

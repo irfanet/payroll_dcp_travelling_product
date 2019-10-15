@@ -3,7 +3,7 @@ set_time_limit(0);
 ini_set('memory_limit', '-1');
 
 // create new PDF document
-$pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', false);
+$pdf = new TCPDF('L', 'mm', 'F4', true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -50,9 +50,9 @@ $header = '<table cellspacing="0" cellpadding="1" border="1">
   <th width="2%">No</th>
   <th>NIK</th>
   <th>Nama</th>
-  <th>Nama Departemen</th>
-  <th>Nama Jabatan</th>
-  <th>Nama Line</th>
+  <th>Departemen</th>
+  <th>Jabatan</th>
+  <th>Line</th>
   <th>Gaji Pokok</th>
   <th>Tunj. Jabatan</th>
   <th>Tunj. Kinerja</th>
@@ -60,19 +60,10 @@ $header = '<table cellspacing="0" cellpadding="1" border="1">
   <th>Insentif</th>
   <th>PPH 21</th>
   <th>Norek</th>
-  <th>Hari Kerja</th>
-  <th>Izin</th>
-  <th>Absen</th>
-  <th>Sakit</th>
-  <th>Izin Resmi</th>
-  <th>Cuti</th>
+  <th>Kehadiran</th>
   <th>Lemburan</th>
   <th>Menit Terlambat</th>
-  <th>Hari Terlambat</th>
-  <th>BPJS TK JHT</th>
-  <th>BPJS TK JP</th>
-  <th>BPJS KES</th>
-  <th>Honor Lembur</th>
+  <th>BPJS</th>
   <th>Potongan</th>
   <th>Ketidakhadiran</th>
   <th>Total Gaji</th>
@@ -109,19 +100,18 @@ for ($i = 0, $j = 1; $i < sizeof($gaji); $i++, $j++) :
       <td>' . nominal($gaji[$i]["insentif"]) . '</td>
       <td>' . nominal($gaji[$i]["pph21"]) . '</td>
       <td>' . ($gaji[$i]["norek"]) . '</td>
-      <td>' . $gaji[$i]["hari_kerja"] . '</td>
-      <td>' . $gaji[$i]["izin"] . '</td>
-      <td>' . $gaji[$i]["absen"] . '</td>
-      <td>' . $gaji[$i]["sakit"] . '</td>
-      <td>' . $gaji[$i]["izin_resmi"] . '</td>
-      <td>' . $gaji[$i]["cuti"] . '</td>
-      <td>' . ($gaji[$i]["lemburan"]) . '</td>
+      <td>Hari: ' . $gaji[$i]["hari_kerja"] . '<br>
+      I: ' . $gaji[$i]["izin"] . '<br>
+      A: ' . $gaji[$i]["absen"] . '<br>
+      S: ' . $gaji[$i]["sakit"] . '<br>
+      IR: ' . $gaji[$i]["izin_resmi"] . '<br>
+      C: ' . $gaji[$i]["cuti"] . '</td>
+      <td>' . ($gaji[$i]["lemburan"]) . ' jam<br>
+      ' . nominal($gaji[$i]["honor_lembur"]) . '</td>
       <td>' . $gaji[$i]["menit_terlambat"] . '</td>
-      <td>' . $gaji[$i]["hari_terlambat"] . '</td>
-      <td>' . nominal($gaji[$i]["bpjs_tk_jht"]) . '</td>
-      <td>' . nominal($gaji[$i]["bpjs_tk_jp"]) . '</td>
-      <td>' . nominal($gaji[$i]["bpjs_kes"]) . '</td>
-      <td>' . nominal($gaji[$i]["honor_lembur"]) . '</td>
+      <td>TK JHT: ' . nominal($gaji[$i]["bpjs_tk_jht"]) . '<br>
+      TK JP: ' . nominal($gaji[$i]["bpjs_tk_jp"]) . '<br>
+      KES' . nominal($gaji[$i]["bpjs_kes"]) . '</td>
       <td>' . nominal($gaji[$i]["potongan"]) . '</td>
       <td>' . nominal($gaji[$i]["ketidakhadiran"]) . '</td>
       <td>' . nominal($gaji[$i]["total_gaji"]) . '</td>

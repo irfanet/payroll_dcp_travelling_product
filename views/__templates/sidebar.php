@@ -61,17 +61,13 @@
           <i class="fa fa-check-square-o"></i> <span><?= $this->lang->line('konfirmasi_gaji'); ?></span>
         </a>
       </li>
-      <li class="treeview  <?php echo $this->uri->segment(1) == 'cetak' ? 'active': '' ?>">
-        <a href="#">
+      <li class="<?php echo $this->uri->segment(1) == 'cetak' ? 'active': '' ?>">
+        <a href="<?= base_url()?>cetak">
           <i class="fa fa-print"></i> <span><?= $this->lang->line('laporan'); ?></span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="<?= base_url()?>cetak"><i class="fa fa-circle-o"></i> <?= $this->lang->line('gaji_bulanan'); ?></a></li>
-          <li><a href="<?= base_url()?>cetak/absensi"><i class="fa fa-circle-o"></i> <?= $this->lang->line('absensi'); ?></a></li>
-        </ul>
       </li>
       <li class=" <?php echo $this->uri->segment(1) == 'kalender' ? 'active': '' ?>">
         <a href="<?= base_url()?>kalender">

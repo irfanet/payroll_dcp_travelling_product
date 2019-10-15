@@ -33,6 +33,7 @@ $lang['bt_konfirmasi'] = '确认';
 $lang['notif_simpan'] = '<b>成功！</b> 數據已保存';
 $lang['notif_update'] = '<b>成功！</b> 數據已更新';
 $lang['notif_hapus'] = '數據已被刪除';
+$lang['notif_warning'] = '数据被拒绝！';
 //Lain
 $lang['periode_kerja'] = '工作时间：';
 $lang['lihat_detail'] = '阅读详情';
