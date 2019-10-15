@@ -31,6 +31,26 @@ class Absensi extends MY_Controller{
 		$data=$this->absensi_model->get_masuk_normal();
 		echo json_encode($data);
 	}
+	function get_izin(){
+		$data=$this->absensi_model->get_izin();
+		echo json_encode($data);
+	}
+	function get_sakit(){
+		$data=$this->absensi_model->get_sakit();
+		echo json_encode($data);
+	}
+    function get_izin_resmi(){
+		$data=$this->absensi_model->get_izin_resmi();
+		echo json_encode($data);
+	}
+	function get_cuti(){
+		$data=$this->absensi_model->get_cuti();
+		echo json_encode($data);
+	}
+	function get_absen(){
+		$data=$this->absensi_model->get_absen();
+		echo json_encode($data);
+	}
 
 
 	function koreksi_absensi()
@@ -69,6 +89,23 @@ class Absensi extends MY_Controller{
 		echo json_encode($data);
 	}
 
+	function simpan_koreksi(){
+		$data = array ('success' => false, 'messages' => array());
+		$this->form_validation->set_rules('nik','nik', 'required|trim|strip_tags');
+		$this->form_validation->set_rules('kd_status','Kode Status', 'trim|strip_tags');
+		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+
+		if ($this->form_validation->run() == FALSE) {
+			foreach ($_POST as $key => $value) {
+				$data['messages'][$key] = form_error($key);
+			}   
+		}else{
+			$data['success'] = true;
+			$this->absensi_model->simpan_koreksi();	
+		}
+		echo json_encode($data);
+	}
+
 	function update_data(){
 		$data = array ('success' => false, 'messages' => array());
 		$this->form_validation->set_rules('nik','nik', 'required|trim|strip_tags');
@@ -103,8 +140,8 @@ class Absensi extends MY_Controller{
 		error_reporting(E_ALL ^ E_NOTICE);
 		$tgl_absensi = $this->input->post('import_tgl_absensi');
 		$tgl_absensi = date('Y-m-d', strtotime($tgl_absensi));
-		$sql = "DELETE FROM absensi";
-        $this->db->query($sql);
+		// $sql = "DELETE FROM absensi";
+        // $this->db->query($sql);
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
         $upload = $this->absensi_model->upload_file($this->filename);
         if ($upload['result'] == 'failed') {

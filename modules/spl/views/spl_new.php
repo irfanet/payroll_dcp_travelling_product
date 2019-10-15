@@ -93,9 +93,9 @@
       </div>
       <form id="form_add" data-parsley-validate class="form-horizontal form-label-left">
         <div class="modal-body">
-          <!-- <input type="hidden" id="id_absensi" name="id_absensi"> -->
           <input type="hidden" id="jml" name="jml">
-          <div class="row">
+          <input type="hidden" id="id_absensi" name="id_absensi">
+          <div class="row" name="show_in_add">
             <div class="form-group">
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="id_absensi_nik"><?= $this->lang->line('nama_karyawan'); ?> <span class="required">*</span>
               </label>
@@ -115,8 +115,18 @@
               </div>
             </div>
           </div> -->
-          <br name="show_in_add">
-          <div class="row" name="show_in_add">
+          <br name="show_in_edit">
+          <div class="row" name="show_in_edit">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-4" for="nik" name="nik"><?= $this->lang->line('nik'); ?> <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" id="nik" name="nik"  class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
             <div class="form-group">
               <label class="control-label col-md-4 col-sm-4 col-xs-4" for="lembur" name="lembur"><?= $this->lang->line('lembur'); ?> <span class="required">*</span>
               </label>
@@ -173,7 +183,7 @@
 
     document.getElementById("id_absensi_nik").onchange = function () {
     var count = $('#id_absensi_nik option:selected').length;
-    $("#jml").val(count);
+      $("#jml").val(count);
     }
 
     function tampil_nik() {
@@ -185,8 +195,16 @@
           success: function(data) {
             var html = '<option value="" disabled>-- Pilih Salah Satu --</option>';
             var i;
+            var opt;
             for (i = 0; i < data.length; i++) {
-              html += '<option value="' + data[i].id_absensi + '">' +  data[i].nik + " - " + data[i].nama + '</option>';
+              if(data[i].lembur>0){
+                opt = '<option disabled value="' + data[i].id_absensi + '">' +  data[i].nik + " - " + data[i].nama + '</option>';
+              }else{
+                opt = '<option value="' + data[i].id_absensi + '">' +  data[i].nik + " - " + data[i].nama + '</option>';
+              }
+              html += 
+              // '<option value="' + data[i].id_absensi + '">' +  data[i].nik + " - " + data[i].nama + '</option>';
+                opt;
             }
             $('#id_absensi_nik').html(html);
           }
@@ -257,17 +275,15 @@
           id: id
         },
         success: function(data) {
-          $.each(data, function(id_absensi, nik, tgl_lembur, level, is_active) {
+          $.each(data, function(id_absensi,nik, lembur) {
             $('#modal_add').modal('show');
             $('[name="show_in_add"]').hide();
             $('[name="show_in_edit"]').show();
             $('#id_absensi').val(data.id_absensi);
-            $('#nik').val(data.nik).attr('readonly', true);
-            $('#tgl_lembur').val(data.tgl_lembur).attr('readonly', false);
-            $('#level').val(data.level);
-            $('#is_active').val(data.is_active);
+            $('#nik').val(data.nik).attr('readonly',true);
+            $('#lembur').val(data.lembur);
             $('#modal_add').on('shown.bs.modal', function() {
-              $('#tgl_lembur').focus()
+              $('#lembur').focus()
             });
           });
         }
@@ -309,6 +325,7 @@
               $('#form_add')[0].reset();
               $('#modal_add').modal('hide');
               tampil_data();
+              tampil_nik();
             } else {
               $.each(data.messages, function(key, value) {
                 var element = $('#' + key);
@@ -331,10 +348,8 @@
           url: "<?= base_url() ?>spl/update_data",
           dataType: "JSON",
           data: {
-            id_absensi_nik: $('#id_absensi_nik').val(),
-            tgl_lembur: $('#tgl_lembur').val(),
-            level: $('#level').val(),
-            is_active: $('#is_active').val()
+            id_absensi: $('#id_absensi').val(),
+            lembur: $('#lembur').val(),
           },
           success: function(data) {
             if (data.success == true) {
@@ -382,6 +397,7 @@
         success: function(data) {
           $('#modal_delete').modal('hide');
           tampil_data();
+          tampil_nik();
           $('#info').append('<div class="alert alert-danger"><i class="fa fa-trash-o"></i>' +
             ' <?= $this->lang->line('notif_hapus'); ?>' + '</div>');
           $('.alert-danger').delay(500).show(1000, function() {

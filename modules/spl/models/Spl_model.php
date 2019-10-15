@@ -9,10 +9,12 @@
         }
 
 		function data_list(){
+			$tgl = $this->get_tgl_terbaru();
 			$this->db->select('*')
 			->from('absensi')
 			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
-			->where('absensi.lembur >','0');
+			->where('absensi.lembur >','0')
+			->where('absensi.tgl_absensi =',$tgl);
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}
@@ -29,38 +31,38 @@
 		}
 	
 		function get_data_by_kode($kode){
-			$hasil = $this->db->get_where($this->_table, array('id_spl' => $kode))->row_array();
+			$hasil = $this->db->get_where($this->_table, array('id_absensi' => $kode))->row_array();
 			return $hasil;
 		}
 	
 		function update_data(){
-			$id_spl = $this->input->post('id_spl');
+			$id_absensi = $this->input->post('id_absensi');
 			$data = array(
-				'NPP' => $this->input->post('NPP'), 
-				'tgl_lembur' => date('Y-m-d', strtotime($this->input->post('tgl_lembur'))),
-				'jumlah_jam_lembur' => $this->input->post('jumlah_jam_lembur'), 
-				'absen_datang' => $this->input->post('absen_datang'),
-				'absen_pulang' => $this->input->post('absen_pulang'),
-				'keterangan' => $this->input->post('keterangan'),
+				'lembur' => $this->input->post('lembur'),
 			);
-			$this->db->where('id_spl', $id_spl);
+			$this->db->where('id_absensi', $id_absensi);
 			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 	
 		function hapus_data($kode){
-			$this->db->where('id_spl', $kode);
-			$hasil = $this->db->delete($this->_table);
+			$data = array(
+				'lembur' => 0,
+			);
+			$this->db->where('id_absensi', $kode);
+			$hasil = $this->db->update($this->_table, $data);
 			return $hasil;
 		}
 
 		
 		function get_nik(){
+			$tgl = $this->get_tgl_terbaru();
 			$this->db->select('*')
 			->from('absensi')
 			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
-			->where('absensi.tgl_absensi','2019-10-15')
-			->where('absensi.lembur =','0');
+			->where('absensi.tgl_absensi',$tgl)
+			->where('absensi.kd_status =','TR')
+			->or_where('absensi.kd_status =','MS');
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}
@@ -77,5 +79,17 @@
 				); 
 			}
 			$this->db->update_batch('absensi', $entries, 'id_absensi');
+		}
+		function get_tgl_terbaru(){
+			$this->db->select('tgl_absensi')
+			->from($this->_table)
+			->order_by('tgl_absensi', 'desc')
+			->limit(1);
+			$hasil = $this->db->get();
+
+			foreach($hasil->result_array() as $h){
+				$tgl = $h['tgl_absensi'];
+			}
+			return $tgl;
 		}
 	}
