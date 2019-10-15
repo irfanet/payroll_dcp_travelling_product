@@ -40,6 +40,9 @@ class Cetak extends MY_Controller
 
 	function absensi()
 	{
+		$periode = $this->db->select('*')->order_by('id_periode', "desc")->limit(1)->get('kalender')->row_array();
+		$data['tgl_mulai'] = $periode['tgl_mulai'];
+		$data['tgl_selesai'] = $periode['tgl_selesai'];
 		$data['kalender_detail'] = $this->cetak_model->get_kalender_detail();
 		$data['absensi'] = $this->cetak_model->get_absensi();
 		$data['log_absensi'] = $this->cetak_model->get_log_absensi();

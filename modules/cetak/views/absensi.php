@@ -32,6 +32,18 @@ $pdf->SetFont('helvetica', '', 8);
 // add a page
 $pdf->AddPage();
 
+$tbl = '
+<table cellspacing="0" cellpadding="1" border="0">
+    <tr width="100%">
+      <td><b>DCP TRAVELLING PRODUCT</b></td>
+    </tr>
+    <tr width="100%">
+      <td><b>ABSEN PERIODE: ' . $gaji[0]["kd_periode"] . ' (' . tgl($tgl_mulai) . ' s/d ' . tgl($tgl_selesai) . ')</b></td>
+    </tr>
+</table>';
+
+$pdf->writeHTML($tbl, true, false, true, false, '');
+
 $lebar = sizeof($kalender_detail) * 21;
 $header = '
 <table cellspacing="0" cellpadding="1" border="1">
@@ -57,19 +69,19 @@ for ($i = 0, $j = 1; $i < sizeof($gaji); $i++, $j++) :
   for ($k = 0; $k < sizeof($kalender_detail); $k++) :
     for ($l = 0; $l < sizeof($log_absensi); $l++) :
       if ($gaji[$i]["nik"] == $log_absensi[$l]["nik"] && $kalender_detail[$k]["tgl"] == $log_absensi[$l]["tgl_absensi"]) {
-        $col1 = $col1 . '<td>'.$log_absensi[$l]["jam_datang"].'</td>';
-        $col2 = $col2 . '<td>'.$log_absensi[$l]["jam_pulang"].'</td>';
-        $col4 = $col4 . '<td rowspan="3">'.$log_absensi[$l]["kd_status"].'</td>';
-        $col5 = $col5 . '<td>'.$log_absensi[$l]["lembur"].'</td>';
+        $col1 = $col1 . '<td>' . $log_absensi[$l]["jam_datang"] . '</td>';
+        $col2 = $col2 . '<td>' . $log_absensi[$l]["jam_pulang"] . '</td>';
+        $col4 = $col4 . '<td rowspan="3">' . $log_absensi[$l]["kd_status"] . '</td>';
+        $col5 = $col5 . '<td>' . $log_absensi[$l]["lembur"] . '</td>';
         break;
       }
     endfor;
     for ($l = 0; $l < sizeof($absensi); $l++) :
       if ($gaji[$i]["nik"] == $absensi[$l]["nik"] && $kalender_detail[$k]["tgl"] == $absensi[$l]["tgl_absensi"]) {
-        $col1 = $col1 . '<td>'.$absensi[$l]["jam_datang"].'</td>';
-        $col2 = $col2 . '<td>'.$absensi[$l]["jam_pulang"].'</td>';
-        $col4 = $col4 . '<td rowspan="3">'.$absensi[$l]["kd_status"].'</td>';
-        $col5 = $col5 . '<td>'.$absensi[$l]["lembur"].'</td>';
+        $col1 = $col1 . '<td>' . $absensi[$l]["jam_datang"] . '</td>';
+        $col2 = $col2 . '<td>' . $absensi[$l]["jam_pulang"] . '</td>';
+        $col4 = $col4 . '<td rowspan="3">' . $absensi[$l]["kd_status"] . '</td>';
+        $col5 = $col5 . '<td>' . $absensi[$l]["lembur"] . '</td>';
         break;
       } elseif ($gaji[$i]["nik"] != $absensi[$l]["nik"] && $l == sizeof($absensi) - 1) {
         $col1 = $col1 . '<td>-</td>';
@@ -119,7 +131,7 @@ $tbl = $tbl . '</table>';
 $pdf->writeHTML($tbl, true, false, false, false, '');
 
 //Close and output PDF document
-$pdf->Output('ABSENSI.pdf', 'D');
+$pdf->Output('ABSENSI_' . $gaji[0]["kd_periode"] . '.pdf', 'D');
 
 //============================================================+
 // END OF FILE

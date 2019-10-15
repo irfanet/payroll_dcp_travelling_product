@@ -61,7 +61,7 @@
           <i class="fa fa-check-square-o"></i> <span><?= $this->lang->line('konfirmasi_gaji'); ?></span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview  <?php echo $this->uri->segment(1) == 'cetak' ? 'active': '' ?>">
         <a href="#">
           <i class="fa fa-print"></i> <span><?= $this->lang->line('laporan'); ?></span>
           <span class="pull-right-container">

@@ -98,7 +98,7 @@ endfor;
 $pdf->writeHTML($tbl, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output('TRANSFER_BANK.pdf', 'D');
+$pdf->Output('TRANSFER_BANK_' . $gaji[0]["kd_periode"] . '.pdf', 'D');
 
 //============================================================+
 // END OF FILE
