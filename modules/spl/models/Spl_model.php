@@ -60,9 +60,10 @@
 			$this->db->select('*')
 			->from('absensi')
 			->join('pegawai', 'absensi.nik = pegawai.nik','inner')
-			->where('absensi.tgl_absensi',$tgl)
-			->where('absensi.kd_status =','TR')
-			->or_where('absensi.kd_status =','MS');
+			->where('absensi.tgl_absensi =',$tgl)
+			->where("(kd_status='TR' OR kd_status='MS')");
+			// ->where('absensi.kd_status =','TR')
+			// ->or_where('absensi.kd_status =','MS');
 			$hasil = $this->db->get();
 			return $hasil->result();
 		}

@@ -31,9 +31,8 @@ class Spl extends MY_Controller{
 
 	function simpan_data(){
 		$data = array ('success' => false, 'messages' => array());
-		// $this->form_validation->set_rules('NPP','NPP', 'required|trim|strip_tags');
-		// $this->form_validation->set_rules('tgl_lembur','Tanggal Lembur', 'required|trim|strip_tags');
-		$this->form_validation->set_rules('lembur','Jumlah Jam Lembur', 'required|trim|strip_tags');
+		// $this->form_validation->set_rules('id_absensi_nik','id_absensi_nik', 'required|callback_check_default');
+		$this->form_validation->set_rules('lembur','Jumlah Jam Lembur', 'required|numeric|trim|strip_tags');
 		// $this->form_validation->set_rules('keterangan','Keterangan', 'required|trim|strip_tags');
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
@@ -72,6 +71,10 @@ class Spl extends MY_Controller{
 
 	function get_nik(){
 		$data=$this->spl_model->get_nik();
+		echo json_encode($data);
+	}
+	function get_tgl(){
+		$data=$this->spl_model->get_tgl_terbaru();
 		echo json_encode($data);
 	}
 }
