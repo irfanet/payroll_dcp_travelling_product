@@ -131,7 +131,7 @@ endfor;
 $pdf->writeHTML($tbl, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output('REKAP_GAJI.pdf', 'I');
+$pdf->Output('REKAP_GAJI.pdf', 'D');
 
 //============================================================+
 // END OF FILE

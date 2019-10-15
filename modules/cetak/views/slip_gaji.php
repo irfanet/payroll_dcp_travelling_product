@@ -195,7 +195,7 @@ endfor;
 $pdf->writeHTML($tbl, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output("SLIP_GAJI.pdf", "I");
+$pdf->Output("SLIP_GAJI.pdf", "D");
 
 //============================================================+
 // END OF FILE

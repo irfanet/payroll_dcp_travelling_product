@@ -39,6 +39,10 @@ class Cetak extends MY_Controller
 
 	function absensi()
 	{
-		$this->load->view('absensi');
+		$data['kalender_detail'] = $this->cetak_model->get_kalender_detail();
+		$data['absensi'] = $this->cetak_model->get_absensi();
+		$data['log_absensi'] = $this->cetak_model->get_log_absensi();
+		$data['gaji'] = $this->cetak_model->get_rekap();
+		$this->load->view('absensi', $data);
 	}
 }

@@ -6,8 +6,8 @@ ini_set('memory_limit', '-1');
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 
 // set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Irfan');
+$pdf->SetCreator("Fardhani");
+$pdf->SetAuthor('Fardhani');
 $pdf->SetTitle('Transfer Bank Gaji');
 $pdf->SetSubject('Transfer Bank Gaji Pegawai');
 $pdf->SetKeywords('');
@@ -98,7 +98,7 @@ endfor;
 $pdf->writeHTML($tbl, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output('TRANSFER_BANK.pdf', 'I');
+$pdf->Output('TRANSFER_BANK.pdf', 'D');
 
 //============================================================+
 // END OF FILE
