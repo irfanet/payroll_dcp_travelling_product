@@ -51,13 +51,13 @@
           <i class="fa fa-file-text-o"></i> <span><?= $this->lang->line('spl'); ?></span>
         </a>
       </li>
-      <li class=" <?php echo $this->uri->segment(1) == 'gaji' ? 'active': '' ?>">
+      <li class=" <?php echo $this->uri->segment(1) == 'gaji'  &&  $this->uri->segment(2) != 'index_konfirmasi_gaji' ? 'active': '' ?>">
         <a href="<?= base_url(); ?>gaji">
           <i class="fa fa-calculator"></i> <span><?= $this->lang->line('hitung_gaji'); ?></span>
         </a>
       </li>
-      <li class=" <?php echo $this->uri->segment(1) == 'konfirmasi_gaji' ? 'active': '' ?>">
-        <a href="#">
+      <li class=" <?php echo $this->uri->segment(2) == 'index_konfirmasi_gaji' ? 'active': '' ?>">
+        <a href="<?= base_url()?>gaji/index_konfirmasi_gaji">
           <i class="fa fa-check-square-o"></i> <span><?= $this->lang->line('konfirmasi_gaji'); ?></span>
         </a>
       </li>

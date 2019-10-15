@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <?= $this->lang->line('data_gaji'); ?>
+      <?= $this->lang->line('konfirmasi_gaji'); ?>
     </h1>
   </section>
 
@@ -12,59 +12,7 @@
     <div class="row">
       <div class="col-xs-12" id="info"></div>
     </div>
-    <div class="row">
-      <div class="col-xs-3 col-md-3 col-lg-2">
-        <div class="box box-solid box-default">
-          <div class="box-header">
-            <h3 class="box-title"><?= $this->lang->line('hitung_gaji'); ?></h3>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <center>
-              <a class="btn btn-app btn-lg"  href="<?= base_url()?>gaji/hitung_gaji">
-                <i class="fa fa-calculator"></i> <?= $this->lang->line('hitung'); ?>
-              </a>
-            </center>
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-      </div>
-      <div class="col-xs-3 col-md-3 col-lg-2">
-        <div class="box box-solid box-default">
-          <div class="box-header">
-            <h3 class="box-title"><?= $this->lang->line('export'); ?></h3>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <center>
-              <a class="btn btn-app btn-lg" href="<?= base_url()?>gaji/export">
-                <i class="fa fa-file-excel-o"></i> <?= $this->lang->line('export'); ?>
-              </a>
-            </center>
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-      </div>
-      <div class="col-xs-3 col-md-3 col-lg-2">
-        <div class="box box-solid box-default">
-          <div class="box-header">
-            <h3 class="box-title">JSON</h3>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <center>
-              <a class="btn btn-app btn-lg"  href="<?= base_url()?>gaji/hitung_gaji_json" target="_blank">
-                <i class="fa fa-file-code-o"></i> Cek JSON
-              </a>
-            </center>
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-      </div>
-    </div>
+
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12">
             <div class="box box-solid box-default">
@@ -90,32 +38,45 @@
 
             <!-- /.box-header -->
             <div class="box-body table-responsive">
-                <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                    <th><?= $this->lang->line('no'); ?></th>
-                    <th><?= $this->lang->line('nik'); ?></th>
-                    <th><?= $this->lang->line('nama_karyawan'); ?></th>
-                    <th><?= $this->lang->line('departemen'); ?></th>
-                    <th><?= $this->lang->line('jabatan'); ?></th>
-                    <th><?= $this->lang->line('jumlah'); ?></th>
-                    <th><?= $this->lang->line('hari_kerja'); ?></th>
-                    <th><?= $this->lang->line('izin'); ?></th>
-                    <th><?= $this->lang->line('absen'); ?></th>
-                    <th><?= $this->lang->line('sakit'); ?></th>
-                    <th><?= $this->lang->line('izin_resmi'); ?></th>
-                    <th><?= $this->lang->line('cuti'); ?></th>
-                    <th><?= $this->lang->line('lembur'); ?></th>
-                    <th><?= $this->lang->line('menit_terlambat'); ?></th>
-                    <th><?= $this->lang->line('hari_terlambat'); ?></th>
-                    <th><?= $this->lang->line('periode'); ?></th>
-                    <th><?= $this->lang->line('total_gaji'); ?></th>
-                    <th width="15%"><?= $this->lang->line('aksi'); ?></th>
-                    </tr>
-                </thead>
-                <tbody id="show_data">
-                </tbody>
-                </table>
+                <form id="frm-konfirmasi-gaji" method="POST" >
+                    <table id="example" cellspacing="0" width="100%" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                        <th></th>
+                        <th><?= $this->lang->line('no'); ?></th>
+                        <th><?= $this->lang->line('nik'); ?></th>
+                        <th><?= $this->lang->line('nama_karyawan'); ?></th>
+                        <th><?= $this->lang->line('departemen'); ?></th>
+                        <th><?= $this->lang->line('jabatan'); ?></th>
+                        <th><?= $this->lang->line('jumlah'); ?></th>
+                        <th><?= $this->lang->line('hari_kerja'); ?></th>
+                        <th><?= $this->lang->line('izin'); ?></th>
+                        <th><?= $this->lang->line('absen'); ?></th>
+                        <th><?= $this->lang->line('sakit'); ?></th>
+                        <th><?= $this->lang->line('izin_resmi'); ?></th>
+                        <th><?= $this->lang->line('cuti'); ?></th>
+                        <th><?= $this->lang->line('lembur'); ?></th>
+                        <th><?= $this->lang->line('menit_terlambat'); ?></th>
+                        <th><?= $this->lang->line('hari_terlambat'); ?></th>
+                        <th><?= $this->lang->line('periode'); ?></th>
+                        <th><?= $this->lang->line('total_gaji'); ?></th>
+                        <th width="15%"><?= $this->lang->line('aksi'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody id="show_data">
+                    </tbody>
+                    </table>
+                    <hr>
+
+                    <p><button class="btn btn-block btn-primary btn-lg">Konfirmasi</button></p>
+
+                    <p><b>ID Gaji:</b></p>
+                    <pre id="example-console-rows"></pre>
+
+                    <p><b>URL:</b></p>
+                    <pre id="example-console-form"></pre>
+
+                </form>
             </div>
             <!-- /.box-body -->
             </div>
@@ -216,32 +177,73 @@
   $(document).ready(function() {
       
     $('.select2').select2()
-    tampil_data();
-    tampil_nik();
+    var table = tampil_data();
+
+    // var table = init_datatable();
+
+    //init tabel old school (tanpa icheck)
+    function init_datatable(){
+        var table = $('#example').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': true,
+            'columnDefs': [{
+                'targets': 0,
+                'checkboxes': {
+                  'selectRow': true
+                }
+            }],
+            'select': {
+              'style': 'multi'
+            },
+            'order': [[1, 'asc']]
+          });
+
+        return table;
+    }
     var kondisi;
 
-    document.getElementById("id_absensi_nik").onchange = function () {
-      var count = $('#id_absensi_nik option:selected').length;
-      $("#jml").val(count);
-    }
+    //checkbox bos , sangar
+    $('#frm-konfirmasi-gaji').on('submit', function(e){
+    
+      var form = this;
+      
+      //get value id gaji
+      var rows_selected = table.column(0).checkboxes.selected();
 
-    function tampil_nik() {
-        $.ajax({
-          type: 'ajax',
-          url: '<?= base_url() ?>gaji/get_nik',
-          async: false,
-          dataType: 'json',
-          success: function(data) {
-            var html = '<option value="" disabled>-- Pilih Salah Satu --</option>';
-            var i;
-            for (i = 0; i < data.length; i++) {
-              html += '<option value="' + data[i].id_absensi + '">' +  data[i].nik + " - " + data[i].nama + '</option>';
-            }
-            $('#id_absensi_nik').html(html);
-          }
+      // loop di setiap tabel
+      $.each(rows_selected, function(index, rowId){
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
 
-        });
-    }
+      // Debug          
+      $('#example-console-rows').text(rows_selected.join(","));
+      $('#example-console-form').text($(form).serialize());
+       
+      $('input[name="id\[\]"]', form).remove();
+       
+      e.preventDefault();
+    });
+
+    // icheck fungsi select all
+    $(table.table().container()).on('ifChanged', '.dt-checkboxes-select-all input[type="checkbox"]', function(event){
+        var col = table.column($(this).closest('th'));
+        col.checkboxes.select(this.checked);
+    });
+
+    // icheck fungsi event click
+    $(table.table().container()).on('ifChanged', '.dt-checkboxes', function(event){
+        var cell = table.cell($(this).closest('td'));
+        cell.checkboxes.select(this.checked);
+    });
 
     //fungsi tampil data
     function tampil_data() {
@@ -251,12 +253,13 @@
         async: false,
         dataType: 'json',
         success: function(data) {
-          $('#example2').dataTable().fnDestroy();
+          $('#example').dataTable().fnDestroy();
           var html = '';
           var i;
           var no = 1;
           for (i = 0; i < data.length; i++) {
             html += '<tr>' +
+              '<td>' + data[i].id_gaji + '</td>' +
               '<td>' + no++ + '</td>' +
               '<td>' + data[i].nik + '</td>' +
               '<td>' + data[i].nama + '</td>' +
@@ -281,16 +284,56 @@
               '</tr>';
           }
           $('#show_data').html(html);
-          $('#example2').DataTable({
+          table = $('#example').DataTable({
             'paging': true,
             'lengthChange': true,
             'searching': true,
             'ordering': true,
             'info': true,
-            'autoWidth': true
+            'autoWidth': true,
+            'columnDefs': [{
+                'targets': 0,
+                'checkboxes': {
+                  'selectRow': true
+                }
+            }],
+            'select': {
+              'style': 'multi'
+            },
+            'order': [[1, 'asc']]
           });
+            // table = $('#example').DataTable({
+            //     'paging': true,
+            //     'lengthChange': true,
+            //     'searching': true,
+            //     'ordering': true,
+            //     'info': true,
+            //     'autoWidth': true,
+            //     'drawCallback': function(){
+            //         $('input[type="checkbox"]').iCheck({
+            //             checkboxClass: 'icheckbox_flat-blue'
+            //         });
+            //     },
+            //     'columnDefs': [{
+            //         'targets': 0,
+            //         'checkboxes': {
+            //             'selectRow': true,
+            //             'selectCallback': function(nodes, selected){
+            //                 $('input[type="checkbox"]', nodes).iCheck('update');
+            //             },
+            //             'selectAllCallback': function(nodes, selected, indeterminate){
+            //                 $('input[type="checkbox"]', nodes).iCheck('update');
+            //             }
+            //         }
+            //     }],
+            //     'select': {
+            //         'style': 'multi'
+            //     },
+            //     'order': [[1, 'asc']]
+            // });
         }
       });
+      return table;
     }
 
     //ATUR HIDE AND SHOW
@@ -507,4 +550,11 @@
     });
 
   });
+//   $(function () {
+//     $('input').iCheck({
+//       checkboxClass: 'icheckbox_square-blue',
+//       radioClass: 'iradio_square-blue',
+//       increaseArea: '20%' /* optional */
+//     });
+//   });
 </script>

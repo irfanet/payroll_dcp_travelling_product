@@ -15,12 +15,16 @@
      <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/Ionicons/css/ionicons.min.css">
      <!-- DataTables -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+     <!-- DataTables Checkbox -->
+     <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-checkboxes/css/dataTables.checkboxes.css">
      <!-- daterange picker -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
      <!-- bootstrap datepicker -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
      <!-- Select2 -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/select2/dist/css/select2.min.css">
+     <!-- iCheck -->
+     <link rel="stylesheet" href="<?= base_url()?>assets/plugins/iCheck/square/blue.css">
      <!-- Theme style -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/AdminLTE.min.css">
      <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -56,6 +60,8 @@
      <!-- DataTables -->
      <script src="<?= base_url(); ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
      <script src="<?= base_url(); ?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+     <!-- DataTables checkbox -->
+     <script src="<?= base_url(); ?>assets/plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js"></script>
      <!-- date-range-picker -->
      <script src="<?= base_url(); ?>assets/bower_components/moment/min/moment.min.js"></script>
      <script src="<?= base_url(); ?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -71,6 +77,8 @@
      <script src="<?= base_url(); ?>assets/dist/js/adminlte.min.js"></script>
      <!-- AdminLTE for demo purposes -->
      <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
+     <!-- iCheck -->
+     <script src="<?= base_url()?>assets/plugins/iCheck/icheck.min.js"></script>
 
 
 </head>

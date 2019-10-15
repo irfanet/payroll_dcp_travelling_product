@@ -20,6 +20,10 @@ class Gaji extends MY_Controller
 	{
 		$this->load->template('gaji_new');
 	}
+	function index_konfirmasi_gaji()
+	{
+		$this->load->template('konfirmasi_gaji');
+	}
 	function hitung_gaji()
 	{
 
