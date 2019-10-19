@@ -67,6 +67,7 @@ class Kalender_model extends CI_Model
 			$status = '';
 			if ($dt->format("D") == 'Sun') {
 				$status = 'L';
+				$jam_masuk = '';
 			} else if ($dt->format("D") == 'Mon') {
 				$status = 'B';
 			} else if ($dt->format("D") == 'Tue') {

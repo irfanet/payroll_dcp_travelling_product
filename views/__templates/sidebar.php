@@ -64,9 +64,6 @@
       <li class="<?php echo $this->uri->segment(1) == 'cetak' ? 'active': '' ?>">
         <a href="<?= base_url()?>cetak">
           <i class="fa fa-print"></i> <span><?= $this->lang->line('laporan'); ?></span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
         </a>
       </li>
       <li class=" <?php echo $this->uri->segment(1) == 'kalender' ? 'active': '' ?>">

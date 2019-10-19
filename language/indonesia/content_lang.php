@@ -134,6 +134,7 @@ $lang['hari_kerja'] = 'Hari Kerja';
 $lang['menit_terlambat'] = 'Menit Terlambat';
 $lang['hari_terlambat'] = 'Hari Terlambat';
 $lang['total_gaji'] = 'Total Gaji';
+$lang['bt_konfirmasi'] = 'Konfirmasi';
 
 //Modul Pegawai
 $lang['tambah_pegawai'] = 'Tambah Pegawai';

@@ -133,6 +133,7 @@ $lang['hari_kerja'] = '工作日';
 $lang['menit_terlambat'] = '晚了几分钟';
 $lang['hari_terlambat'] = '天晚';
 $lang['total_gaji'] = '总工资';
+$lang['bt_konfirmasi'] = '确认书';
 
 //Modul Pegawai
 $lang['tambah_pegawai'] = '新增员工';

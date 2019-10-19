@@ -1,37 +1,12 @@
-<?php
-set_time_limit(0);
-ini_set('memory_limit', '-1');
-// create new PDF document
-$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+<html>
 
-// set document information
-$pdf->SetCreator('Fardhani');
-$pdf->SetAuthor('Fardhani');
-$pdf->SetTitle('Slip Gaji');
-$pdf->SetSubject('Slip Gaji Pegawai');
-$pdf->SetKeywords('');
-$pdf->SetPrintHeader(false);
-$pdf->SetPrintFooter(false);
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+<head></head>
 
-// set margins
-$pdf->SetMargins(5, 5, 5);
-$pdf->SetHeaderMargin(0);
-$pdf->SetFooterMargin(0);
-
-// set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, 0);
-
-// ---------------------------------------------------------
-
-// set font
-$pdf->SetFont('helvetica', '', 9);
-// add a page
-$pdf->AddPage();
-$tbl = '';
-for ($i = 0; $i < sizeof($gaji); $i = $i + 1) :
-  $isi = '<table border="0">
+<body>
+  <?php
+  $tbl = '';
+  for ($i = 0; $i < sizeof($gaji); $i = $i + 1) :
+    $isi = '<table border="0">
   <tr>
     <td align="center" colspan="3"><h2><b>DCP Travelling Product</b></h2></td>
   </tr>
@@ -164,39 +139,35 @@ for ($i = 0; $i < sizeof($gaji); $i = $i + 1) :
     <td>' . nominal($gaji[$i]["total_gaji"]) . '</td>
   </tr>
 </table>';
-  if ($i % 4 == 0) {
-    $tbl = $tbl . '<table cellspacing="0" cellpadding="1" border="1">';
-    $tbl = $tbl . '<tr width="100%">
+    if ($i % 4 == 0) {
+      $tbl = $tbl . '<table cellspacing="0" cellpadding="1" border="1">';
+      $tbl = $tbl . '<tr width="100%">
                   <td width="50%" style="max-height: 399px; height: 399px;">' . $isi . '</td>';
-    if ($i + 1 == sizeof($gaji)) {
-      $tbl = $tbl . '</tr>';
-      $tbl = $tbl . '</table>';
-    }
-  } else if ($i % 4 == 1) {
-    $tbl = $tbl . '<td>' . $isi . '</td>
+      if ($i + 1 == sizeof($gaji)) {
+        $tbl = $tbl . '</tr>';
+        $tbl = $tbl . '</table>';
+      }
+    } else if ($i % 4 == 1) {
+      $tbl = $tbl . '<td>' . $isi . '</td>
               </tr>';
-    if ($i + 1 == sizeof($gaji)) {
-      $tbl = $tbl . '</table>';
-    }
-  } else if ($i % 4 == 2) {
-    $tbl = $tbl . '<tr>
+      if ($i + 1 == sizeof($gaji)) {
+        $tbl = $tbl . '</table>';
+      }
+    } else if ($i % 4 == 2) {
+      $tbl = $tbl . '<tr>
                   <td width="50%" style="max-height: 399px; height: 399px;">' . $isi . '</td>';
-    if ($i + 1 == sizeof($gaji)) {
-      $tbl = $tbl . '</tr>';
-      $tbl = $tbl . '</table>';
-    }
-  } else if ($i % 4 == 3) {
-    $tbl = $tbl . '<td>' . $isi . '</td>
+      if ($i + 1 == sizeof($gaji)) {
+        $tbl = $tbl . '</tr>';
+        $tbl = $tbl . '</table>';
+      }
+    } else if ($i % 4 == 3) {
+      $tbl = $tbl . '<td>' . $isi . '</td>
               </tr>';
-    $tbl = $tbl . '</table><br pagebreak="true"/>';
-  }
-endfor;
+      $tbl = $tbl . '</table><pagebreak/>';
+    }
+  endfor;
+  echo $tbl;
+  ?>
+</body>
 
-$pdf->writeHTML($tbl, true, false, true, false, '');
-
-//Close and output PDF document
-$pdf->Output('SLIP_GAJI_' . $gaji[0]["kd_periode"] . '.pdf', "D");
-
-//============================================================+
-// END OF FILE
-//============================================================+
+</html>

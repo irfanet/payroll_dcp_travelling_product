@@ -23,7 +23,10 @@ class Cetak extends MY_Controller
 	function slip_gaji()
 	{
 		$data['gaji'] = $this->cetak_model->get_slip();
-		$this->load->view('slip_gaji', $data);
+		$mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML($this->load->view('slip_gaji', $data, true));
+        // $mpdf->Output(); // opens in browser
+        $mpdf->Output('invoice.pdf','D'); // it will work as normal download
 	}
 
 	function cetak_transfer()
@@ -45,8 +48,10 @@ class Cetak extends MY_Controller
 		$data['tgl_selesai'] = $periode['tgl_selesai'];
 		$data['kalender_detail'] = $this->cetak_model->get_kalender_detail();
 		$data['absensi'] = $this->cetak_model->get_absensi();
-		$data['log_absensi'] = $this->cetak_model->get_log_absensi();
 		$data['gaji'] = $this->cetak_model->get_rekap();
-		$this->load->view('absensi', $data);
+		$mpdf = new \Mpdf\Mpdf(['orientation' => 'L']);
+        $mpdf->WriteHTML($this->load->view('absensi', $data, true));
+        // $mpdf->Output(); // opens in browser
+        $mpdf->Output('invoice.pdf','D'); // it will work as normal download
 	}
 }

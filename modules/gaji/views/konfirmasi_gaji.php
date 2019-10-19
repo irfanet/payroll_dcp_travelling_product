@@ -68,7 +68,7 @@
                     </table>
                     <hr>
 
-                    <p><button class="btn btn-block btn-primary btn-lg">Konfirmasi</button></p>
+                    <p><button class="btn btn-block btn-primary btn-lg"><?= $this->lang->line('bt_konfirmasi'); ?> </button></p>
 
                     <p><b>ID Gaji:</b></p>
                     <pre id="example-console-rows"></pre>
