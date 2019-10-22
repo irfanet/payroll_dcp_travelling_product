@@ -18,7 +18,7 @@ class Pegawai extends MY_Controller
 
 	function index()
 	{
-		$this->load->template('pegawai');
+		$this->load->view('pegawai');
 	}
 
 	function get_data()
@@ -209,7 +209,7 @@ class Pegawai extends MY_Controller
 	//pegawai non aktif
 	function index_non_aktif()
 	{
-		$this->load->template('pegawai_non_aktif');
+		$this->load->view('pegawai_non_aktif');
 	}
 
 	function get_data_non_aktif()

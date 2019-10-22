@@ -9,17 +9,17 @@ class MY_Loader extends MX_Loader
     {
         if ($return) :
             $content  = $this->view('__templates/script', $vars, $return);
-            $content .= $this->view('__templates/sidebar', $vars, $return);
             $content .= $this->view('__templates/header', $vars, $return);
-            $content .= $this->view($template_name, $vars, $return);
+            $content .= $this->view('__templates/sidebar', $vars, $return);
+            // $content .= $this->view($template_name, $vars, $return);
             $content .= $this->view('__templates/footer', $vars, $return);
 
             return $content;
         else :
             $this->view('__templates/script', $vars);
-            $this->view('__templates/sidebar', $vars);
             $this->view('__templates/header', $vars);
-            $this->view($template_name, $vars);
+            $this->view('__templates/sidebar', $vars);
+            // $this->view($template_name, $vars);
             $this->view('__templates/footer', $vars);
         endif;
     }

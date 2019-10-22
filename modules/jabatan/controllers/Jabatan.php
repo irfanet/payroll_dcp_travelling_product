@@ -16,7 +16,7 @@ class Jabatan extends MY_Controller{
 
     function index()
     {
-        $this->load->template('jabatan');
+        $this->load->view('jabatan');
     }
 
     function get_data(){

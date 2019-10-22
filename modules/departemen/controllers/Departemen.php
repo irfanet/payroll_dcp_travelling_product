@@ -16,7 +16,7 @@ class Departemen extends MY_Controller{
 
     function index()
     {
-        $this->load->template('departemen');
+        $this->load->view('departemen');
     }
 
     function get_data(){

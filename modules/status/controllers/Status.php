@@ -15,7 +15,7 @@ class Status extends MY_Controller{
 
     function index()
     {
-        $this->load->template('status');
+        $this->load->view('status');
     }
 
     function get_data(){

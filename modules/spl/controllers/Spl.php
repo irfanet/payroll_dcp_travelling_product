@@ -15,7 +15,7 @@ class Spl extends MY_Controller{
 
     function index()
     {
-        $this->load->template('spl_new');
+        $this->load->view('spl_new');
     }
 
     function get_data(){

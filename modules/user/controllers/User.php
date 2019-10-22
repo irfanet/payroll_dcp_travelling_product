@@ -16,7 +16,7 @@ class User extends MY_Controller
 
 	function index()
 	{
-		$this->load->template('user');
+		$this->load->view('user');
 	}
 
 	function get_data()

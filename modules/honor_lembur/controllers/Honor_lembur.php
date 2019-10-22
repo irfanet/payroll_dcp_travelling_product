@@ -15,7 +15,7 @@ class Honor_lembur extends MY_Controller{
 
     function index()
     {
-        $this->load->template('honor_lembur');
+        $this->load->view('honor_lembur');
     }
 
     function get_data(){

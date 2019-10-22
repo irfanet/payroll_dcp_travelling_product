@@ -18,11 +18,11 @@ class Gaji extends MY_Controller
 
 	function index()
 	{
-		$this->load->template('gaji_new');
+		$this->load->view('gaji_new');
 	}
 	function index_konfirmasi_gaji()
 	{
-		$this->load->template('konfirmasi_gaji');
+		$this->load->view('konfirmasi_gaji');
 	}
 	function hitung_gaji()
 	{

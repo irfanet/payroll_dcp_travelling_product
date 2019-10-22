@@ -15,7 +15,7 @@ class Kalender extends MY_Controller{
 
     function index()
     {
-        $this->load->template('kalender');
+        $this->load->view('kalender');
     }
 
     function get_data(){

@@ -17,7 +17,7 @@ class Line extends MY_Controller{
 
     function index()
     {
-        $this->load->template('line');
+        $this->load->view('line');
     }
 
     function get_data(){

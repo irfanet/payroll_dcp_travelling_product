@@ -16,7 +16,7 @@ class Absensi extends MY_Controller{
 
     function index()
     {
-        $this->load->template('absensi_new');
+        $this->load->view('absensi_new');
     }
 
     function get_data(){
@@ -55,7 +55,7 @@ class Absensi extends MY_Controller{
 
 	function lihat_absensi()
     {
-        $this->load->template('lihat_absensi');
+        $this->load->view('lihat_absensi');
 	}
 	
 	function get_all_absensi(){
