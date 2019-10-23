@@ -13,7 +13,7 @@ class Auth extends MY_Controller{
     function index()
     {
         if($this->session->userdata('id_user') == TRUE){
-			redirect('user');
+			redirect('dashboard/index_awal');
 		}
 		
 		$this->form_validation->set_rules('email','Email','valid_email|trim|required|strip_tags');
@@ -43,7 +43,7 @@ class Auth extends MY_Controller{
 						'level' => $user['level']
 					];
 					$this->session->set_userdata($data);
-                    redirect('dashboard');	
+                    redirect('dashboard/index_awal');	
 				}else{
 					$this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
 					Login failed! Wrong password.</div>');
